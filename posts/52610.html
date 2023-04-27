@@ -1,0 +1,589 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>patch p32226239 | Hexo</title><meta name="author" content="Sakura Yumeno"><meta name="copyright" content="Sakura Yumeno"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Patch 32226239 - GI Release Update 19.10.0.0.2101191 Patch Installation Prerequisites1.1 Update OPatch UtilityYou must use the OPatch utility version 12.2.0.1.23 or later to apply this patch for all p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="patch p32226239">
+<meta property="og:url" content="https://sakurayumeno.github.io/blog/posts/52610.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Patch 32226239 - GI Release Update 19.10.0.0.2101191 Patch Installation Prerequisites1.1 Update OPatch UtilityYou must use the OPatch utility version 12.2.0.1.23 or later to apply this patch for all p">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://t.lizi.moe/pc">
+<meta property="article:published_time" content="2023-04-25T15:43:07.751Z">
+<meta property="article:modified_time" content="2023-04-25T15:57:50.040Z">
+<meta property="article:author" content="Sakura Yumeno">
+<meta property="article:tag" content="patch">
+<meta property="article:tag" content="update">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.lizi.moe/pc"><link rel="shortcut icon" href="/blog/img/favicon.png"><link rel="canonical" href="https://sakurayumeno.github.io/blog/posts/52610.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"/blog/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'patch p32226239',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-25 23:57:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/blog/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">65</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">29</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.lizi.moe/pc')"><nav id="nav"><span id="blog-info"><a href="/blog/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">patch p32226239</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-25T15:43:07.751Z" title="发表于 2023-04-25 23:43:07">2023-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-25T15:57:50.040Z" title="更新于 2023-04-25 23:57:50">2023-04-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Oracle/">Oracle</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Oracle/Upgrade/">Upgrade</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="patch p32226239"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Patch-32226239-GI-Release-Update-19-10-0-0-210119"><a href="#Patch-32226239-GI-Release-Update-19-10-0-0-210119" class="headerlink" title="Patch 32226239 - GI Release Update 19.10.0.0.210119"></a>Patch 32226239 - GI Release Update 19.10.0.0.210119</h1><h2 id="1-Patch-Installation-Prerequisites"><a href="#1-Patch-Installation-Prerequisites" class="headerlink" title="1 Patch Installation Prerequisites"></a>1 Patch Installation Prerequisites</h2><h4 id="1-1-Update-OPatch-Utility"><a href="#1-1-Update-OPatch-Utility" class="headerlink" title="1.1 Update OPatch Utility"></a>1.1 Update OPatch Utility</h4><p>You must use the OPatch utility version 12.2.0.1.23 or later to apply this patch for all platforms.<br>To update Opatch, use the following instructions:</p>
+<ol>
+<li>Download the OPatch utility to a temporary directory.</li>
+<li>For each Oracle RAC database home and the GI home that are being patched, run the following commands as the home owner to extract the OPatch utility.<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">unzip &lt;OPATCH-ZIP&gt; -d &lt;ORACLE_HOME&gt;</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/OPatch/opatch version</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>The version output of the previous command should be 12.2.0.1.23 or later.</p>
+<h4 id="1-2-Validation-of-Oracle-Inventory"><a href="#1-2-Validation-of-Oracle-Inventory" class="headerlink" title="1.2 Validation of Oracle Inventory"></a>1.2 Validation of Oracle Inventory</h4><p>Before beginning patch application, check the consistency of inventory information for GI home and each database home to be patched. Run the following command as respective Oracle home owner to check the consistency.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/OPatch/opatch lsinventory -detail -oh &lt;ORACLE_HOME&gt;</span></span><br></pre></td></tr></table></figure>
+<p>If this command succeeds, it lists the Oracle components that are installed in the home. Save the output so you have the status prior to the patch apply.<br>If this command fails, contact Oracle Support Services for assistance.</p>
+<h4 id="1-3-Download-and-Unzip-the-Patch"><a href="#1-3-Download-and-Unzip-the-Patch" class="headerlink" title="1.3 Download and Unzip the Patch"></a>1.3 Download and Unzip the Patch</h4><p>To apply the patch, it must be accessible from all nodes in the Oracle cluster. Download the patch and unzip it to a shared location, this is called the <code>&lt;UNZIPPED_PATCH_LOCATION&gt;</code>. This directory must be empty and not be <code>/tmp</code>. Additionally, the directory should have read permission for the <code>ORA_INSTALL</code> group.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">unzip p32226239_190000_Linux-x86-64.zip</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-Run-OPatch-Conflict-Check"><a href="#1-4-Run-OPatch-Conflict-Check" class="headerlink" title="1.4 Run OPatch Conflict Check"></a>1.4 Run OPatch Conflict Check</h4><p>Determine whether any currently installed one-off patches conflict with this patch 32226239 as follows:</p>
+<ul>
+<li><p>For Grid Infrastructure Home, as home user:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218454</span></span><br><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32222571</span></span><br><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218663</span></span><br><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/29340594</span></span><br><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32240590</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>For Database home, as home user:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218454</span></span><br><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -phBaseDir &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32222571</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>The report will indicate the interim patches that conflict with the patch 32226239 and the interim patches for which patch 32226239 is a superset.</p>
+<p><strong>Note:</strong></p>
+<p>When OPatch starts, it validates the patch and ensures that there are no conflicts with the software already installed in the <code>ORACLE_HOME</code>. OPatch categorizes conflicts into the following types:</p>
+<ul>
+<li><p>Conflicts with a patch already applied to the <code>ORACLE_HOME</code>.</p>
+<p>In this case, stop the patch installation and contact Oracle Support Services.</p>
+</li>
+<li><p>Conflicts with subset patch already applied to the <code>ORACLE_HOME</code>.</p>
+<p>In this case, continue with the patch installation because as the new patch contains all the fixes from the existing patch in the <code>ORACLE_HOME</code>. And, in any case, the subset patch will automatically be rolled back prior to the installation of the new patch.</p>
+</li>
+</ul>
+<h4 id="1-5-Run-OPatch-SystemSpace-Check"><a href="#1-5-Run-OPatch-SystemSpace-Check" class="headerlink" title="1.5 Run OPatch SystemSpace Check"></a>1.5 Run OPatch SystemSpace Check</h4><p>Check if enough free space is available on the <code>ORACLE_HOME</code> filesystem for the patches to be applied as given below:</p>
+<ul>
+<li><p>For Grid Infrastructure Home, as home user:</p>
+<ol>
+<li><p>Create file <code>/tmp/patch_list_gihome.txt</code> with the following content:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="built_in">cat</span> &gt; /tmp/patch_list_gihome.txt &lt;&lt; <span class="string">EOF</span></span></span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218454</span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32222571</span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218663</span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/29340594</span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32240590</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Run the opatch command to check if enough free space is available in the Grid Infrastructure Home:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckSystemSpace -phBaseFile /tmp/patch_list_gihome.txt</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>For Database home, as home user:</p>
+<ol>
+<li><p>Create file <code>/tmp/patch_list_dbhome.txt</code> with the following content:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="built_in">cat</span> &gt; /tmp/patch_list_dbhome.txt &lt;&lt; <span class="string">EOF</span></span></span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218454</span><br><span class="line">&lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32222571</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Run opatch command to check if enough free space is available in the Database Home:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">% </span><span class="language-bash"><span class="variable">$ORACLE_HOME</span>/OPatch/opatch prereq CheckSystemSpace -phBaseFile /tmp/patch_list_dbhome.txt</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<p>The command output reports pass and fail messages as per the system space availability:</p>
+<ul>
+<li>If OPatch reports <code>Prereq &quot;checkSystemSpace&quot; failed.</code>, then cleanup the system space as the required amount of space is not available.</li>
+<li>If OPatch reports <code>Prereq &quot;checkSystemSpace&quot; passed.</code>, then no action is needed. Proceed with patch installation.</li>
+</ul>
+<h2 id="2-One-off-Patch-Conflict-Detection-and-Resolution"><a href="#2-One-off-Patch-Conflict-Detection-and-Resolution" class="headerlink" title="2 One-off Patch Conflict Detection and Resolution"></a>2 One-off Patch Conflict Detection and Resolution</h2><p>Manually determine whether any currently installed one-off patches conflict with the PSU patch as follows:</p>
+<ul>
+<li><p>In the unzipped directory as described in <a href="">Download and Unzip the Patch</a>.</p>
+</li>
+<li><p>The following commands check for conflicts in both the 12.1 GI home and the 12.1 DB homes.</p>
+<ul>
+<li><p>In case you are applying the patch, run this command as root:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">GRID_HOME/OPatch/opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -analyze</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>In case you are rolling back the patch, run this command as root:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">GRID_HOME/OPatch/opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -analyze</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>Note that Oracle proactively generates interim patches for common conflicts.</p>
+<h2 id="3-opatchauto"><a href="#3-opatchauto" class="headerlink" title="3 opatchauto"></a>3 opatchauto</h2><p>The Opatch utility has automated the patch application for the Oracle Grid Infrastructure (GI) home and the Oracle RAC database homes. It operates by querying existing configurations and automating the steps required for patching each Oracle RAC database home of same version and the GI home.<br>The utility must be executed by an operating system (OS) user with <code>root</code> privileges, and it must be executed on each node in the cluster if the GI home or Oracle RAC database home is in non-shared storage. The utility should not be run in parallel on the cluster nodes.<br>Depending on command line options specified, one invocation of opatchauto can patch the GI home, Oracle RAC database homes, or both GI and Oracle RAC database homes of the same Oracle release version as the patch. You can also roll back the patch with the same selectivity.<br>Add the directory containing the opatchauto to the $PATH environment variable. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:&lt;GI_HOME&gt;/OPatch</span></span><br></pre></td></tr></table></figure>
+
+<p>To patch the GI home and all Oracle RAC database homes of the same version:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239</span></span><br></pre></td></tr></table></figure>
+
+<p>To patch only the GI home:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;GI_HOME&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>To patch one or more Oracle RAC database homes:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;oracle_home1_path&gt;,&lt;oracle_home2_path&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>To roll back the patch from the GI home and each Oracle RAC database home:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239</span></span><br></pre></td></tr></table></figure>
+
+<p>To roll back the patch from the GI home:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;path to GI home&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>To roll back the patch from the Oracle RAC database home:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;oracle_home1_path&gt;,&lt;oracle_home2_path&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>For more information about <code>opatchauto</code>, see <a target="_blank" rel="noopener" href="http://docs.oracle.com/cd/E24628_01/doc.121/e39376/toc.htm">Oracle® OPatch User’s Guide</a>.</p>
+<p>For detailed patch installation instructions, see <a href="">Patch Installation</a>.</p>
+<h2 id="4-Patch-Installation"><a href="#4-Patch-Installation" class="headerlink" title="4 Patch Installation"></a>4 Patch Installation</h2><p>The patch instructions will differ based on the configuration of the Grid infrastructure and the Oracle RAC database homes. Patching instructions for Oracle RAC Database Homes and GI together are listed below.<br>The most common configurations are listed as follows:</p>
+<ul>
+<li>Case 1: Oracle RAC, where the GI Home and the Database Homes are not shared and ACFS file system is not configured</li>
+<li>Case 2: Oracle RAC, where the GI Home is not shared, Database Home is shared, ACFS may be used</li>
+<li>Case 3: Non-Oracle RAC Database homes</li>
+</ul>
+<p>For other configurations listed below, see My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1591616.1">1591616.1</a>:</p>
+<ul>
+<li>GI Home is not shared, the Database Home is not shared, ACFS may be used.</li>
+<li>Patching Oracle RAC Database Homes.</li>
+<li>Patching GI Home alone.</li>
+<li>Patching Oracle Restart Home.</li>
+<li>Patching a software only GI Home installation or before the GI Home is configured.</li>
+</ul>
+<p><strong>Patching Oracle RAC Database Homes and GI Together</strong></p>
+<ul>
+<li><p><strong>Case 1: Oracle RAC, where the GI Home and the Database Homes are not shared and ACFS file system is not configured.</strong></p>
+<p>As root user, execute the following command on each node of the cluster:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Case 2: Oracle RAC, where the GI Home is not shared, Database Home is shared, ACFS may be used.</strong></p>
+<p>Patching instructions:</p>
+<ol>
+<li><p>From the Oracle database home, make sure to stop the Oracle RAC databases running on all nodes. As the database home owner execute:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/bin/srvctl stop database –d &lt;db-unique-name&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On the 1st node, unmount the ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for unmounting ACFS file systems.</p>
+</li>
+<li><p>On the 1st node, apply the patch to the GI Home using the <code>opatchauto</code> command. As root user, execute the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;GI_HOME&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If the message, “A system reboot is recommended before using ACFS” is shown, then a reboot must be issued before continuing. Failure to do so will result in running with an unpatched ACFS\ADVM\OKS driver.</p>
+</li>
+<li><p>On the 1st node, remount ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for mounting ACFS file systems.</p>
+</li>
+<li><p>On the 1st node, apply the patch to the Database home using the <code>opatchauto</code> command. Since the Database home is shared, this operation will patch the Database home across the cluster. Note that a USM only patch cannot be applied to a database home. As root user, execute the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;ORACLE_HOME&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On the 1st node only, restart the Oracle instance, which you have previously stopped in Step <a href="">1</a>. As the database home owner execute:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/bin/srvctl start instance –d &lt;db-unique-name&gt; -n &lt;nodename&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On the 2nd (next) node, unmount the ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for unmounting ACFS file systems.</p>
+</li>
+<li><p>On the 2nd node, apply the patch to GI Home using the <code>opatchauto</code> command. As root user, execute the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto apply &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;GI_HOME&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If the message, “A system reboot is recommended before using ACFS” is shown, then a reboot must be issued before continuing. Failure to do so will result in running with an unpatched ACFS\ADVM\OKS driver.</p>
+</li>
+<li><p>On the 2nd node, running the <code>opatchauto</code> command in Step <a href="#GUID-F8E80702-38F1-47A0-8625-3D86FB329019__CIHDDCGD">9</a> will restart the stack.</p>
+</li>
+<li><p>On the 2nd node, remount ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for mounting ACFS file systems.</p>
+</li>
+<li><p>On the 2nd node only, restart the Oracle instance, which you have previously stopped in Step <a href="#GUID-F8E80702-38F1-47A0-8625-3D86FB329019__CIHHDAFI">1</a>. As the database home owner execute:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/bin/srvctl start instance –d &lt;db-unique-name&gt; -n &lt;nodename&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Repeat Steps <a href="">8</a> through <a href="">13</a> for all remaining nodes of the cluster.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Case 3: Non-Oracle RAC Database homes.</strong></p>
+<p>Follow these steps:</p>
+<ol>
+<li>If you are using a Data Guard Physical Standby database, you must install this patch on both the primary database and the physical standby database, as described by My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=278641.1">278641.1</a>.</li>
+<li>If this is not an Oracle RAC environment, shut down all instances and listeners associated with the Oracle home that you are updating. For more information, see Oracle Database Administrator’s Guide.</li>
+<li>Set your current directory to the directory where the patch is located and then run the OPatch utility by entering the following commands:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239/32218454</span><br><span class="line">opatch apply</span><br></pre></td></tr></table></figure></li>
+<li>If there are errors, refer to <a href="">Known Issues</a>.</li>
+</ol>
+</li>
+</ul>
+<h2 id="5-Installing-patch-in-Standby-First-Mode"><a href="#5-Installing-patch-in-Standby-First-Mode" class="headerlink" title="5 Installing patch in Standby-First Mode"></a>5 Installing patch in Standby-First Mode</h2><p>For Data Guard Standby-First patching, see My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1265700.1">1265700.1</a>. For Standby-First patching for Oracle Database RU 12.2 and higher, the following points need to be considered:</p>
+<ol>
+<li>The Database RU subpatch 32218454 must be applied to the Data Guard standby using Opatch.</li>
+<li>Datapatch must not be invoked on the Data Guard standby environment to apply post patch SQL actions for the Database RU. If datapatch is run on a standby, it will error while trying to call the <code>SYS.DBMS_QOPATCH</code> interface. For more details about this error, see My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1599479.1">1599479.1</a>.</li>
+<li>Datapatch must be invoked on the primary database after all the databases, that is primary and Data Guard, are patched and patch deployment of the Database RU is complete for the setup.</li>
+</ol>
+<h2 id="6-Patch-Post-Installation-Instructions"><a href="#6-Patch-Post-Installation-Instructions" class="headerlink" title="6 Patch Post-Installation Instructions"></a>6 Patch Post-Installation Instructions</h2><p>After installing the patch, perform the following actions:</p>
+<ol>
+<li><p>Apply conflict resolution patches as explained in <a href="#GUID-EF9F3E01-8FBB-4ECE-BFFC-048EF4133C42">Applying Conflict Resolution Patches</a>.</p>
+</li>
+<li><p>If you are not using opatchauto, then load modified SQL files into the database, as explained in <a href="#GUID-05300C80-F0AB-4F7D-9F28-37738DDE3D50">Loading Modified SQL Files into the Database</a>.</p>
+</li>
+<li><p>Upgrade Oracle Recovery Manager Catalog, as explained in <a href="#UPOARENC">Upgrade Oracle Recovery Manager Catalog</a>.</p>
+</li>
+</ol>
+<h4 id="6-1-Applying-Conflict-Resolution-Patches"><a href="#6-1-Applying-Conflict-Resolution-Patches" class="headerlink" title="6.1 Applying Conflict Resolution Patches"></a>6.1 Applying Conflict Resolution Patches</h4><p>Apply the patch conflict resolution interim patches that were determined to be needed when you performed the steps in <a href="#GUID-7EA5E77E-1938-4435-9346-C6139689A6F6">One-off Patch Conflict Detection and Resolution</a>.</p>
+<h4 id="6-2-Loading-Modified-SQL-Files-into-the-Database"><a href="#6-2-Loading-Modified-SQL-Files-into-the-Database" class="headerlink" title="6.2 Loading Modified SQL Files into the Database"></a>6.2 Loading Modified SQL Files into the Database</h4><p>The following steps load modified SQL files into the database. For a RAC environment, perform these steps on only one node.</p>
+<p>Datapatch is run to complete the post-install SQL deployment for the PSU. For further details about Datapatch, including Known Issues and workarounds to common problems, see: Database 12c Post Patch SQL Automation (Doc ID <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1585822.1">1585822.1</a>).</p>
+<ol>
+<li><p>For each separate database running on the same shared Oracle home being patched, run the <code>datapatch</code> utility as described in <a href="#GUID-05300C80-F0AB-4F7D-9F28-37738DDE3D50__CIHCFCAB" title="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB).">Table 1-3</a>.</p>
+<p>Table 1-3 Steps to Run the Datapatch Utility for Standalone DB Versus Single&#x2F;Multitenant (CDB&#x2F;PDB) DB</p>
+<table>
+<thead>
+<tr>
+<th>Steps</th>
+<th>Standalone DB</th>
+<th>Steps</th>
+<th>Single&#x2F;Multitenant (CDB&#x2F;PDB) DB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>% sqlplus /nolog</code></td>
+<td>1</td>
+<td><code>% sqlplus /nolog</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>SQL&gt; Connect / as sysdba</code></td>
+<td>2</td>
+<td><code>SQL&gt; Connect / as sysdba</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>SQL&gt; startup</code></td>
+<td>3</td>
+<td><code>SQL&gt; startup</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>SQL&gt; quit</code></td>
+<td>4</td>
+<td><code>SQL&gt; alter pluggable database all open``;</code><a href="#fn_1">Foot 1</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>% cd $ORACLE_HOME/OPatch</code></td>
+<td>5</td>
+<td><code>SQL&gt; quit</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>% ./datapatch -verbose</code></td>
+<td>6</td>
+<td><code>% cd $ORACLE_HOME/OPatch</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>7</td>
+<td><code>% ./datapatch -verbose</code></td>
+</tr>
+</tbody></table>
+<p>Footnote 1</p>
+<p>It is recommended the Post Install step be run on all pluggable databases; however, the following command (<code>SQL&gt; alter pluggable database</code> <code>PDB_NAME</code> <code>open</code> ) could be substituted to only open certain PDBs in the single&#x2F;multitenant database. Doing so will result in the Post Install step only being run on the CDB and opened PDB’s. To update a pluggable database at a later date (skipped or newly plugged in), open the database using the <code>alter pluggable database</code> command mentioned previously and rerun the datapatch utility. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1935365.1">1935365.1</a> Multitenant Unplug&#x2F;Plug Best Practices for more information about the procedure for unplugging&#x2F;plugging with different patch releases (in both directions).</p>
+<p>The <code>datapatch</code> utility will then run the necessary apply scripts to load the modified SQL files into the database. An entry will be added to the <code>dba_registry_sqlpatch</code> view reflecting the patch application. In the <code>dba_registry_sqlpatch</code> view, verify the Status for the APPLY is “SUCCESS”. For any other status, refer to the following My Oracle Support note for additional information and actions: Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1609718.1">1609718.1</a> Datapatch Known Issues.</p>
+</li>
+<li><p>Check the following log files in <code>$ORACLE_BASE/cfgtoollogs/sqlpatch/32218454/&lt;unique patch ID&gt;</code> for errors:</p>
+<p><code>32218454_apply_&lt;database SID&gt;&lt;CDB name&gt;&lt;timestamp&gt;.log</code></p>
+<p>where <code>database SID</code> is the database SID, <code>CDB name</code> is the name of the multitenant container database, and <code>timestamp</code> is of the form YYYYMMMDD_HH_MM_SS.</p>
+</li>
+<li><p>Any databases that have invalid objects after the execution of datapatch should have utlrp.sql run to revalidate those objects.</p>
+<p>For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd $ORACLE_HOME/rdbms/admin</span><br><span class="line">sqlplus /nolog</span><br><span class="line"><span class="meta prompt_">SQL&gt; </span><span class="language-bash">CONNECT / AS SYSDBA</span></span><br><span class="line"><span class="meta prompt_">SQL&gt; </span><span class="language-bash">@utlrp.sql</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="6-3-Upgrade-Oracle-Recovery-Manager-Catalog"><a href="#6-3-Upgrade-Oracle-Recovery-Manager-Catalog" class="headerlink" title="6.3 Upgrade Oracle Recovery Manager Catalog"></a>6.3 Upgrade Oracle Recovery Manager Catalog</h4><p>If you are using the Oracle Recovery Manager, the catalog needs to be upgraded. Enter the following command to upgrade it. The UPGRADE CATALOG command must be entered twice to confirm the upgrade.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">rman catalog username/password@<span class="built_in">alias</span></span></span><br><span class="line"><span class="meta prompt_">RMAN&gt; </span><span class="language-bash">UPGRADE CATALOG;</span></span><br><span class="line"><span class="meta prompt_">RMAN&gt; </span><span class="language-bash">UPGRADE CATALOG;</span></span><br><span class="line"><span class="meta prompt_">RMAN&gt; </span><span class="language-bash">EXIT;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-Patch-Post-Installation-Instructions-for-Databases-Created-or-Upgraded-after-Installation-of-Patch-in-the-Oracle-Home"><a href="#7-Patch-Post-Installation-Instructions-for-Databases-Created-or-Upgraded-after-Installation-of-Patch-in-the-Oracle-Home" class="headerlink" title="7 Patch Post-Installation Instructions for Databases Created or Upgraded after Installation of Patch in the Oracle Home"></a>7 Patch Post-Installation Instructions for Databases Created or Upgraded after Installation of Patch in the Oracle Home</h2><p>You must execute the steps in <a href="">Loading Modified SQL Files into the Database</a> for any new or upgraded database.</p>
+<h2 id="8-Patch-Deinstallation"><a href="#8-Patch-Deinstallation" class="headerlink" title="8 Patch Deinstallation"></a>8 Patch Deinstallation</h2><p>Datapatch is run to complete the post-deinstall SQL deployment for the Database subpatch. For further details about Datapatch, including Known Issues and workarounds to common problems, see: Database 12c Post Patch SQL Automation (Doc ID <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1585822.1">1585822.1</a>).<br>The patch rollback instructions will differ based on the configuration of the Grid infrastructure and the Oracle RAC database homes. Roll Back instructions for Oracle RAC Database Homes and GI are listed below.<br>The most common configurations are listed as follows:</p>
+<ul>
+<li>Case 1: Oracle RAC, where the GI Home and Database Homes are not shared and ACFS file system is not configured</li>
+<li>Case 2: Oracle RAC, where the GI Home is not shared, Database Home is shared and ACFS may be used</li>
+<li>Case 3: Non-Oracle RAC Database homes</li>
+</ul>
+<p>For other configurations listed below, see My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1591616.1">1591616.1</a>:</p>
+<ul>
+<li><p>GI Home is not shared, the Database Home is not shared, ACFS may be used.</p>
+</li>
+<li><p>Rolling back from Oracle RAC Database Homes.</p>
+</li>
+<li><p>Rolling back from GI Home alone.</p>
+</li>
+<li><p>Rolling back the patch from Oracle Restart Home.</p>
+</li>
+<li><p>Rolling back the patch from a software only GI Home installation or before the GI Home is configured.</p>
+</li>
+<li><p><strong>Roll Back the Oracle RAC Database Homes and GI Together</strong></p>
+</li>
+<li><p><strong>Case 1: Oracle RAC, where the GI Home and Database Homes are not shared and ACFS file system is not configured.</strong></p>
+<p>As root user, execute the following command on each node of the cluster.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239</span></span><br></pre></td></tr></table></figure>
+
+<p>If the message, “A system reboot is recommended before using ACFS” is shown, then a reboot must be issued before continuing. Failure to do so will result in running with an unpatched ACFS\ADVM\OKS driver.</p>
+</li>
+<li><p><strong>Case 2: Oracle RAC, where the GI Home is not shared, Database Home is shared and ACFS may be used.</strong></p>
+<ol>
+<li><p>From the Oracle database home, make sure to stop the Oracle RAC databases running on all nodes. As the database home owner execute:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/bin/srvctl stop database –d &lt;db-unique-name&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On the 1st node, unmount the ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for unmounting ACFS file systems.</p>
+</li>
+<li><p>On the 1st node, roll back the patch from the GI Home using the <code>opatchauto</code> command. As root user, execute the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239 -oh &lt;GI_HOME&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If the message, “A system reboot is recommended before using ACFS” is shown, then a reboot must be issued before continuing. Failure to do so will result in running with an unpatched ACFS\ADVM\OKS driver.</p>
+</li>
+<li><p>On the 1st node, remount ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for mounting ACFS file systems.</p>
+</li>
+<li><p>On the 1st node, roll back the patch to the Database home using the <code>opatchauto</code> command. This operation will rollback the patch to the Database home across the cluster given that it is a shared ACFS home. Note that a USM only patch cannot be applied to a Database home. As root user, execute the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On the 1st node only, restart the Oracle instance, which you have previously stopped in Step <a href="#GUID-F8E80702-38F1-47A0-8625-3D86FB329019__CIHHDAFI">1</a>. As the database home owner execute:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/bin/srvctl start instance –d &lt;db-unique-name&gt; -n &lt;nodename&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On the 2nd (next) node, unmount the ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for unmounting ACFS file systems.</p>
+</li>
+<li><p>On the 2nd node, roll back the patch to GI Home using the <code>opatchauto</code> command. As root user, execute the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;GI_HOME&gt;/OPatch/opatchauto rollback &lt;UNZIPPED_PATCH_LOCATION&gt;/32226239</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If the message, “A system reboot is recommended before using ACFS” is shown, then a reboot must be issued before continuing. Failure to do so will result in running with an unpatched ACFS\ADVM\OKS driver.</p>
+</li>
+<li><p>On the 2nd node, running the <code>opatchauto</code> command in Step <a href="#GUID-B37B005F-2294-4E60-B2A7-F73282FB2273__CIHCIGEG">9</a> will restart the stack.</p>
+</li>
+<li><p>On the 2nd node, remount ACFS file systems. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1494652.1">1494652.1</a> for mounting ACFS file systems.</p>
+</li>
+<li><p>On the 2nd node only, restart the Oracle instance, which you have previously stopped in Step <a href="#GUID-B37B005F-2294-4E60-B2A7-F73282FB2273__CIHCJAEF">1</a>. As the database home owner execute:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">&lt;ORACLE_HOME&gt;/bin/srvctl start instance –d &lt;db-unique-name&gt; -n &lt;nodename&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Repeat Steps <a href="#GUID-B37B005F-2294-4E60-B2A7-F73282FB2273__CIHBJCFI">8</a> through <a href="#GUID-B37B005F-2294-4E60-B2A7-F73282FB2273__CIHBIDHH">13</a> for all remaining nodes of the cluster.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Case 3: Non-Oracle RAC Database homes.</strong></p>
+<p>Follow these steps:</p>
+<ol>
+<li><p>Shut down all instances and listeners associated with the Oracle home that you are updating. For more information, see Oracle Database Administrator’s Guide.</p>
+</li>
+<li><p>Run the OPatch utility specifying the <code>rollback</code> argument as follows.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opatch rollback -id 32218454</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If there are errors, refer to <a href="#GUID-774FEA2B-9E36-4D19-989F-C42DE574915F">Known Issues</a>.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="9-Patch-Post-Deinstallation-Instructions"><a href="#9-Patch-Post-Deinstallation-Instructions" class="headerlink" title="9 Patch Post-Deinstallation Instructions"></a>9 Patch Post-Deinstallation Instructions</h3><p>After deinstalling the patch, perform the following actions.</p>
+<ul>
+<li><p><a href="">Run the datapatch Utility</a></p>
+</li>
+<li><p><a href="">Upgrade Oracle Recovery Manager Catalog</a></p>
+</li>
+</ul>
+<h4 id="9-1-Run-the-datapatch-Utility"><a href="#9-1-Run-the-datapatch-Utility" class="headerlink" title="9.1 Run the datapatch Utility"></a>9.1 Run the datapatch Utility</h4><p>Perform the following steps:</p>
+<ol>
+<li><p>For each separate database running on the Oracle home being patched, run the <code>datapatch</code> utility as described in <a href="#GUID-682E2CCD-61C5-41F6-AA62-ED4314EE57DD__CIHJCEJE" title="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB).">Table 1-4</a>. If this is Oracle RAC, run datapatch on only one instance.</p>
+<p>Table 1-4 Steps to Run the datapatch Utility for Standalone DB Versus Single&#x2F;Multitenant (CDB&#x2F;PDB) DB</p>
+<table>
+<thead>
+<tr>
+<th>Steps</th>
+<th>Standalone DB</th>
+<th>Steps</th>
+<th>Single&#x2F;Multitenant (CDB&#x2F;PDB) DB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>% sqlplus /nolog</code></td>
+<td>1</td>
+<td><code>% sqlplus /nolog</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>SQL&gt; Connect / as sysdba</code></td>
+<td>2</td>
+<td><code>SQL&gt; Connect / as sysdba</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>SQL&gt; startup</code></td>
+<td>3</td>
+<td><code>SQL&gt; startup</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>SQL&gt; quit</code></td>
+<td>4</td>
+<td><code>SQL&gt; alter pluggable database all</code> <code>open``;</code><a href="#fn_1">Foot 1</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>% cd $ORACLE_HOME/OPatch</code></td>
+<td>5</td>
+<td><code>SQL&gt; quit</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>% ./datapatch -verbose</code></td>
+<td>6</td>
+<td><code>% cd $ORACLE_HOME/OPatch</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>7</td>
+<td><code>% ./datapatch -verbose</code></td>
+</tr>
+</tbody></table>
+<p>Footnote 1</p>
+<p>It is recommended the Post Install step be run on all pluggable databases; however, the following command (<code>SQL&gt; alter pluggable database</code> <code>PDB_NAME</code> <code>open</code> ) could be substituted to only open certain PDBs in the single&#x2F;multitenant database. Doing so will result in the Post Install step only being run on the CDB and opened PDB’s. To update a pluggable database at a later date (skipped or newly plugged in), open the database using the <code>alter pluggable database</code> command mentioned previously and rerun the datapatch utility. See My Oracle Support Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1935365.1">1935365.1</a> Multitenant Unplug&#x2F;Plug Best Practices for more information about the procedure for unplugging&#x2F;plugging with different patch releases (in both directions).</p>
+<p>The <code>datapatch</code> utility will then run the necessary apply scripts to load the modified SQL files into the database. An entry will be added to the <code>dba_registry_sqlpatch</code> view reflecting the patch application. In the <code>dba_registry_sqlpatch</code> view, verify the Status for the APPLY is “SUCCESS”. For any other status, refer to the following My Oracle Support note for additional information and actions: Document <a target="_blank" rel="noopener" href="https://support.oracle.com/CSP/main/article?cmd=show&type=NOT&id=1609718.1">1609718.1</a> Datapatch Known Issues.</p>
+</li>
+<li><p>Check the following log files in <code>$ORACLE_HOME/sqlpatch/32218454/</code> for errors:</p>
+<p><code>32218454_rollback_&lt;database SID&gt;_&lt;CDB name&gt;_&lt;timestamp&gt;.log</code></p>
+<p>where <code>database SID</code> is the database SID, <code>CDB name</code> is the name of the multitenant container database, and <code>timestamp</code> is of the form YYYYMMMDD_HH_MM_SS.</p>
+</li>
+<li><p>Any databases that have invalid objects after the execution of datapatch should have utlrp.sql run to revalidate those objects.</p>
+<p>For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd $ORACLE_HOME/rdbms/admin</span><br><span class="line">sqlplus /nolog</span><br><span class="line"><span class="meta prompt_">SQL&gt; </span><span class="language-bash">CONNECT / AS SYSDBA</span></span><br><span class="line"><span class="meta prompt_">SQL&gt; </span><span class="language-bash">@utlrp.sql</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="9-2-Upgrade-Oracle-Recovery-Manager-Catalog"><a href="#9-2-Upgrade-Oracle-Recovery-Manager-Catalog" class="headerlink" title="9.2 Upgrade Oracle Recovery Manager Catalog"></a>9.2 Upgrade Oracle Recovery Manager Catalog</h4><p>If you are using the Oracle Recovery Manager, the catalog needs to be upgraded. Enter the following command to upgrade it. The UPGRADE CATALOG command must be entered twice to confirm the upgrade.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">rman catalog username/password@<span class="built_in">alias</span></span></span><br><span class="line"><span class="meta prompt_">RMAN&gt; </span><span class="language-bash">UPGRADE CATALOG;</span></span><br><span class="line"><span class="meta prompt_">RMAN&gt; </span><span class="language-bash">UPGRADE CATALOG;</span></span><br><span class="line"><span class="meta prompt_">RMAN&gt; </span><span class="language-bash">EXIT;</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://SakuraYumeno.github.io/blog">Sakura Yumeno</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://sakurayumeno.github.io/blog/posts/52610.html">https://sakurayumeno.github.io/blog/posts/52610.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://SakuraYumeno.github.io/blog" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/patch/">patch</a><a class="post-meta__tags" href="/blog/tags/update/">update</a></div><div class="post_share"><div class="social-share" data-image="https://t.lizi.moe/pc" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/posts/45761.html" title="patch p6880880"><img class="cover" src="https://t.lizi.moe/pc" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">patch p6880880</div></div></a></div><div class="next-post pull-right"><a href="/blog/posts/29095.html" title="patch p20299014"><img class="cover" src="https://t.lizi.moe/pc" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">patch p20299014</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/blog/posts/19396.html" title="patch p18370031"><img class="cover" src="https://t.lizi.moe/pc" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-25</div><div class="title">patch p18370031</div></div></a></div><div><a href="/blog/posts/29095.html" title="patch p20299014"><img class="cover" src="https://t.lizi.moe/pc" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-25</div><div class="title">patch p20299014</div></div></a></div><div><a href="/blog/posts/45761.html" title="patch p6880880"><img class="cover" src="https://t.lizi.moe/pc" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-25</div><div class="title">patch p6880880</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sakura Yumeno</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">65</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">29</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Patch-32226239-GI-Release-Update-19-10-0-0-210119"><span class="toc-number">1.</span> <span class="toc-text">Patch 32226239 - GI Release Update 19.10.0.0.210119</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Patch-Installation-Prerequisites"><span class="toc-number">1.1.</span> <span class="toc-text">1 Patch Installation Prerequisites</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Update-OPatch-Utility"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">1.1 Update OPatch Utility</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Validation-of-Oracle-Inventory"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">1.2 Validation of Oracle Inventory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-Download-and-Unzip-the-Patch"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">1.3 Download and Unzip the Patch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-Run-OPatch-Conflict-Check"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">1.4 Run OPatch Conflict Check</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-Run-OPatch-SystemSpace-Check"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">1.5 Run OPatch SystemSpace Check</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-One-off-Patch-Conflict-Detection-and-Resolution"><span class="toc-number">1.2.</span> <span class="toc-text">2 One-off Patch Conflict Detection and Resolution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-opatchauto"><span class="toc-number">1.3.</span> <span class="toc-text">3 opatchauto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Patch-Installation"><span class="toc-number">1.4.</span> <span class="toc-text">4 Patch Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Installing-patch-in-Standby-First-Mode"><span class="toc-number">1.5.</span> <span class="toc-text">5 Installing patch in Standby-First Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Patch-Post-Installation-Instructions"><span class="toc-number">1.6.</span> <span class="toc-text">6 Patch Post-Installation Instructions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-Applying-Conflict-Resolution-Patches"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">6.1 Applying Conflict Resolution Patches</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-Loading-Modified-SQL-Files-into-the-Database"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">6.2 Loading Modified SQL Files into the Database</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-Upgrade-Oracle-Recovery-Manager-Catalog"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">6.3 Upgrade Oracle Recovery Manager Catalog</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Patch-Post-Installation-Instructions-for-Databases-Created-or-Upgraded-after-Installation-of-Patch-in-the-Oracle-Home"><span class="toc-number">1.7.</span> <span class="toc-text">7 Patch Post-Installation Instructions for Databases Created or Upgraded after Installation of Patch in the Oracle Home</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Patch-Deinstallation"><span class="toc-number">1.8.</span> <span class="toc-text">8 Patch Deinstallation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Patch-Post-Deinstallation-Instructions"><span class="toc-number">1.8.1.</span> <span class="toc-text">9 Patch Post-Deinstallation Instructions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-Run-the-datapatch-Utility"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">9.1 Run the datapatch Utility</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-Upgrade-Oracle-Recovery-Manager-Catalog"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">9.2 Upgrade Oracle Recovery Manager Catalog</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/posts/21356.html" title="Commands"><img src="https://t.lizi.moe/pc" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="Commands"/></a><div class="content"><a class="title" href="/blog/posts/21356.html" title="Commands">Commands</a><time datetime="2023-04-27T06:00:53.828Z" title="发表于 2023-04-27 14:00:53">2023-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/posts/24517.html" title="Cloudflare"><img src="https://t.lizi.moe/pc" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="Cloudflare"/></a><div class="content"><a class="title" href="/blog/posts/24517.html" title="Cloudflare">Cloudflare</a><time datetime="2023-04-25T15:45:15.893Z" title="发表于 2023-04-25 23:45:15">2023-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/posts/47372.html" title="Setting Shared Disks for Oracle RAC"><img src="https://t.lizi.moe/pc" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="Setting Shared Disks for Oracle RAC"/></a><div class="content"><a class="title" href="/blog/posts/47372.html" title="Setting Shared Disks for Oracle RAC">Setting Shared Disks for Oracle RAC</a><time datetime="2023-04-25T15:45:15.868Z" title="发表于 2023-04-25 23:45:15">2023-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/posts/54668.html" title="WSL"><img src="https://t.lizi.moe/pc" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="WSL"/></a><div class="content"><a class="title" href="/blog/posts/54668.html" title="WSL">WSL</a><time datetime="2023-04-25T15:45:15.839Z" title="发表于 2023-04-25 23:45:15">2023-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/posts/38125.html" title="Qemu"><img src="https://t.lizi.moe/pc" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="Qemu"/></a><div class="content"><a class="title" href="/blog/posts/38125.html" title="Qemu">Qemu</a><time datetime="2023-04-25T15:45:15.826Z" title="发表于 2023-04-25 23:45:15">2023-04-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sakura Yumeno</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/blog/js/search/local-search.js"></script></div></div></body></html>
