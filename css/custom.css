@@ -107,7 +107,7 @@ background: rgba(255, 255, 255, 0.8);
 @font-face {
   font-family: 'ZhuZiAWan';
   font-display: swap;
-  src: url('/blog/font/ZhuZiAWan.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2');
 }
 
 @font-face {
