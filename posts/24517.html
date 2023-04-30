@@ -184,7 +184,7 @@ if (false) {
 <p> <code>vim ~/.ssh/config</code></p>
 </li>
 <li><p>Input the following values; replacing ssh.example.com with the hostname you created.</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">Host ssh.example.com<br>ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h<br></code></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host ssh.example.com</span><br><span class="line">ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h</span><br></pre></td></tr></table></figure>
 
 <p> The cloudflared path may be different depending on your OS and package manager. For example, if you installed cloudflared on macOS with Homebrew, the path is &#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;cloudflared.</p>
 </li>
