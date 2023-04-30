@@ -211,12 +211,12 @@ template {
 }
 .fontawesomeIcon,
 hr:before,
-#article-container h1:before,
-#article-container h2:before,
-#article-container h3:before,
-#article-container h4:before,
-#article-container h5:before,
-#article-container h6:before,
+#article-container.post-content h1:before,
+#article-container.post-content h2:before,
+#article-container.post-content h3:before,
+#article-container.post-content h4:before,
+#article-container.post-content h5:before,
+#article-container.post-content h6:before,
 #post .post-copyright:before,
 #post .post-outdate-notice:before,
 .note:not(.no-icon)::before {
@@ -1379,7 +1379,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: ZhuZiAWan;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -1505,6 +1505,13 @@ a {
 a:hover {
   color: #49b1f5;
 }
+#site-title,
+#site-subtitle,
+.site-name,
+#aside-content .author-info__name,
+#aside-content .author-info__description {
+  font-family: ZhuZiAWan;
+}
 .is-center {
   text-align: center;
 }
@@ -1548,95 +1555,17 @@ blockquote > :last-child {
   margin-bottom: 0 !important;
 }
 :root {
-  --hl-color: #a6accd;
-  --hl-bg: #292d3e;
-  --hltools-bg: #252938;
-  --hltools-color: #a6accd;
-  --hlnumber-bg: #292d3e;
-  --hlnumber-color: rgba(166,172,205,0.5);
-  --hlscrollbar-bg: #393f57;
-  --hlexpand-bg: linear-gradient(180deg, rgba(41,45,62,0.6), rgba(41,45,62,0.9));
-}
-figure.highlight table {
-  scrollbar-color: var(--hlscrollbar-bg) transparent;
-}
-figure.highlight table::-webkit-scrollbar-thumb {
-  background: var(--hlscrollbar-bg);
-}
-figure.highlight pre .deletion {
-  color: #bf42bf;
-}
-figure.highlight pre .addition {
-  color: #105ede;
-}
-figure.highlight pre .meta {
-  color: #c792ea;
-}
-figure.highlight pre .comment {
-  color: #676e95;
-}
-figure.highlight pre .variable,
-figure.highlight pre .attribute,
-figure.highlight pre .regexp,
-figure.highlight pre .ruby .constant,
-figure.highlight pre .xml .tag .title,
-figure.highlight pre .xml .pi,
-figure.highlight pre .xml .doctype,
-figure.highlight pre .html .doctype,
-figure.highlight pre .css .id,
-figure.highlight pre .tag .name,
-figure.highlight pre .css .class,
-figure.highlight pre .css .pseudo {
-  color: #ff5370;
-}
-figure.highlight pre .tag {
-  color: #89ddff;
-}
-figure.highlight pre .number,
-figure.highlight pre .preprocessor,
-figure.highlight pre .literal,
-figure.highlight pre .params,
-figure.highlight pre .constant,
-figure.highlight pre .command {
-  color: #f78c6c;
-}
-figure.highlight pre .built_in {
-  color: #ffcb6b;
-}
-figure.highlight pre .ruby .class .title,
-figure.highlight pre .css .rules .attribute,
-figure.highlight pre .string,
-figure.highlight pre .value,
-figure.highlight pre .inheritance,
-figure.highlight pre .header,
-figure.highlight pre .ruby .symbol,
-figure.highlight pre .xml .cdata,
-figure.highlight pre .special,
-figure.highlight pre .number,
-figure.highlight pre .formula {
-  color: #c3e88d;
-}
-figure.highlight pre .keyword,
-figure.highlight pre .title,
-figure.highlight pre .css .hexcolor {
-  color: #89ddff;
-}
-figure.highlight pre .function,
-figure.highlight pre .python .decorator,
-figure.highlight pre .python .title,
-figure.highlight pre .ruby .function .title,
-figure.highlight pre .ruby .title .keyword,
-figure.highlight pre .perl .sub,
-figure.highlight pre .javascript .title,
-figure.highlight pre .coffeescript .title {
-  color: #82aaff;
-}
-figure.highlight pre .tag .attr,
-figure.highlight pre .javascript .function {
-  color: #c792ea;
+  --hl-color: #90a4ae;
+  --hl-bg: #f6f8fa;
+  --hltools-bg: #e6ebf1;
+  --hltools-color: #90a4ae;
+  --hlnumber-bg: #f6f8fa;
+  --hlnumber-color: rgba(144,164,174,0.5);
+  --hlscrollbar-bg: #dce4eb;
+  --hlexpand-bg: linear-gradient(180deg, rgba(246,248,250,0.6), rgba(246,248,250,0.9));
 }
 #article-container figure.highlight .line.marked {
-  background-color: rgba(113,124,180,0.314);
+  background-color: rgba(128,203,196,0.251);
 }
 #article-container figure.highlight table {
   display: block;
@@ -1671,7 +1600,7 @@ figure.highlight pre .javascript .function {
 #article-container pre,
 #article-container code {
   font-size: var(--global-font-size);
-  font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+  font-family: CascadiaMono !important;
 }
 #article-container code {
   padding: 2px 4px;
@@ -1942,6 +1871,7 @@ figure.highlight pre .javascript .function {
   height: 100%;
   vertical-align: top;
   text-align: center;
+  font-family: ZhuZiAWan;
 }
 @media screen and (max-width: 768px) {
   .error404 #error-wrap .error-content .error-info {
@@ -4306,24 +4236,24 @@ h1.page-title + .tag-cloud-list {
 #article-container hr {
   margin: 20px 0;
 }
-#article-container h1,
-#article-container h2,
-#article-container h3,
-#article-container h4,
-#article-container h5,
-#article-container h6 {
+#article-container.post-content h1,
+#article-container.post-content h2,
+#article-container.post-content h3,
+#article-container.post-content h4,
+#article-container.post-content h5,
+#article-container.post-content h6 {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-#article-container h1:before,
-#article-container h2:before,
-#article-container h3:before,
-#article-container h4:before,
-#article-container h5:before,
-#article-container h6:before {
+#article-container.post-content h1:before,
+#article-container.post-content h2:before,
+#article-container.post-content h3:before,
+#article-container.post-content h4:before,
+#article-container.post-content h5:before,
+#article-container.post-content h6:before {
   position: absolute;
   top: calc(50% - 7px);
   color: #f47466;
@@ -4335,87 +4265,87 @@ h1.page-title + .tag-cloud-list {
   -ms-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-#article-container h1:hover:before,
-#article-container h2:hover:before,
-#article-container h3:hover:before,
-#article-container h4:hover:before,
-#article-container h5:hover:before,
-#article-container h6:hover:before {
+#article-container.post-content h1:hover:before,
+#article-container.post-content h2:hover:before,
+#article-container.post-content h3:hover:before,
+#article-container.post-content h4:hover:before,
+#article-container.post-content h5:hover:before,
+#article-container.post-content h6:hover:before {
   color: #49b1f5;
 }
-#article-container h1 {
+#article-container.post-content h1 {
   padding-left: 32px;
 }
-#article-container h1:before {
+#article-container.post-content h1:before {
   margin-left: -26px;
   font-size: 20px;
 }
-#article-container h1:hover {
+#article-container.post-content h1:hover {
   padding-left: 38px;
 }
-#article-container h2 {
+#article-container.post-content h2 {
   padding-left: 30px;
 }
-#article-container h2:before {
+#article-container.post-content h2:before {
   margin-left: -24px;
   font-size: 18px;
 }
-#article-container h2:hover {
+#article-container.post-content h2:hover {
   padding-left: 36px;
 }
-#article-container h3 {
+#article-container.post-content h3 {
   padding-left: 28px;
 }
-#article-container h3:before {
+#article-container.post-content h3:before {
   margin-left: -22px;
   font-size: 16px;
 }
-#article-container h3:hover {
+#article-container.post-content h3:hover {
   padding-left: 34px;
 }
-#article-container h4 {
+#article-container.post-content h4 {
   padding-left: 26px;
 }
-#article-container h4:before {
+#article-container.post-content h4:before {
   margin-left: -20px;
   font-size: 14px;
 }
-#article-container h4:hover {
+#article-container.post-content h4:hover {
   padding-left: 32px;
 }
-#article-container h5 {
+#article-container.post-content h5 {
   padding-left: 24px;
 }
-#article-container h5:before {
+#article-container.post-content h5:before {
   margin-left: -18px;
   font-size: 12px;
 }
-#article-container h5:hover {
+#article-container.post-content h5:hover {
   padding-left: 30px;
 }
-#article-container h6 {
+#article-container.post-content h6 {
   padding-left: 24px;
 }
-#article-container h6:before {
+#article-container.post-content h6:before {
   margin-left: -18px;
   font-size: 12px;
 }
-#article-container h6:hover {
+#article-container.post-content h6:hover {
   padding-left: 30px;
 }
-#article-container ol p,
-#article-container ul p {
+#article-container.post-content ol p,
+#article-container.post-content ul p {
   margin: 0 0 8px;
 }
-#article-container li::marker {
+#article-container.post-content li::marker {
   color: #49b1f5;
   font-weight: 600;
   font-size: 1.05em;
 }
-#article-container li:hover::marker {
+#article-container.post-content li:hover::marker {
   color: var(--pseudo-hover);
 }
-#article-container ul > li {
+#article-container.post-content ul > li {
   list-style-type: circle;
 }
 #post .tag_share:after {
