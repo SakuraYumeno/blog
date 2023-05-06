@@ -73,7 +73,6 @@ div#category{background: rgba(255, 255, 255, 0.8);
       color: #eeeeee;
       }
 
-
 @font-face {
   font-family: 'ZhuZiAWan';
   font-display: swap;
@@ -85,6 +84,13 @@ div#category{background: rgba(255, 255, 255, 0.8);
   font-display: swap;
   src: url('/blog/font/CascadiaMono.woff2') format('woff2');
 }
+
+.layout {
+    width: 100%;
+    max-width: 1500px;
+    }
+    .layout > div:first-child {width: 85%;}
+    .layout.hide-aside {max-width: 1000px;}
 
 /* 文章页 H1-H6 图标样式效果 */
 h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
