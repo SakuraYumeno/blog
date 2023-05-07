@@ -1,77 +1,89 @@
-/* 首页文章卡片 */
-#recent-posts > .recent-post-item{background:rgba(255, 255, 255, 0.8);
+/* 文章页背景 */
+.layout > div:first-child:not(.recent-posts) {
+  /* 以下代表白色透明度为 0.3 */
+  background: rgba(255, 255, 255, 0.3);
 }
-/* 首页侧栏卡片 */
-.card-widget{background:rgba(255, 255, 255, 0.8)!important;
+/* 所有背景（包括首页卡片、文章页、页面页等） */
+#recent-posts > .recent-post-item,
+.layout > div:first-child:not(.recent-posts),
+.layout_post > #page,
+.layout_post > #post,
+.read-mode .layout_post > #post {
+  /* 以下代表白色透明度为 0.3 */
+  background: rgba(255, 255, 255, 0.3);
 }
-/* 文章页面正文背景 */
-div#post{background: rgba(255, 255, 255, 0.8);
-}
-/* 分页页面 */
-div#page{background: rgba(255, 255, 255, 0.8);
-}
-/* 归档页面 */
-div#archive{background: rgba(255, 255, 255, 0.8);
-}
-/* 标签页面 */
-div#tag{background: rgba(255, 255, 255, 0.8);
-}
-/* 分类页面 */
-div#category{background: rgba(255, 255, 255, 0.8);
+/* 侧栏卡片 */
+.card-widget{background: rgba(255, 255, 255, 0.3)!important;
 }
 
-/* 页脚透明 */
-#footer{background: transparent!important;}
-/* 头图透明 */
-#page-header{background: transparent!important;}
-/* 白天模式伪类遮罩层透明 */
-[data-theme="light"]
-  #footer::before{background: transparent!important;}
-[data-theme="light"]
-  #page-header::before{background: transparent!important;}
-/* 夜间模式伪类遮罩层透明 */
-[data-theme="dark"]
-  #footer::before{background: transparent!important;}
-[data-theme="dark"]
-  #page-header::before{background: transparent!important;}
+/* 页脚 */
+#footer{background: rgba(255, 255, 255, 0.3)!important;
+}
+/* 页脚 a 标签字体颜色 */
+#footer-wrap {color: #050505;}
+/*a 标签颜色 */
+#footer-wrap a {color: #050505;}
+/* 页脚自定义字段字体颜色 */
+.footer_custom_text {color: #050505;}
 
-/* 夜间模式页面背景设置为半透明 */
-[data-theme="dark"]
-  div.recent-post-item{background: rgba(0, 0, 0, 0.5)!important;
-    }
-[data-theme="dark"]
-  #aside-content .card-widget{background: rgba(0, 0, 0, 0.5)!important;
-    }
-[data-theme="dark"]
-  div#post{background: rgba(0, 0, 0, 0.5)!important;
-    }
-[data-theme="dark"]
-  div#page{background: rgba(0, 0, 0, 0.5)!important;
-    }
-[data-theme="dark"]
-  div#archive{background: rgba(0, 0, 0, 0.5)!important;
-    }
-[data-theme="dark"]
-  div#tag{background: rgba(0, 0, 0, 0.5)!important;
-  }
-[data-theme="dark"]
-  div#category{background: rgba(0, 0, 0, 0.5)!important;
-  }
-  
-/* 阅读模式 */
-.read-mode #aside-content .card-widget{background: rgba(158, 204, 171, 0.5)!important;
-    }
-.read-mode div#post{background: rgba(158, 204, 171, 0.5)!important;
-    }
-/* 夜间阅读模式 */
-[data-theme="dark"]
-  .read-mode #aside-content .card-widget{background: rgba(0, 0, 0, 0.5)!important;
-        color: #eeeeee;
-      }
-[data-theme="dark"]  
-  .read-mode div#post{background: rgba(0, 0, 0, 0.5)!important;
-      color: #eeeeee;
-      }
+
+#web_bg {
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(247, 149, 51, 0.1) 0,
+    rgba(243, 112, 85, 0.1) 15%,
+    rgba(239, 78, 123, 0.1) 30%,
+    rgba(161, 102, 171, 0.1) 44%,
+    rgba(80, 115, 184, 0.1) 58%,
+    rgba(16, 152, 173, 0.1) 72%,
+    rgba(7, 179, 155, 0.1) 86%,
+    rgba(109, 186, 130, 0.1) 100%
+  );
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(247, 149, 51, 0.1) 0,
+    rgba(243, 112, 85, 0.1) 15%,
+    rgba(239, 78, 123, 0.1) 30%,
+    rgba(161, 102, 171, 0.1) 44%,
+    rgba(80, 115, 184, 0.1) 58%,
+    rgba(16, 152, 173, 0.1) 72%,
+    rgba(7, 179, 155, 0.1) 86%,
+    rgba(109, 186, 130, 0.1) 100%
+  );
+  background: -o-linear-gradient(
+    0deg,
+    rgba(247, 149, 51, 0.1) 0,
+    rgba(243, 112, 85, 0.1) 15%,
+    rgba(239, 78, 123, 0.1) 30%,
+    rgba(161, 102, 171, 0.1) 44%,
+    rgba(80, 115, 184, 0.1) 58%,
+    rgba(16, 152, 173, 0.1) 72%,
+    rgba(7, 179, 155, 0.1) 86%,
+    rgba(109, 186, 130, 0.1) 100%
+  );
+  background: -ms-linear-gradient(
+    0deg,
+    rgba(247, 149, 51, 0.1) 0,
+    rgba(243, 112, 85, 0.1) 15%,
+    rgba(239, 78, 123, 0.1) 30%,
+    rgba(161, 102, 171, 0.1) 44%,
+    rgba(80, 115, 184, 0.1) 58%,
+    rgba(16, 152, 173, 0.1) 72%,
+    rgba(7, 179, 155, 0.1) 86%,
+    rgba(109, 186, 130, 0.1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(247, 149, 51, 0.1) 0,
+    rgba(243, 112, 85, 0.1) 15%,
+    rgba(239, 78, 123, 0.1) 30%,
+    rgba(161, 102, 171, 0.1) 44%,
+    rgba(80, 115, 184, 0.1) 58%,
+    rgba(16, 152, 173, 0.1) 72%,
+    rgba(7, 179, 155, 0.1) 86%,
+    rgba(109, 186, 130, 0.1) 100%
+  );
+}
 
 @font-face {
   font-family: 'ZhuZiAWan';
@@ -85,12 +97,9 @@ div#category{background: rgba(255, 255, 255, 0.8);
   src: url('/blog/font/CascadiaMono.woff2') format('woff2');
 }
 
-.layout {
-    width: 100%;
-    max-width: 1500px;
-    }
-    .layout > div:first-child {width: 85%;}
-    .layout.hide-aside {max-width: 1000px;}
+.layout {max-width: 1500px;}
+    
+.layout > div:first-child {width: 80%;}
 
 /* 文章页 H1-H6 图标样式效果 */
 h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
