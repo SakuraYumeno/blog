@@ -16,16 +16,29 @@
 .card-widget{background: rgba(255, 255, 255, 0.3)!important;
 }
 
-/* 页脚 */
-#footer{background: rgba(255, 255, 255, 0.3)!important;
+/* 日间模式页脚字体颜色 */
+[data-theme="light"]{
+  #footer{background: rgba(255, 255, 255, 0.3)!important;
+    /* 页脚 a 标签字体颜色 */
+    #footer-wrap {color: #050505;}
+    /*a 标签颜色 */
+    #footer-wrap a {color: #050505;}
+    /* 页脚自定义字段字体颜色 */
+    .footer_custom_text {color: #050505;}
+  }
 }
-/* 页脚 a 标签字体颜色 */
-#footer-wrap {color: #050505;}
-/*a 标签颜色 */
-#footer-wrap a {color: #050505;}
-/* 页脚自定义字段字体颜色 */
-.footer_custom_text {color: #050505;}
 
+/* 夜间模式页脚字体颜色 */
+[data-theme="dark"]{
+  #footer{background: rgba(0, 0, 0, 0.7)!important;
+    /* 页脚 a 标签字体颜色 */
+    #footer-wrap {color: #efefef;}
+    /*a 标签颜色 */
+    #footer-wrap a {color: #efefef;}
+    /* 页脚自定义字段字体颜色 */
+    .footer_custom_text {color: #efefef;}
+  }
+}
 
 #web_bg {
   background: -webkit-linear-gradient(
@@ -122,6 +135,7 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
         transform: rotate(-1turn)
     }
 }
+
 /* 小风车颜色代码 */
 #content-inner.layout h1::before {
     color: #ef50a8 ;
@@ -159,6 +173,7 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
     font-size: 0.66rem;
     margin-top: 0.0rem;
 }
+
 /* 鼠标碰到小风车转速变慢及变色 */
 #content-inner.layout h1:hover, #content-inner.layout h2:hover, #content-inner.layout h3:hover, #content-inner.layout h4:hover, #content-inner.layout h5:hover, #content-inner.layout h6:hover {color: #49b1f5 ;}
 #content-inner.layout h1:hover::before, #content-inner.layout h2:hover::before, #content-inner.layout h3:hover::before, #content-inner.layout h4:hover::before, #content-inner.layout h5:hover::before, #content-inner.layout h6:hover::before {
