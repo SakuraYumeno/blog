@@ -1,0 +1,1276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=us-ascii" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <title>Oracle Database Patch 34086870 - Oracle JavaVM Component Release Update 19.16.0.0.220719</title>
+    <meta name="doctitle" content="Oracle Database Patch 34086870 - Oracle JavaVM Component Release Update 19.16.0.0.220719" />
+    <meta name="partnum" content="E27475598-01" />
+    <meta name="docid" content="null" />
+    <meta name="brand" content="DARB" />
+    <meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)" />
+    <meta name="plugin" content="Infodev XHTML plugin release 17.2.1" />
+    <meta name="date" content="2018-05-17T13:49:26Z" />
+    <meta name="robots" content="noarchive" />
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <!-- Styles begin here -->
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <style>
+body, p, table, td, th, ol, ul, a, dl, dt, dd, blockquote, caption {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.25;
+  color: black;
+  background-color: white;
+  /* Fahrner Method. See Zeldman. Working with Web Standards. pp. 323-5. */
+  font-size: x-small;
+  /* janis changed following */
+  voice-family: "\"}\"";
+  
+  voice-family: inherit;
+  font-size: small;
+}
+html > body {
+  font-size: small;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:link {
+  color: #630;
+  background-color: white;
+}
+
+a:visited {
+  color: #963;
+  background-color: white;
+}
+
+a:hover {
+  color: #f60;
+  background-color: white;
+}
+
+a:active {
+  color: #f60;
+  background-color: white;
+}
+
+a.glossary-link {
+  border-bottom: 1px dotted;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #369;
+  background-color: white;
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: bold;
+  border: solid #cc9;
+  border-width: 0px 0px 1px 0px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+pre, code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+}
+
+code {
+  color: #369;
+  background-color: white;
+}
+
+code *.code-comment {
+  color: black;
+  background-color: white;
+}
+
+a:link code {
+  color: #630;
+  background-color: white;
+}
+
+a:visited code {
+  color: #963;
+  background-color: white;
+}
+
+a:hover code {
+  color: #f60;
+  background-color: white;
+}
+
+a:active code {
+  color: #f60;
+  background-color: white;
+}
+
+caption {
+  text-align: center;
+  font-weight: bold;
+  width: auto;
+}
+
+dt {
+  font-weight: bold;
+}
+
+td {
+  vertical-align: top;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+  vertical-align: bottom;
+  color: #369;
+  background-color: white;
+}
+
+ol ol {
+    list-style-type: lower-alpha;
+}
+
+ol ol ol {
+    list-style-type: lower-roman;
+}
+
+table.table-border {
+  border: 1px solid #cc9;
+}
+
+table.table-border td,
+table.table-border th {
+  padding: 2px 4px 2px 4px;
+  color: black;
+  background-color: white;
+  border: 1px solid #cc9;
+}
+
+table.table-border th.table-header-border-left,
+table.table-border th.table-header-border-middle,
+table.table-border th.table-header-border-right {
+  color: #369;
+  background-color: #cc9;
+}
+
+table.table-border th.table-header-border-left {
+  border-left: 1px solid #cc9;
+  border-right: 1px solid white;
+  color: black;
+  background-color: #cc9;
+}
+
+table.table-border th.table-header-border-middle {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  color: black;
+  background-color: #cc9;
+}
+
+table.table-border th.table-header-border-right {
+  border-left: 1px solid white;
+  border-right: 1px solid #cc9;
+  color: black;
+  background-color: #cc9;
+}
+
+span.gui-object, span.gui-object-action {
+  font-weight: bold;
+}
+
+span.gui-object-title { }
+
+p.horizontal-rule {
+  width: 100%;
+  border: solid #cc9;
+  border-width: 0px 0px 1px 0px;
+  margin-bottom: 4ex;
+}
+
+p.booktitle {
+  font-weight: bold;
+  font-size: 125%;
+}
+
+div.zz-skip-header {
+  margin-bottom: 0px;
+  margin-top: -2px;
+  padding: 0px;
+  text-align: center;
+  line-height: 1px;
+}
+
+div.zz-skip-header a:link,
+div.zz-skip-header a:visited,
+div.zz-skip-header a:hover,
+div.zz-skip-header a:active {
+  color: white;
+  background-color: white;
+  text-decoration: none;
+  font-size: 0.2ex;
+  line-height: 1px;
+}
+
+td.zz-nav-header-cell {
+  text-align: left;
+  font-size: 0.95em;
+  width: 99%;
+  color: black;
+  background-color: white;
+  font-weight: normal;
+  vertical-align: top;
+  margin-top: 0ex;
+  padding-top: 0ex;
+}
+
+a.zz-nav-header-link {
+  font-size: 0.95em;
+}
+
+td.zz-nav-button-cell {
+  white-space: nowrap;
+  text-align: center;
+  width: 1%;
+  vertical-align: top;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-top: 0ex;
+  padding-top: 0ex;
+}
+
+a.zz-nav-button-link {
+  font-size: 0.9em;
+}
+
+div.zz-nav-footer-menu {
+  width: 100%;
+  text-align: center;
+  margin-top: 2ex;
+  margin-bottom: 4ex;
+}
+
+p.zz-legal-notice, a.zz-legal-notice-link {
+  font-size: 0.85em;
+  /* display: none; */  /* Uncomment to hide legal notice */
+}
+
+p.seghead {
+  font-weight: bold;
+  margin-left: -2pt;
+}
+
+/*************************************/
+/*  Begin DARB Formats          */
+/*************************************/
+
+h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #369;
+  background-color: white;
+  font-size: 0.95em;
+  font-weight: bold;
+}
+
+h6 {
+  font-weight: normal;
+}
+
+td li p {
+  display: inline;
+}
+
+/* lose the h1 underscore */
+/*
+h1 {
+  border-width : 0px 0px 0px 0px;
+}
+*/
+
+/* Increase contrast between visited and unvisited links. */
+/*
+a:visited {
+  color: #a30;
+  background-color: white;
+}
+*/
+
+.bold, .codeinlinebold, .syntaxinlinebold, .term, .glossterm,
+.glossaryterm, .keyword, .msg, .msgexplankw, .msgactionkw, .notep1 {
+  font-weight: bold;
+}
+
+.italic, .codeinlineitalic, .syntaxinlineitalic, .variable {
+  font-style: italic;
+}
+
+.bolditalic, .codeinlineboldital, .syntaxinlineboldital,
+.titleinfigure, .titleinexample, .titleintable, .titleinequation {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.bridgehead, .titleinrefsubsect, .subhead1, .subhead2, .subhead3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #369;
+  background-color: white;
+  font-weight: bold;
+}
+
+.titleinrefsubsect, .subhead1 {
+  font-size: 1.1em;
+}
+
+.subhead2 {
+  font-size: 1.0em;
+}
+
+.subhead3 {
+  font-size: 0.95em;
+  display: inline;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.superscript {
+  vertical-align: super;
+}
+
+.subscript {
+  vertical-align: sub;
+}
+
+.listofeft {
+  border: none;
+}
+
+.betadraft {
+  color: #f00;
+  background-color: white;
+}
+
+.betadraftsubtitle {
+  text-align: center;
+  font-weight: bold;
+  color: #f00;
+  background-color: white;
+}
+
+.comment {
+  color: #080;
+  background-color: white;
+  font-weight: bold;
+}
+
+.copyrightlogo {
+  text-align: center;
+  font-size: 0.85em;
+  border-style: none;
+}
+
+.tocsubheader {
+  list-style-type: none;
+}
+
+/*************************************/
+/*  End DARB Formats                 */
+/*************************************/
+
+ all {
+  * {
+    background-color: transparent;
+    line-height: 1.2;
+  }
+  body {
+    color: black;
+    background-color: white;
+  }
+/*
+  dd {
+    margin-bottom: 2ex;
+  }
+  dl:first-child {
+    margin-top: 2ex;
+  }
+*/
+}
+
+ print {
+  body, p, table, td, th, ol, ul, a, dl, dt, dd, blockquote, caption {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+  }
+
+  h1, h2, h3, h4, h5, h6, th, thead td {
+    font-family: Arial, Helvetica, serif;
+    color: black;
+    background-color: white;
+  }
+
+  div.zz-skip-header {
+    display: none;
+  }
+
+  code, a:link, a:visited, a:hover, a:active {
+    color: black;
+    background-color: white;
+    text-decoration: none;
+  }
+}
+</style><!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <!-- Styles end here -->
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  </head>
+  <body>
+    <div class="header"><a id="top" name="top"></a>
+      <div class="zz-skip-header"><a href="#BEGIN">Skip Headers</a></div>
+      <a name="BEGIN" id="BEGIN"></a> </div>
+    <!-- class="header" -->
+    <div class="ind"><!-- End Header -->
+      <div class="letterstyle">
+        <h1 class="docinfo">Oracle® Database</h1>
+        <p class="booktitle">Patch 34086870 - Oracle JavaVM Component Release Update 19.16.0.0.220719</p>
+        <p><span class="revnumber"></span> </p>
+        <p class="date"> </p>
+        <div>
+          <div>
+            <p>This document describes how you can install Patch <span>
+                34086870</span> - Oracle JavaVM Component Release Update (OJVM RU) <span>19.16.0.0.220719</span> on 
+				your Oracle Database Release 19c.</p>
+				
+            <p>This patch is now Oracle RAC Rolling installable. To use the Oracle RAC Rolling approach, out-of-place patching of the 
+			Oracle home is mandatory, as is the use of database services and SRVCTL to control instance and service operations. 
+			For further information, refer to MOS NOTE 
+			<a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=2217053.1"
+
+                    target="_blank"><span>2217053.1</span></a>, <span class="italic">RAC Rolling Install Process for 
+					the "Oracle JavaVM Component Database PSU/RU" (OJVM PSU/RU) Patches</span>.</p>
+					
+            <p>This patch is Database Vault installable. Review My Oracle
+              Support Document <a href="https://support.oracle.com/epmos/faces/DocumentDisplay?id=1195205.1#aref_section37"
+                target="_blank">1195205.1</a> for details on how to apply this
+              patch to a Database Vault environment.</p>
+			  
+            <p>This patch is not Data Guard Standby First Installable. </p>
+			
+            <p>This document is accurate at the time of release. For any changes
+              and additional information regarding this patch, see these related
+              documents that are available at My Oracle Support (<a href="http://support.oracle.com/"
+                target="_blank"><code class="codeph">http://support.oracle.com/</code></a>):</p>
+            <ul style="list-style-type: disc;">
+              <li>
+                <p>Document <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=19202207.9"
+                    target="_blank"><span>19202207.9</span></a> <span
+                    class="italic">Oracle Database 19c Release Update and Release Update Revision July 2022 Known Issues</span></p>
+              </li>
+            </ul>
+            <p>This document includes the following sections:</p>
+            <ul style="list-style-type: disc;">
+              <li>
+                <p><a href="#GUID-775CC75B-0459-4C2A-B657-F390B9CEDA4B">Patch
+                    Information</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-49EF0D45-978D-486E-BDA2-D4CA1296DCCF">Prerequisites</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-B681D0E3-AA63-4FD8-9106-1DB361CB5281">Installation</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-0C9C42E8-652D-40EE-9302-CC36660F75C1">Postinstallation</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-00717104-6FCE-4A26-AE8E-C84B3B5D6C2B">Post
+                    Installation Instructions for Databases Created or Upgraded
+                    after Installation of OJVM Update in the Oracle Home</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-A64D8586-7FE1-450F-AF22-B889E7F241DB">Deinstallation</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-CD1655F4-CBD8-4AEF-BC9E-94683E98CE24">Post
+                    Deinstallation</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1">Known
+                    Issues</a></p>
+              </li>
+              <li>
+                <p><a href="#GUID-E409CC44-9A8F-4043-82C8-6B95CD939296">Documentation
+                    Accessibility</a></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-775CC75B-0459-4C2A-B657-F390B9CEDA4B"
+            id="GUID-775CC75B-0459-4C2A-B657-F390B9CEDA4B"></a>
+          <h2 id="null-GUID-775CC75B-0459-4C2A-B657-F390B9CEDA4B" class="sect2"><span
+              class="enumeration_section">1.1 </span>Patch Information</h2>
+          <div>
+            <p>This patch is cumulative and includes the Database CPU program
+              security content.</p>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-49EF0D45-978D-486E-BDA2-D4CA1296DCCF"
+            id="GUID-49EF0D45-978D-486E-BDA2-D4CA1296DCCF"></a>
+          <h2 id="null-GUID-49EF0D45-978D-486E-BDA2-D4CA1296DCCF" class="sect2"><span
+              class="enumeration_section">1.2 </span>Prerequisites</h2>
+          <div>
+            <p>Before you install or deinstall the patch, ensure that you meet
+              the following requirements. For an Oracle RAC environment, meet
+              these prerequisites on each of the nodes.</p>
+            <ol>
+              <li>
+                <p>Read My Oracle Support Document 
+				<a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1929745.1"
+                    target="_blank">1929745.1</a> <span class="italic">Oracle
+                    Recommended Patches -- "Oracle JavaVM Component Database PSU
+                    and Update" (OJVM PSU and OJVM Update) Patches</span>.</p>
+              </li>
+              <li>
+                <p>Ensure that the Oracle Database on which you are installing
+                  the patch or from which you are rolling back the patch is 
+                  Oracle Database Release 19c.</p>
+              </li>
+              <li>
+                <p>You must use the OPatch utility version 
+                  12.2.0.1.30 or later to apply this patch. Oracle
+                  recommends that you use the latest released OPatch version for
+                  12.2, which is available for download from My Oracle Support
+                  patch <a href="http://updates.oracle.com/ARULink/PatchDetails/process_form?patch_num=6880880"
+                    target="_blank">6880880</a> by selecting 'Opatch 12.2.0.1.0' release.</p>
+                <p>For information about OPatch documentation, including any
+                  known issues, see My Oracle Support Document 
+				  <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=293369.1"
+                    target="_blank">293369.1</a> <span class="italic">Primary Note For OPatch</span>.</p>
+              </li>
+              <li>
+                <p>Ensure that you set the <code class="codeph">ORACLE_HOME</code>
+                  environment variable to the Oracle home of the Oracle
+                  Database.</p>
+              </li>
+              <li>
+                <p>Ensure that the <code class="codeph">$PATH</code> definition
+                  has the following executables: <code class="codeph">make</code>,
+                  <code class="codeph">ar</code>, <code class="codeph">ld</code>
+                  and <code class="codeph">nm</code>. The location of these
+                  executables depends on your operating system. On many
+                  operating systems, they are located in <code class="codeph">/usr/ccs/bin</code>.</p>
+              </li>
+              <li>
+                <p>Ensure that you verify the Oracle Inventory because OPatch
+                  accesses it to install the patches. To verify the inventory,
+                  run the following command. If the command displays some
+                  errors, then contact Oracle Support and resolve the issue.</p>
+                <pre class="oac_no_warn" dir="ltr">$ opatch lsinventory
+</pre> </li>
+              <li>
+                <p> (Only for Installation) Maintain a location for storing the
+                  contents of the patch ZIP file. In the rest of the document,
+                  this location (absolute path) is referred to as <code><span class="codeinlineitalic">PATCH_TOP_DIR</span></code>.
+                  Extract the contents of the patch ZIP file to the location (<code><span
+                      class="codeinlineitalic">PATCH_TOP_DIR</span></code>) you
+                  have created above. To do so, run the following command:</p>
+                <pre class="oac_no_warn" dir="ltr">$ unzip -d &lt;PATCH_TOP_DIR&gt; p<span>34086870</span>_190000_&lt;PLATFORM_NAME&gt;.zip
+</pre> </li>
+              
+              <li>
+                <p>(Only for Installation) Determine whether any currently
+                  installed interim patches conflict with the patch as
+                  shown below:</p>
+                <pre class="oac_no_warn" dir="ltr">$ cd &lt;PATCH_TOP_DIR&gt;/<span>34086870</span>
+$ opatch prereq CheckConflictAgainstOHWithDetail -ph ./
+</pre>
+                <p>The report will indicate the patches that conflict with this
+                  patch and the patches for which the current patch is a superset.</p>
+                <div class="infoboxnote" id="GUID-49EF0D45-978D-486E-BDA2-D4CA1296DCCF__GUID-D1DD628A-5598-41BA-B802-AA12226A8FFF">
+                  <p class="notep1">Note:</p>
+                  <p>When OPatch starts, it validates the patch and ensures that
+                    there are no conflicts with the software already installed
+                    in the <code class="codeph">ORACLE_HOME</code>. OPatch
+                    categorizes conflicts into the following types:</p>
+                  <ul style="list-style-type: disc;">
+                    <li>
+                      <p>Conflicts with a patch already applied to the <code class="codeph">ORACLE_HOME</code>,
+                        that is a subset of the patch you are trying to apply -
+                        In this case, continue with the patch installation
+                        because the new patch contains all the fixes from the
+                        existing patch in the <code class="codeph">ORACLE_HOME</code>.
+                        The subset patch will automatically be rolled back prior
+                        to the installation of the new patch.</p>
+                    </li>
+                    <li>
+                      <p>Conflicts with a patch already applied to the <code class="codeph">ORACLE_HOME</code>
+                        - In this case, stop the patch installation and contact
+                        Oracle Support Services.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <p>Ensure that you shut down all the services running from the
+                  Oracle home.</p>
+                <p>For a Non Oracle RAC environment, shut down all databases and
+                  listeners associated with the Oracle home that you are
+                  updating. For more information, see <span class="italic">Oracle
+                    Database Administrator's Guide</span>.</p>
+                <p>If you can apply this patch to an Oracle RAC environment using an out-of-place approach, follow 
+				the instructions described for an Oracle RAC Rolling installation in Note 
+				<a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=2217053.1"
+                    target="_blank">2217053.1</a>. Shutdown of database services may not be required for this case. 
+					Otherwise for an Oracle RAC environment, shut down all the services (database, ASM, listeners, 
+					nodeapps, and CRS daemons) running
+                  from the Oracle home on all the nodes you want to patch. After
+                  all nodes are patched, start all services. OPatch is used on
+                  only one node at a time.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-B681D0E3-AA63-4FD8-9106-1DB361CB5281"
+            id="GUID-B681D0E3-AA63-4FD8-9106-1DB361CB5281"></a>
+          <h2 id="null-GUID-B681D0E3-AA63-4FD8-9106-1DB361CB5281" class="sect2"><span
+              class="enumeration_section">1.3 </span>Installation</h2>
+          <div>
+            <p>To install the patch, follow these steps. </p>
+            <ol>
+              <li>
+                <p> Set your current directory to the directory where the patch
+                  is located and then run the OPatch utility by entering the
+                  following commands:</p>
+                <pre class="oac_no_warn" dir="ltr">$ cd &lt;PATCH_TOP_DIR&gt;/<span>34086870</span>
+</pre> </li>
+              <li>
+                <p> Install the patch by running the following command:</p>
+                <pre class="oac_no_warn" dir="ltr">$ opatch apply
+</pre>
+                <p>If apply fails for make target <code class="codeph">jox_refresh_knlopt</code>
+                  when applying the patch to the database home, see Issue #1 in
+                  <a href="#GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1">Known
+                    Issues</a> for more information.</p>
+              </li>
+              <li>
+                <p> Verify whether the patch has been successfully installed by
+                  running the following command:</p>
+                <pre class="oac_no_warn" dir="ltr">$ opatch lsinventory
+</pre> </li>
+              <li>
+                <p> Start the services from the Oracle home.</p>
+              </li>
+              <li>
+                <p>If there are errors, see <a href="#GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1">Known
+                    Issues</a>.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-0C9C42E8-652D-40EE-9302-CC36660F75C1"
+            id="GUID-0C9C42E8-652D-40EE-9302-CC36660F75C1"></a>
+          <h2 id="null-GUID-0C9C42E8-652D-40EE-9302-CC36660F75C1" class="sect2"><span
+              class="enumeration_section">1.4 </span>Postinstallation</h2>
+          <div>
+            <p>Perform the following postinstallation steps described in <a href="#GUID-DD87DFF6-367B-44B3-861D-7F058C8CC76A">Loading
+                Modified SQL Files Into the Database</a>.</p>
+          </div>
+        </div>
+        <div class="sect3"><!-- infolevel="all" infotype="General" --><a name="GUID-DD87DFF6-367B-44B3-861D-7F058C8CC76A"
+            id="GUID-DD87DFF6-367B-44B3-861D-7F058C8CC76A"></a>
+          <h3 id="null-GUID-DD87DFF6-367B-44B3-861D-7F058C8CC76A" class="sect3"><span
+              class="enumeration_section">1.4.1 </span>Loading Modified SQL
+            Files Into the Database</h3>
+          <div>
+            <p>To perform the postinstallation, follow these steps:</p>
+            <ol>
+              <li>
+                <p>The following steps load modified SQL files into the
+                  database. </p>
+                <p>Datapatch is run to complete the post-install SQL deployment
+                  for the Update. For further details about Datapatch, including
+                  Known Issues and workarounds to common problems, see: <span class="italic">Datapatch: Database
+                    12c or later Post Patch SQL Automation</span> (Doc ID 
+					<a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1585822.1"
+                    target="_blank">1585822.1</a>).</p>
+                <ol type="a">
+                  <li>
+                    <p>For each separate database running on the same shared
+                      Oracle home being patched, run the <code class="codeph">datapatch</code>
+                      utility as described in <a href="#GUID-DD87DFF6-367B-44B3-861D-7F058C8CC76A__BABCDAGJ"
+
+                    title="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB).">Table 1</a>. </p>
+                    <div class="tblformal" id="GUID-DD87DFF6-367B-44B3-861D-7F058C8CC76A__BABCDAGJ">
+                      <p class="titleintable">Table 1 Steps to Run the datapatch Utility for Non-CDB Database Versus 
+Single or Multitenant (CDB or PDB) Database</p>
+
+<table cellpadding="4" cellspacing="0" class="Formal" title="Steps to Run the datapatch Utility for 
+Non-CDB Database Versus Single or Multitenant (CDB or PDB) Database" summary="Steps to run datapatch 
+script for single tenant versus multitenant (CDB or PDB)." width="90%" frame="hsides" border="1" rules="rows">
+<thead><tr align="left" valign="top"><th align="left" valign="bottom" width="9%" id="d1051e50">Steps</th>
+<th align="left" valign="bottom" width="20%" id="d1051e53">Non-CDB Database</th>
+<th align="left" valign="bottom" width="9%" id="d1051e56">Steps</th>
+<th align="left" valign="bottom" width="40%" id="d1051e59">Single or Multitenant (CDB or PDB) Database</th>
+</tr>
+</thead>
+<tbody>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e64" headers="d1051e50 ">
+<p>1</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e64 d1051e53 "><p><code class="codeph">% sqlplus /nolog</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e64 d1051e56 ">
+<p>1</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e64 d1051e59 "><p><code class="codeph">% sqlplus /nolog</code></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e79" headers="d1051e50 ">
+<p>2</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e79 d1051e53 "><p><code class="codeph">SQL&gt; Connect / as sysdba</code></p>
+</td>
+<td align="left" valign="top" width="9" headers="d1051e79 d1051e56 ">
+<p>2</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e79 d1051e59 "><p><code class="codeph">SQL&gt; Connect / as sysdba</code></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e94" headers="d1051e50 ">
+<p>3</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e94 d1051e53 ">
+<p><code class="codeph">SQL&gt; startup</code> 
+</p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e94 d1051e56 ">
+<p>3</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e94 d1051e59 "><p>
+<code class="codeph">SQL&gt; startup</code>
+</p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e118" headers="d1051e50 ">
+<p>4</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e118 d1051e53 "><p>
+<code class="codeph">SQL&gt; quit</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e118 d1051e56 ">
+<p>4</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e118 d1051e59 "><p>
+<code class="codeph">SQL&gt; alter pluggable database all</code> <code class="codeph">open</code>
+<code class="codeph">;</code><a id="sthref3" name="sthref3" href="#sthref3"
+
+                                onclick="footdisplay(1,&quot;It is recommended that the post-installation step be run on all pluggable 
+								databases. However, the command, \u003ccode dir=\&quot;ltr\&quot;\u003eSQL\u003e ALTER 
+								PLUGGABLE DATABASE\u003c/code\u003e \u003ccode 
+								dir=\&quot;ltr\&quot;\u003e\u003cspan 
+								class=\&quot;codeinlineitalic\&quot;\u003epdb_name\u003c/span\u003e\u003c/code\u003e 
+								\u003ccode dir=\&quot;ltr\&quot;\u003eOPEN\u003c/code\u003e, could be substituted to only 
+								open certain PDBs in the single or multitenant database. Doing so results in the post-
+								installation step only being run on the CDB and opened PDB's. To update a pluggable database 
+								at a later date (skipped or newly plugged in), open the database using the \u003ccode 
+                                dir=\&quot;ltr\&quot;\u003eALTER PLUGGABLE DATABASE\u003c/code\u003e command mentioned 
+								previously and rerun the Datapatch utility. See My Oracle Support Document \u003ca 
+								target=\&quot;toc\&quot; 
+								href=\&quot;https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1\&quot;\u003e1935365.1\u003c/a\u003
+								\u003cspan class=\&quot;italic\&quot;\u003eMultitenant Unplug/Plug Best Practices\u003c/span\u003e 
+								for more information about the procedure for unplugging or plugging with different patch 
+								releases (in both directions).&quot;)"><sup class="tablefootnote">Foot 1 </sup></a></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e162" headers="d1051e50 ">
+<p>5</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e162 d1051e53 "><p>
+<code class="codeph">% cd $ORACLE_HOME/OPatch</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e162 d1051e56 ">
+<p>5</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e162 d1051e59 "><p>
+<code class="codeph">SQL&gt; quit</code></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e177" headers="d1051e50 ">
+<p>6</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e177 d1051e53 "><p>
+<code class="codeph">% ./datapatch -verbose</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e177 d1051e56 ">
+<p>6</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e177 d1051e59 "><p>
+<code class="codeph">% cd $ORACLE_HOME/OPatch</code></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e192" headers="d1051e50 ">
+<p></p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e192 d1051e53 ">
+<p></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e192 d1051e56 ">
+<p>7</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e192 d1051e59 "><p>
+<code class="codeph">% ./datapatch -verbose</code></p>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+<!-- class="inftblhruleinformal" -->
+<p class="tablefootnote"><sup class="tablefootnote"> Footnote 1 </sup>It is recommended 
+				  that the post-installation step be run on all pluggable databases. However, the command, 
+				  <font color="#336699">SQL&gt; ALTER PLUGGABLE DATABASE <i>&lt;pdb_name&gt;</i> OPEN</font>,
+                    could be substituted to only open certain pluggable databases (PDBs) in the
+                    single or multitenant database. Doing so results in the
+                    post-installation step only being run on the multitenant container database (CDB) and opened
+                    PDBs. To update a pluggable database at a later date
+                    (skipped or newly plugged in), open the database using the 
+					<font color="#336699">ALTER PLUGGABLE DATABASE</font> command
+                    mentioned previously and rerun the Datapatch utility. See My
+                    Oracle Support Document 
+					<a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1">1935365.1</a>
+                    <span class="italic"> Multitenant Unplug/Plug Best Practices</span>
+                    for more information about the procedure for
+                    unplugging or plugging with different patch releases (in both
+                    directions).</p>
+					<p>The Datapatch utility runs the
+                    necessary apply scripts to load the modified SQL files into
+                    the database. An entry is added to the <font color="#336699">dba_registry_sqlpatch</font>
+                    view reflecting the patch application. In the <font color="#336699">dba_registry_sqlpatch</font>
+                    view, verify that the Status for <font color="#336699">APPLY</font> is <font color="#336699">SUCCESS</font>. For any
+                    other Status, refer to My Oracle Support Document
+                    <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=2335899.2">2335899.2</a>
+                    <span class="italic">Troubleshooting Assistant: 12c Datapatch Issues</span>.</p>
+                  </li>
+                  <li>
+                    <p>Check the following log files in <code class="codeph">$ORACLE_BASE/cfgtoollogs/sqlpatch/
+					<span>34086870</span>/&lt;unique patch ID&gt;</code>
+                      for errors:</p>
+                    <pre class="oac_no_warn" dir="ltr"><span>34086870</span>_apply_&lt;database SID&gt;_&lt;CDB name&gt;_&lt;timestamp&gt;.log</pre>
+                    <p>where <code><span class="codeinlineitalic">database SID</span></code>
+                      is the database SID, <code><span class="codeinlineitalic">CDB
+                          name</span></code> is the name of the multitenant
+                      container database, and <code><span class="codeinlineitalic">timestamp</span></code>
+                      is of the form YYYYMMMDD_HH_MM_SS.</p>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <p>After installing the SQL portion of the patch, some packages
+                  could become INVALID. This will get recompiled upon access or
+                  you can run <code class="codeph">utlrp.sql</code> to get them
+                  back into a VALID state. </p>
+                <pre class="oac_no_warn" dir="ltr">cd $ORACLE_HOME/rdbms/admin
+sqlplus /nolog
+SQL&gt; CONNECT / AS SYSDBA
+SQL&gt; @utlrp.sql
+</pre> </li>
+              <li>
+                <p>If there are errors, see <a href="#GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1">Known
+                    Issues</a>.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-00717104-6FCE-4A26-AE8E-C84B3B5D6C2B"
+            id="GUID-00717104-6FCE-4A26-AE8E-C84B3B5D6C2B"></a>
+          <h2 id="null-GUID-00717104-6FCE-4A26-AE8E-C84B3B5D6C2B" class="sect2"><span
+              class="enumeration_section">1.5 </span>Post Installation
+            Instructions for Databases Created or Upgraded after Installation of
+            OJVM Update in the Oracle Home</h2>
+          <div>
+            <p>You must execute the steps in <a href="#GUID-0C9C42E8-652D-40EE-9302-CC36660F75C1">Postinstallation</a>
+              for any new database. There are no actions required for databases
+              that have been upgraded.</p>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-A64D8586-7FE1-450F-AF22-B889E7F241DB"
+            id="GUID-A64D8586-7FE1-450F-AF22-B889E7F241DB"></a>
+          <h2 id="null-GUID-A64D8586-7FE1-450F-AF22-B889E7F241DB" class="sect2"><span
+              class="enumeration_section">1.6 </span>Deinstallation</h2>
+          <div>
+            <p>Ensure to follow the Prerequisites as described in <a href="#GUID-49EF0D45-978D-486E-BDA2-D4CA1296DCCF">Prerequisites</a>.
+              To deinstall the patch, follow these steps. For an Oracle RAC
+              environment, perform these steps on each node of the cluster, one
+              at a time:</p>
+            <ol>
+              <li>
+                <p>Deinstall the patch by running the following command:</p>
+                <pre class="oac_no_warn" dir="ltr">$ opatch rollback -id <span>34086870</span>
+</pre> </li>
+              <li>
+                <p>Start the services from the Oracle home.</p>
+              </li>
+              <li>
+                <p>Ensure that you verify the Oracle Inventory and compare the
+                  output with the one run before the patch installation and
+                  re-apply any patches that were rolled back as part of this
+                  patch apply. To verify the inventory, run the following
+                  command:</p>
+                <pre class="oac_no_warn" dir="ltr">$ opatch lsinventory
+</pre> </li>
+            </ol>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-CD1655F4-CBD8-4AEF-BC9E-94683E98CE24"
+            id="GUID-CD1655F4-CBD8-4AEF-BC9E-94683E98CE24"></a>
+          <h2 id="null-GUID-CD1655F4-CBD8-4AEF-BC9E-94683E98CE24" class="sect2"><span
+              class="enumeration_section">1.7 </span>Post Deinstallation</h2>
+          <div>
+            <p>Perform the following post deinstallation steps described in <a
+                href="#GUID-06EC813E-ED72-43E7-AA0D-8C309404B95A">Loading
+                Modified SQL Files Into the Database</a>.</p>
+          </div>
+        </div>
+        <div class="sect3"><!-- infolevel="all" infotype="General" --><a name="GUID-06EC813E-ED72-43E7-AA0D-8C309404B95A"
+            id="GUID-06EC813E-ED72-43E7-AA0D-8C309404B95A"></a>
+          <h3 id="null-GUID-06EC813E-ED72-43E7-AA0D-8C309404B95A" class="sect3"><span
+              class="enumeration_section">1.7.1 </span>Loading Modified SQL
+            Files Into the Database</h3>
+          <div>
+            <p>The following steps load modified SQL files into the database. </p>
+            <ol>
+              <li>
+                <p>For each separate database running on the same shared Oracle
+                  home being patched, run the <code class="codeph">datapatch</code>
+                  utility as described in <a href="#GUID-06EC813E-ED72-43E7-AA0D-8C309404B95A__BABFBEHE"
+
+                    title="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB).">Table 2</a>. </p>
+                <div class="tblformal" id="GUID-06EC813E-ED72-43E7-AA0D-8C309404B95A__BABFBEHE">
+                  <p class="titleintable">Table 2 Steps to Run the datapatch Utility for Non-CDB Database Versus 
+				  Single or Multitenant (CDB or PDB) Database</p>
+
+<table cellpadding="4" cellspacing="0" class="Formal" title="Steps to Run the datapatch Utility for 
+Non-CDB Database Versus Single or Multitenant (CDB or PDB) Database" summary="Steps to run datapatch 
+script for single tenant versus multitenant (CDB or PDB)." width="90%" frame="hsides" border="1" rules="rows">
+<thead><tr align="left" valign="top"><th align="left" valign="bottom" width="9%" id="d1051e50">Steps</th>
+<th align="left" valign="bottom" width="20%" id="d1051e53">Non-CDB Database</th>
+<th align="left" valign="bottom" width="9%" id="d1051e56">Steps</th>
+<th align="left" valign="bottom" width="40%" id="d1051e59">Single or Multitenant (CDB or PDB) Database</th>
+</tr>
+</thead>
+<tbody>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e64" headers="d1051e50 ">
+<p>1</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e64 d1051e53 "><p><code class="codeph">% sqlplus /nolog</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e64 d1051e56 ">
+<p>1</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e64 d1051e59 "><p><code class="codeph">% sqlplus /nolog</code></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e79" headers="d1051e50 ">
+<p>2</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e79 d1051e53 "><p><code class="codeph">SQL&gt; Connect / as sysdba</code></p>
+</td>
+<td align="left" valign="top" width="9" headers="d1051e79 d1051e56 ">
+<p>2</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e79 d1051e59 "><p><code class="codeph">SQL&gt; Connect / as sysdba</code></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e94" headers="d1051e50 ">
+<p>3</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e94 d1051e53 ">
+<p><code class="codeph">SQL&gt; startup</code> 
+</p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e94 d1051e56 ">
+<p>3</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e94 d1051e59 "><p>
+<code class="codeph">SQL&gt; startup</code>
+</p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e118" headers="d1051e50 ">
+<p>4</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e118 d1051e53 "><p>
+<code class="codeph">SQL&gt; quit</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e118 d1051e56 ">
+<p>4</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e118 d1051e59 "><p>
+<code class="codeph">SQL&gt; alter pluggable database all</code> <code class="codeph">open</code>
+<code class="codeph">;</code><a id="sthref3" name="sthref3" href="#sthref3"
+
+                                onclick="footdisplay(1,&quot;It is recommended that the post-installation step be run on all pluggable 
+								databases. However, the command, \u003ccode dir=\&quot;ltr\&quot;\u003eSQL\u003e ALTER 
+								PLUGGABLE DATABASE\u003c/code\u003e \u003ccode 
+								dir=\&quot;ltr\&quot;\u003e\u003cspan 
+								class=\&quot;codeinlineitalic\&quot;\u003epdb_name\u003c/span\u003e\u003c/code\u003e 
+								\u003ccode dir=\&quot;ltr\&quot;\u003eOPEN\u003c/code\u003e, could be substituted to only 
+								open certain PDBs in the single or multitenant database. Doing so results in the post-
+								installation step only being run on the CDB and opened PDB's. To update a pluggable database 
+								at a later date (skipped or newly plugged in), open the database using the \u003ccode 
+                                dir=\&quot;ltr\&quot;\u003eALTER PLUGGABLE DATABASE\u003c/code\u003e command mentioned 
+								previously and rerun the Datapatch utility. See My Oracle Support Document \u003ca 
+								target=\&quot;toc\&quot; 
+								href=\&quot;https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1\&quot;\u003e1935365.1\u003c/a\u003
+								\u003cspan class=\&quot;italic\&quot;\u003eMultitenant Unplug/Plug Best Practices\u003c/span\u003e 
+								for more information about the procedure for unplugging or plugging with different patch 
+								releases (in both directions).&quot;)"><sup class="tablefootnote">Foot 1 </sup></a></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e162" headers="d1051e50 ">
+<p>5</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e162 d1051e53 "><p>
+<code class="codeph">% cd $ORACLE_HOME/OPatch</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e162 d1051e56 ">
+<p>5</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e162 d1051e59 "><p>
+<code class="codeph">SQL&gt; quit</code></p>
+</td>
+</tr>
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e177" headers="d1051e50 ">
+<p>6</p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e177 d1051e53 "><p>
+<code class="codeph">% ./datapatch -verbose</code></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e177 d1051e56 ">
+<p>6</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e177 d1051e59 "><p>
+<code class="codeph">% cd $ORACLE_HOME/OPatch</code></p>
+</td>
+</tr>
+
+<tr align="left" valign="top"><td align="left" valign="top" width="9%" id="d1051e192" headers="d1051e50 ">
+<p></p>
+</td>
+<td align="left" valign="top" width="20%" headers="d1051e192 d1051e53 ">
+<p></p>
+</td>
+<td align="left" valign="top" width="9%" headers="d1051e192 d1051e56 ">
+<p>7</p>
+</td>
+<td align="left" valign="top" width="40%" headers="d1051e192 d1051e59 "><p>
+<code class="codeph">% ./datapatch -verbose</code></p>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+<!-- class="inftblhruleinformal" -->
+<p class="tablefootnote"><sup class="tablefootnote"> Footnote 1 </sup>It is recommended 
+				  that the post-installation step be run on all pluggable databases. However, the command, 
+				  <font color="#336699">SQL&gt; ALTER PLUGGABLE DATABASE <i>&lt;pdb_name&gt;</i> OPEN</font>,
+                    could be substituted to only open certain pluggable databases (PDBs) in the
+                    single or multitenant database. Doing so results in the
+                    post-installation step only being run on the multitenant container database (CDB) and opened
+                    PDBs. To update a pluggable database at a later date
+                    (skipped or newly plugged in), open the database using the 
+					<font color="#336699">ALTER PLUGGABLE DATABASE</font> command
+                    mentioned previously and rerun the Datapatch utility. See My
+                    Oracle Support Document 
+					<a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1">1935365.1</a>
+                    <span class="italic"> Multitenant Unplug/Plug Best Practices</span>
+                    for more information about the procedure for
+                    unplugging or plugging with different patch releases (in both
+                    directions).</p>
+					<p>The Datapatch utility runs the
+                    necessary rollback scripts. An entry is added to the <font color="#336699">dba_registry_sqlpatch</font>
+                    view reflecting the patch application. In the <font color="#336699">dba_registry_sqlpatch</font>
+                    view, verify that the Status for <font color="#336699">ROLLBACK</font> is <font color="#336699">SUCCESS</font>. For any
+                    other Status, refer to My Oracle Support Document
+                    <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=2335899.2">2335899.2</a>
+                    <span class="italic">Troubleshooting Assistant: 12c Datapatch Issues</span>.</p>
+              </li>
+              <li>
+                <p>Check the following log files in <code class="codeph">$ORACLE_HOME/sqlpatch/
+				<span>34086870</span>/</code> for errors:</p>
+                <pre class="oac_no_warn" dir="ltr"><span>34086870</span>_rollback_&lt;database SID&gt;_&lt;CDB name&gt;_&lt;timestamp&gt;.log</pre>
+                <p>where <code><span class="codeinlineitalic">database SID</span></code>
+                  is the database SID, <code><span class="codeinlineitalic">CDB
+                      name</span></code> is the name of the multitenant
+                  container database, and <code><span class="codeinlineitalic">timestamp</span></code>
+                  is of the form YYYYMMMDD_HH_MM_SS.</p>
+              </li>
+              <li>
+                <p>After installing the SQL portion of the patch, some packages
+                  could become INVALID. This will get recompiled upon access or
+                  you can run <code class="codeph">utlrp.sql</code> to get them
+                  back into a VALID state. </p>
+                <pre class="oac_no_warn" dir="ltr">cd $ORACLE_HOME/rdbms/admin
+sqlplus /nolog
+SQL&gt; CONNECT / AS SYSDBA
+SQL&gt; @utlrp.sql
+</pre> </li>
+              <li>
+                <p>If there are errors, see <a href="#GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1">Known
+                    Issues</a>.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="sect2"><!-- infolevel="all" infotype="General" --><a name="GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1"
+            id="GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1"></a>
+          <h2 id="null-GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1" class="sect2"><span
+              class="enumeration_section">1.8 </span>Known Issues</h2>
+          <div>
+            <p>For information about OPatch issues, see My Oracle Support
+              Document <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=293369.1"
+                target="_blank">293369.1</a> <span class="italic">Primary Note For OPatch</span>.</p>
+            <p>For issues documented after the release of this patch, see My
+              Oracle Support Document <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=19202207.9"
+                target="_blank"><span>19202207.9</span></a> <span class="italic">
+                Oracle Database 19c Release Update and Release Update Revision July 2022 Known Issues</span>.</p>
+            <p>Other issues are as follows.</p>
+            <dl class="1.00* 3.00*">
+          
+              <dt class="dlterm"><a name="GUID-810B1F42-86D4-4E27-8AF1-12E94E3CBEC1__GUID-1FF7C250-2E74-495C-96A5-C0E6F554AB93"><!-- --></a>
+			  Issue 1</dt>
+              <dd>
+                <p><span class="bold">Problem:</span> An <code class="codeph">ORA-04068</code>
+                  error may appear in the Database alert log file when datapatch
+                  is run.</p>
+                <div class="p">During a successful run of the datapatch tool
+                  with no errors indicated, an <code class="codeph">ORA-04068</code>
+                  error may appear in the Database alert log file:
+                  <pre class="oac_no_warn" dir="ltr">ORA-04068: existing state of packages has been discarded</pre>
+                </div>
+                <p><span class="bold">Workaround:</span> This is a retryable
+                  error in datapatch itself. If a patch installation receives
+                  it, then datapatch will automatically retry the operation
+                  once, before reporting it as a failure. The fact that
+                  datapatch did not report the retry and ran successfully with
+                  no errors confirms that the patch was successfully installed,
+                  and that another Oracle background process received the error.
+                  The <code class="codeph">ORA-04068</code> error should be
+                  ignored as long as datapatch runs successfully with no errors
+                  indicated (possibly after an automatic retry).</p>
+              </dd>
+              </div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        
+        
+        
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<a name="GUID-E409CC44-9A8F-4043-82C8-6B95CD939296" id="GUID-E409CC44-9A8F-4043-82C8-6B95CD939296"></a>
+<h2 id="null-GUID-E409CC44-9A8F-4043-82C8-6B95CD939296" class="sect1"><span class="enumeration_section">1.9 </span>
+Documentation Accessibility</h2>
+        <p>For information about Oracle's commitment to accessibility, visit the Oracle Accessibility Program website 
+		at <code>
+		<a href="http://www.oracle.com/pls/topic/lookup?ctx=acc&id=docacc" target="_blank">
+		http://www.oracle.com/pls/topic/lookup?ctx=acc&id-docacc</a></code>.</p>
+        <a id="sthref43" name="sthref43"></a>
+        <p class="subhead2">Access to Oracle Support</p>
+        <p>Oracle customers that have purchased support have access to electronic support through My Oracle Support. 
+		For information, visit <code><a href="http://www.oracle.com/pls/topic/lookup?ctx=acc&id=info" target="_blank">
+		http://www.oracle.com/pls/topic/lookup?ctx=acc&id=info</a></code>
+          or visit <code><a href="http://www.oracle.com/pls/topic/lookup?ctx=acc&id=trs" target="_blank">
+		  http://www.oracle.com/pls/topic/lookup?ctx=acc&id=trs</a></code>
+          if you are hearing impaired.</p>
+      </div>
+            <!-- class="section" --> </div>
+        </div>
+      </div>
+      <hr />
+      <div class="notices">
+        <p>Oracle Database Patch 34086870 - Oracle JavaVM Component Release Update 19.16.0.0.220719<span></span>
+        </p>
+<p>Copyright © 2006, 2022, Oracle and/or its affiliates.</p>
+      <p>This software and related documentation are provided under a license agreement containing 
+	  restrictions on use and disclosure and are protected by intellectual property laws. Except as 
+	  expressly permitted in your license agreement or allowed by law, you may not use, copy, reproduce, 
+	  translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish, or 
+	  display any part, in any form, or by any means. Reverse engineering, disassembly, or decompilation 
+	  of this software, unless required by law for interoperability, is prohibited.</p>
+      <p>The information contained herein is subject to change without notice and is not warranted to be 
+	  error-free. If you find any errors, report them to us in writing.</p>
+      <p>If this is software or related documentation that is delivered to the U.S. Government or anyone 
+	  licensing it on behalf of the U.S. Government, then the following notice is applicable:</p>
+      <p>U.S. GOVERNMENT END USERS: Oracle programs, including any operating system, integrated software, 
+	  any programs installed on the hardware, and/or documentation, delivered to U.S. Government end 
+	  users are "commercial computer software" pursuant to the applicable Federal Acquisition Regulation 
+	  and agency-specific supplemental regulations. As such, use, duplication, disclosure, modification, 
+	  and adaptation of the programs, including any operating system, integrated software, any programs 
+	  installed on the hardware, and/or documentation, shall be subject to license terms and license 
+	  restrictions applicable to the programs. No other rights are granted to the U.S. Government.</p>
+      <p>This software or hardware is developed for general use in a variety of information management 
+	  applications. It is not developed or intended for use in any inherently dangerous applications, 
+	  including applications that may create a risk of personal injury. If you use this software or 
+	  hardware in dangerous applications, then you shall be responsible to take all appropriate fail-safe, 
+	  backup, redundancy, and other measures to ensure its safe use. Oracle Corporation and its affiliates 
+	  disclaim any liability for any damages caused by use of this software or hardware in dangerous applications.</p>
+      <p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks 
+	  of their respective owners.</p>
+      <p>Intel and Intel Xeon are trademarks or registered trademarks of Intel Corporation. All SPARC trademarks 
+	  are used under license and are trademarks or registered trademarks of SPARC International, Inc. AMD, Opteron, 
+	  the AMD logo, and the AMD Opteron logo are trademarks or registered trademarks of Advanced Micro Devices. 
+	  UNIX is a registered trademark of The Open Group.</p>
+	  <p>This software or hardware and documentation may provide access to or information about content, products, 
+	  and services from third parties. Oracle Corporation and its affiliates are not responsible for and expressly 
+	  disclaim all warranties of any kind with respect to third-party content, products, and services unless otherwise 
+	  set forth in an applicable agreement between you and Oracle. Oracle Corporation and its affiliates will not be 
+	  responsible for any loss, costs, or damages incurred due to your access to or use of third-party content, 
+	  products, or services, except as set forth in an applicable agreement between you and Oracle.</p>
+</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <hr />
+      <div width="34%" align="center"> <font size="-2"> Copyright © 2006, 
+          2022, Oracle and/or its affiliates.</font>
+      </div>
+      <!-- class="footer" --> </div>
+  </body>
+</html>
