@@ -447,14 +447,14 @@ a:visited {
   <body>
     <div class="header"><a id="top" name="top"></a>
       <div class="zz-skip-header"><a href="#BEGIN">Go to primary content</a></div>
-      <table class="simple oac_no_warn" summary="" width="100%" cellspacing="0"
+      <table class="simple oac_no_warn" summary="" width="100%" cellspacing="0"
         cellpadding="0">
         <tbody>
           <tr>
             <td align="left" valign="top"><b>Patch 34133642 - Database Release Update 19.16.0.0.220719</b><br />
             </td>
             <td align="right" valign="bottom">
-              <table class="simple oac_no_warn" summary="" width="225" cellspacing="0"
+              <table class="simple oac_no_warn" summary="" width="225" cellspacing="0"
                 cellpadding="0">
                 <tbody>
                   <tr>
@@ -514,7 +514,7 @@ function footdisplay(footnum,footnote) {
         <p class="date"></p>
         <p>This document is accurate at the time of release. For any changes and
           additional information regarding Database Release Update 19.16.0.0.220719, see these
-          related documents that are available at My Oracle Support (<code dir="ltr"><a
+          related documents that are available at My Oracle Support (<code dir="ltr"><a
               href="http://support.oracle.com/">http://support.oracle.com/</a></code>):</p>
         <ul>
           <li>
@@ -685,7 +685,7 @@ function footdisplay(footnum,footnote) {
                     executables: <code dir="ltr">make</code>, <code dir="ltr">ar</code>,
                     <code dir="ltr">ld</code>, and <code dir="ltr">nm</code>.</p>
                   <p>The location of these executables depends on your operating
-                    system. On many operating systems, they are located in <code
+                    system. On many operating systems, they are located in <code
                       dir="ltr">/usr/ccs/bin</code>, in which case you can set
                     your PATH definition as follows:</p>
                   <pre xml:space="preserve" class="oac_no_warn" dir="ltr">export PATH=$PATH:/usr/ccs/bin
@@ -699,7 +699,7 @@ function footdisplay(footnum,footnote) {
               <p>The fastest and easiest way to determine whether you have
                 interim patches in the Oracle home that conflict with Database Release Update 19.16.0.0.220719, and to get the necessary conflict resolution
                 patches, is to use the <span class="bold">Patch Recommendations</span>
-                and <span class="bold">Patch Plans</span> features on the <span
+                and <span class="bold">Patch Plans</span> features on the <span
                   class="bold">Patches &amp; Updates</span> tab in My Oracle
                 Support. These features work in conjunction with the My Oracle
                 Support Configuration Manager. Recorded training sessions on
@@ -776,7 +776,7 @@ opatch prereq CheckConflictAgainstOHWithDetail -ph ./
                 <p>Set your current directory to the directory where the patch
                   is located and then run the OPatch utility by entering the
                   following commands:</p>
-                <pre xml:space="preserve" class="oac_no_warn" dir="ltr">unzip p34133642_&lt;version&gt;_<span
+                <pre xml:space="preserve" class="oac_no_warn" dir="ltr">unzip p34133642_&lt;version&gt;_<span
 class="italic">&lt;platform&gt;</span>.zip
 cd 34133642
 opatch apply
@@ -798,11 +798,11 @@ opatch apply
                     3.3.1</a>.</p>
               </li>
               <li>
-                <p>Load modified SQL files into the database, as explained in <a
+                <p>Load modified SQL files into the database, as explained in <a
                     href="#CEGBIEDI">Section 3.3.2</a>.</p>
               </li>
               <li>
-                <p>Upgrade Oracle Recovery Manager Catalog, as explained in <a
+                <p>Upgrade Oracle Recovery Manager Catalog, as explained in <a
                     href="#UPOARENC">Section 3.3.3</a>.</p>
               </li>
             </ol>
@@ -831,14 +831,14 @@ opatch apply
                   <p>For each separate database running on the same shared
                     Oracle home being patched, run the <code dir="ltr">datapatch</code>
                     utility as described in <a href="#BABEBFHJ">Table 2</a>.</p>
-                  <div class="tblformal"><a id="sthref2" name="sthref2"></a><a id="BABEBFHJ"
+                  <div class="tblformal"><a id="sthref2" name="sthref2"></a><a id="BABEBFHJ"
                       name="BABEBFHJ"></a>
                     <p class="titleintable">Table 2 Steps to Run the Datapatch
                       Utility for Standalone DB Versus Single/Multitenant
                       (CDB/PDB) DB</p>
-                    <table class="Formal" title="Steps to Run the Datapatch Utility for Standalone DB Versus Single/Multitenant (CDB/PDB) DB"
-                      summary="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB)."
-                      dir="ltr" frame="hsides" rules="groups" style="width: 1770px; height: 285px;"
+                    <table class="Formal" title="Steps to Run the Datapatch Utility for Standalone DB Versus Single/Multitenant (CDB/PDB) DB"
+                      summary="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB)."
+                      dir="ltr" frame="hsides" rules="groups" style="width: 1770px; height: 285px;"
                       cellspacing="0" cellpadding="3" border="1">
                       <colgroup><col width="9%" /> <col width="40%" /> <col width="9%" />
                         <col width="*" /> </colgroup>
@@ -907,8 +907,8 @@ opatch apply
                           </td>
                           <td style="text-align:left" headers="r5c1-t3 r1c4-t3">
                             <p><code dir="ltr">SQL&gt; alter pluggable database
-                                all</code> <code dir="ltr">open</code><code dir="ltr">;</code><a
-                                id="sthref3" name="sthref3" href="#sthref3" onclick="footdisplay(1,&quot;It is recommended the Post Install step be run on all pluggable databases; however, the following command (\u003ccode dir=\&quot;ltr\&quot;\u003eSQL\u003e alter pluggable database\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003e\u003cspan class=\&quot;codeinlineitalic\&quot;\u003ePDB_NAME\u003c/span\u003e\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003eopen\u003c/code\u003e ) could be substituted to only open certain PDBs in the single/multitenant database. Doing so will result in the Post Install step only being run on the CDB and opened PDB's. To update a pluggable database at a later date (skipped or newly plugged in), open the database using the \u003ccode dir=\&quot;ltr\&quot;\u003ealter pluggable database\u003c/code\u003e command mentioned previously and rerun the datapatch utility. See My Oracle Support Document \u003ca target=\&quot;toc\&quot; href=\&quot;https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1\&quot;\u003e1935365.1\u003c/a\u003e \u003cspan class=\&quot;italic\&quot;\u003eMultitenant Unplug/Plug Best Practices\u003c/span\u003e for more information about the procedure for unplugging/plugging with different patch releases (in both directions).&quot;)"><sup
+                                all</code> <code dir="ltr">open</code><code dir="ltr">;</code><a
+                                id="sthref3" name="sthref3" href="#sthref3" onclick="footdisplay(1,&quot;It is recommended the Post Install step be run on all pluggable databases; however, the following command (\u003ccode dir=\&quot;ltr\&quot;\u003eSQL\u003e alter pluggable database\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003e\u003cspan class=\&quot;codeinlineitalic\&quot;\u003ePDB_NAME\u003c/span\u003e\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003eopen\u003c/code\u003e ) could be substituted to only open certain PDBs in the single/multitenant database. Doing so will result in the Post Install step only being run on the CDB and opened PDB's. To update a pluggable database at a later date (skipped or newly plugged in), open the database using the \u003ccode dir=\&quot;ltr\&quot;\u003ealter pluggable database\u003c/code\u003e command mentioned previously and rerun the datapatch utility. See My Oracle Support Document \u003ca target=\&quot;toc\&quot; href=\&quot;https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1\&quot;\u003e1935365.1\u003c/a\u003e \u003cspan class=\&quot;italic\&quot;\u003eMultitenant Unplug/Plug Best Practices\u003c/span\u003e for more information about the procedure for unplugging/plugging with different patch releases (in both directions).&quot;)"><sup
                                   class="tablefootnote">Foot&nbsp;1&nbsp;</sup></a></p>
                           </td>
                         </tr>
@@ -988,9 +988,9 @@ opatch apply
                   <pre xml:space="preserve" class="oac_no_warn" dir="ltr">34133642_apply_&lt;database SID&gt;_&lt;CDB name&gt;_&lt;timestamp&gt;.log
 </pre>
                   <p>where <code dir="ltr"><span class="codeinlineitalic">database
-                        SID</span></code> is the database SID, <code dir="ltr"><span
+                        SID</span></code> is the database SID, <code dir="ltr"><span
                         class="codeinlineitalic">CDB name</span></code> is the
-                    name of the multitenant container database, and <code dir="ltr"><span
+                    name of the multitenant container database, and <code dir="ltr"><span
                         class="codeinlineitalic">timestamp</span></code> is of
                     the form YYYYMMMDD_HH_MM_SS.</p>
                 </li>
@@ -1060,7 +1060,7 @@ RMAN&gt; EXIT;
             <ol>
               <li>
                 <p>Shut down all instances and listeners associated with the
-                  Oracle home that you are updating. For more information, see <span
+                  Oracle home that you are updating. For more information, see <span
                     class="italic">Oracle Database Administrator's Guide</span>.</p>
               </li>
               <li>
@@ -1081,11 +1081,11 @@ RMAN&gt; EXIT;
             <p>On Oracle Database server, after deinstalling the patch, perform the following actions. This is not required on Oracle Database client.</p>
             <ol>
               <li>
-                <p>Rollback SQL changes from the the Database, as explained in <a
+                <p>Rollback SQL changes from the the Database, as explained in <a
                     href="#BABDCJEG">Section 4.2.1</a>.</p>
               </li>
               <li>
-                <p>Upgrade Oracle Recovery Manager Catalog, as explained in <a
+                <p>Upgrade Oracle Recovery Manager Catalog, as explained in <a
                     href="#GUID-68C41B01-99CC-4A92-9631-87CEED9418A0">Section
                     4.2.2</a>.</p>
               </li>
@@ -1106,14 +1106,14 @@ RMAN&gt; EXIT;
                     Oracle home being patched, run the <code dir="ltr">datapatch</code>
                     utility as described in <a href="#BABCJFBA">Table 3</a>. If
                     this is Oracle RAC, run datapatch on only one instance.</p>
-                  <div class="tblformal"><a id="sthref4" name="sthref4"></a><a id="BABCJFBA"
+                  <div class="tblformal"><a id="sthref4" name="sthref4"></a><a id="BABCJFBA"
                       name="BABCJFBA"></a>
                     <p class="titleintable">Table 3 Steps to Run the datapatch
                       Utility for Standalone DB Versus Single/Multitenant
                       (CDB/PDB) DB</p>
-                    <table class="Formal" title="Steps to Run the datapatch Utility for Standalone DB Versus Single/Multitenant (CDB/PDB) DB"
-                      summary="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB)."
-                      dir="ltr" frame="hsides" rules="groups" width="100%" cellspacing="0"
+                    <table class="Formal" title="Steps to Run the datapatch Utility for Standalone DB Versus Single/Multitenant (CDB/PDB) DB"
+                      summary="Steps to run datapatch script for single tenant versus multitenant (CDB/PDB)."
+                      dir="ltr" frame="hsides" rules="groups" width="100%" cellspacing="0"
                       cellpadding="3" border="1">
                       <colgroup><col width="9%" /> <col width="40%" /> <col width="9%" />
                         <col width="*" /> </colgroup>
@@ -1182,8 +1182,8 @@ RMAN&gt; EXIT;
                           </td>
                           <td style="text-align:left" headers="r5c1-t4 r1c4-t4">
                             <p><code dir="ltr">SQL&gt; alter pluggable database
-                                all</code> <code dir="ltr">open</code><code dir="ltr">;</code><a
-                                id="sthref5" name="sthref5" href="#sthref5" onclick="footdisplay(1,&quot;It is recommended the Post Install step be run on all pluggable databases; however, the following command (\u003ccode dir=\&quot;ltr\&quot;\u003eSQL\u003e alter pluggable database\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003e\u003cspan class=\&quot;codeinlineitalic\&quot;\u003ePDB_NAME\u003c/span\u003e\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003eopen\u003c/code\u003e ) could be substituted to only open certain PDBs in the single/multitenant database. Doing so will result in the Post Install step only being run on the CDB and opened PDB's. To update a pluggable database at a later date (skipped or newly plugged in), open the database using the \u003ccode dir=\&quot;ltr\&quot;\u003ealter pluggable database\u003c/code\u003e command mentioned previously and rerun the datapatch utility. See My Oracle Support Document \u003ca target=\&quot;toc\&quot; href=\&quot;https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1\&quot;\u003e1935365.1\u003c/a\u003e \u003cspan class=\&quot;italic\&quot;\u003eMultitenant Unplug/Plug Best Practices\u003c/span\u003e for more information about the procedure for unplugging/plugging with different patch releases (in both directions).&quot;)"><sup
+                                all</code> <code dir="ltr">open</code><code dir="ltr">;</code><a
+                                id="sthref5" name="sthref5" href="#sthref5" onclick="footdisplay(1,&quot;It is recommended the Post Install step be run on all pluggable databases; however, the following command (\u003ccode dir=\&quot;ltr\&quot;\u003eSQL\u003e alter pluggable database\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003e\u003cspan class=\&quot;codeinlineitalic\&quot;\u003ePDB_NAME\u003c/span\u003e\u003c/code\u003e \u003ccode dir=\&quot;ltr\&quot;\u003eopen\u003c/code\u003e ) could be substituted to only open certain PDBs in the single/multitenant database. Doing so will result in the Post Install step only being run on the CDB and opened PDB's. To update a pluggable database at a later date (skipped or newly plugged in), open the database using the \u003ccode dir=\&quot;ltr\&quot;\u003ealter pluggable database\u003c/code\u003e command mentioned previously and rerun the datapatch utility. See My Oracle Support Document \u003ca target=\&quot;toc\&quot; href=\&quot;https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=1935365.1\&quot;\u003e1935365.1\u003c/a\u003e \u003cspan class=\&quot;italic\&quot;\u003eMultitenant Unplug/Plug Best Practices\u003c/span\u003e for more information about the procedure for unplugging/plugging with different patch releases (in both directions).&quot;)"><sup
                                   class="tablefootnote">Foot&nbsp;1&nbsp;</sup></a></p>
                           </td>
                         </tr>
@@ -1249,7 +1249,7 @@ RMAN&gt; EXIT;
                     unplugging/plugging with different patch releases (in both
                     directions).</p>
                   <p>The <code dir="ltr">datapatch</code> utility runs the
-                    necessary rollback scripts. An entry is added to the <code
+                    necessary rollback scripts. An entry is added to the <code
                       dir="ltr">dba_registry_sqlpatch</code> view reflecting the
                     patch application. In the <code dir="ltr">dba_registry_sqlpatch</code>
                     view, verify the Status for the ROLLBACK is "SUCCESS". For
@@ -1263,9 +1263,9 @@ RMAN&gt; EXIT;
                   <pre xml:space="preserve" class="oac_no_warn" dir="ltr">34133642_rollback_&lt;database SID&gt;_&lt;CDB name&gt;_&lt;timestamp&gt;.log
 </pre>
                   <p>where <code dir="ltr"><span class="codeinlineitalic">database
-                        SID</span></code> is the database SID, <code dir="ltr"><span
+                        SID</span></code> is the database SID, <code dir="ltr"><span
                         class="codeinlineitalic">CDB name</span></code> is the
-                    name of the multitenant container database, and <code dir="ltr"><span
+                    name of the multitenant container database, and <code dir="ltr"><span
                         class="codeinlineitalic">timestamp</span></code> is of
                     the form YYYYMMMDD_HH_MM_SS.</p>
                 </li>
@@ -1279,7 +1279,7 @@ $ORACLE_HOME/perl/bin/perl $ORACLE_HOME/rdbms/admin/catcon.pl -n 1 -e -b utlrp -
               </ol>
             </div>
             <!-- class="sect3" --></div>
-          <div class="sect3"><!-- infolevel="all" infotype="General" --><a name="GUID-68C41B01-99CC-4A92-9631-87CEED9418A0"
+          <div class="sect3"><!-- infolevel="all" infotype="General" --><a name="GUID-68C41B01-99CC-4A92-9631-87CEED9418A0"
               id="GUID-68C41B01-99CC-4A92-9631-87CEED9418A0"></a>
             <h4 class="sect3"><span class="enumeration_section">4.2.2 </span>Upgrade
               Oracle Recovery Manager Catalog</h4>
@@ -1341,7 +1341,7 @@ RMAN&gt; EXIT;
             <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=293369.1">293369.1</a>
             <span class="italic">OPatch documentation list</span>.</p>
           <p>For issues documented after the release of this patch, see My
-            Oracle Support Document <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=19202207.9">19202207.9</a> <span class="italic">Oracle DB/GI/OJVM Update/Revision R19 Jul 2022 Known Issues</span><span
+            Oracle Support Document <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=19202207.9">19202207.9</a> <span class="italic">Oracle DB/GI/OJVM Update/Revision R19 Jul 2022 Known Issues</span><span
               style="text-decoration: line-through;"></span></p>
           <p>Other issues are as follows.</p>
           <dl>
@@ -1415,7 +1415,7 @@ ORA-29931: specified association does not exist
         <div class="sect1"><!-- infolevel="all" infotype="General" -->
           <h2 class="sect1"><span class="secnum">7</span> Bugs Fixed by This
             Patch</h2>
-          <div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref7"
+          <div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref7"
               name="sthref7"></a>
             <p>See My Oracle Support Document <a href="https://support.oracle.com/CSP/main/article?cmd=show&amp;type=NOT&amp;id=2523220.1">2523220.1</a>
               for the list of bugs fixed in this patch.</p>
