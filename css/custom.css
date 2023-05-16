@@ -110,12 +110,6 @@
   src: url('/blog/font/CascadiaMono.woff2') format('woff2');
 }
 
-@font-face{
-  font-family: 'HarmonyOS_Sans_SC_Regular';
-  font-display: swap;
-  src: url('/blog/font/HarmonyOS_Sans_SC_Regular.ttf') format("truetype");
-}
-
 .layout {max-width: 1500px;}
     
 .layout > div:first-child {width: 80%;}
