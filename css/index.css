@@ -1379,7 +1379,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: HarmonyOS_Sans_SC_Regular;
+  font-family: ZhuZiAWan;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -1510,7 +1510,7 @@ a:hover {
 .site-name,
 #aside-content .author-info__name,
 #aside-content .author-info__description {
-  font-family: HarmonyOS_Sans_SC_Regular;
+  font-family: ZhuZiAWan;
 }
 .is-center {
   text-align: center;
@@ -1984,7 +1984,7 @@ figure.highlight pre .javascript .function {
   height: 100%;
   vertical-align: top;
   text-align: center;
-  font-family: HarmonyOS_Sans_SC_Regular;
+  font-family: ZhuZiAWan;
 }
 @media screen and (max-width: 768px) {
   .error404 #error-wrap .error-content .error-info {
