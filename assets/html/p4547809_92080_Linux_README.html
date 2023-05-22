@@ -1,0 +1,4083 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><!-- Run date = August 18, 2006 18:55:51 -->
+
+
+
+
+<meta name="Generator" content=" Oracle DARB XHTML converter - Version 4.5.1 Build 4">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript"><title>Oracle9i Patch Set Notes</title>
+
+
+
+<style type="text/css">
+@charset "utf-8";
+/*
+  blafdoc.css
+  Release 4.5.2
+  Copyright 2002, 2006, Oracle. All rights reserved.
+*/
+
+body, table {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.25;
+  color: black;
+  background-color: white;
+  font-size: small;
+}
+* html body {
+/* http://www.info.com.ph/~etan/w3pantheon/style/modifiedsbmh.html */
+  font-size: x-small; /* for IE5.x/win */
+  f\ont-size: small;  /* for other IE versions */
+}
+
+a:link {
+  color: #630;
+  background: inherit;
+}
+
+a:visited {
+  color: #963;
+  background: inherit;
+}
+
+a:hover {
+  color: #f60;
+  background: inherit;
+}
+
+a:active {
+  color: #f60;
+  background: inherit;
+}
+
+a.glossary-link {
+  border-bottom: 1px dotted;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #369;
+  background: inherit;
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: bold;
+  border: solid #cc9;
+  border-width: 0px 0px 1px 0px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 0.95em;
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 0.95em;
+  font-weight: normal;
+}
+
+pre, code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+}
+
+code {
+  color: #369;
+  background: inherit;
+}
+
+code *.code-comment {
+  color: black;
+  background: inherit;
+}
+
+pre a:link, code a:link, a:link code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+  color: #630;
+  background: inherit;
+}
+
+pre a:visited, code a:visited, a:visited code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+  color: #963;
+  background: inherit;
+}
+
+pre a:hover, code a:hover, a:hover code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+  color: #f60;
+  background: inherit;
+}
+
+pre a:active, code a:active, a:active code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+  color: #f60;
+  background: inherit;
+}
+
+caption {
+  text-align: center;
+  font-weight: bold;
+  width: auto;
+}
+
+dt {
+  font-weight: bold;
+}
+
+td {
+  vertical-align: top;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+  vertical-align: bottom;
+  color: #369;
+  background: inherit;
+}
+
+table.table-border {
+  border-collapse: collapse;
+  border-top: 1px solid #630;
+  border-left: 1px solid #630;
+}
+table.table-border th {
+  padding: 0.5ex 0.25em;
+  color: black;
+  background-color: #cc9;
+  border-right: 1px solid #630;
+  border-bottom: 1px solid #630;
+}
+table.table-border td {
+  padding: 0.5ex 0.25em;
+  border-right: 1px solid #630;
+  border-bottom: 1px solid #630;
+}
+
+span.gui-object, span.gui-object-action {
+  font-weight: bold;
+}
+
+span.gui-object-title { }
+
+p.horizontal-rule {
+  width: 100%;
+  border: solid #cc9;
+  border-width: 0px 0px 1px 0px;
+  margin-bottom: 4ex;
+}
+
+div.zz-skip-header {
+  display: none;
+}
+
+td.zz-nav-header-cell {
+  text-align: left;
+  font-size: 0.95em;
+  width: 99%;
+  color: black;
+  background: inherit;
+  font-weight: normal;
+  vertical-align: top;
+  margin-top: 0ex;
+  padding-top: 0ex;
+}
+
+a.zz-nav-header-link {
+  font-size: 0.95em;
+}
+
+td.zz-nav-button-cell {
+  white-space: nowrap;
+  text-align: center;
+  width: 1%;
+  vertical-align: top;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-top: 0ex;
+  padding-top: 0ex;
+}
+
+a.zz-nav-button-link {
+  font-size: 0.9em;
+}
+
+div.zz-nav-footer-menu {
+  width: 100%;
+  text-align: center;
+  margin-top: 2ex;
+  margin-bottom: 4ex;
+}
+
+p.zz-legal-notice, a.zz-legal-notice-link {
+  font-size: 0.85em;
+  /* display: none; */  /* Uncomment to hide legal notice */
+}
+
+td > p {
+  margin-top: 0ex;
+  margin-bottom: 0ex;
+}
+
+td li p {
+  display: inline;
+}
+
+/*************************************/
+/*  Begin DARB Formats               */
+/*************************************/
+
+.bold, .codeinlinebold, .syntaxinlinebold, .term, .glossterm, .seghead,
+.glossaryterm, .keyword, .msg, .msgexplankw, .msgactionkw, .notep1 {
+  font-weight: bold;
+}
+
+.italic, .codeinlineitalic, .syntaxinlineitalic, .variable {
+  font-style: italic;
+}
+
+.bolditalic, .codeinlineboldital, .syntaxinlineboldital,
+.titleinfigure, .titleinexample, .titleintable, .titleinequation {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.bridgehead, .titleinrefsubsect, .subhead1, .subhead2, .subhead3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #369;
+  background: inherit;
+  font-weight: bold;
+}
+
+.titleinrefsubsect, .subhead1 {
+  font-size: 1.1em;
+}
+
+.subhead2 {
+  font-size: 1.0em;
+}
+
+.subhead3 {
+  font-size: 0.95em;
+  display: inline;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.superscript {
+  vertical-align: super;
+}
+
+.subscript {
+  vertical-align: sub;
+}
+
+.listofeft {
+  border: none;
+}
+
+.betadraft {
+  color: #f00;
+  background: inherit;
+}
+
+.betadraftsubtitle {
+  text-align: center;
+  font-weight: bold;
+  color: #f00;
+  background: inherit;
+}
+
+.comment {
+  color: #080;
+  background: inherit;
+  font-weight: bold;
+}
+
+.copyrightlogo {
+  text-align: center;
+  font-size: 0.85em;
+  border-style: none;
+}
+
+.tocsubheader {
+  list-style-type: none;
+}
+
+table.icons td {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.l1ix dd, dd dl.l2ix, dd dl.l3ix {
+  margin-top: 0ex;
+  margin-bottom: 0ex;
+}
+
+/*************************************/
+/*  End DARB Formats                 */
+/*************************************/
+
+@media all {
+  * {
+    line-height: 1.2;
+  }
+  body {
+    color: black;
+    background: white;
+  }
+  dd {
+    margin-bottom: 2ex;
+  }
+  dl:first-child {
+    margin-top: 2ex;
+  }
+}
+
+@media print {
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+  }
+
+  h1, h2, h3, h4, h5, h6, th, thead td {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background: inherit;
+  }
+
+  div.zz-skip-header {
+    display: none;
+  }
+
+  code, a:link, a:visited, a:hover, a:active {
+    color: black;
+    background: inherit;
+    text-decoration: none;
+  }
+}
+</style></head><body>
+<div class="header">
+<a id="top" name="top"></a>
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td align="left" valign="top">
+<b>Oracle9<span class="italic">i</span> Patch Set Notes </b>
+<br>
+<b>Release 2 (9.2.0.8) Patch Set 7 for Linux x86</b>
+<br>
+
+</td>
+<td align="right" valign="bottom">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="225">
+<tbody><tr><td>&nbsp;</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<hr>
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100">
+<tbody><tr>
+<td>&nbsp;</td>
+</tr>
+</tbody></table>
+</div><!-- class="header" -->
+<div class="ind">
+<!-- End Header -->
+<h1>Oracle9<span class="italic">i</span></h1>
+<p class="booktitle">
+Patch Set Notes
+</p>
+<p>
+<span class="revnumber">
+Release 2 (9.2.0.8) Patch Set 7
+</span>
+<span class="platform">
+for Linux x86
+</span>
+</p>
+<p class="invpartnumber"></p>
+<p class="date">August 2006</p>
+<p>These patch set notes accompany the Oracle9<span class="italic">i</span> release 2 (9.2.0.8) patch set. 
+</p>
+<p>This document contains the following sections:
+</p>
+<ul>
+<li type="disc">
+<p><a href="#BABHHHEA">Patch Set Overview</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABFHFED">Oracle Universal Installer Version Requirements</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABGGBBA">Patch Set Documentation</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABIJCGC">System Requirements</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABDCDFJ">Preinstallation Tasks</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABEDCGF">Installation Tasks</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABHBGGB">Postinstallation Tasks</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABEEGCJ">Removing the Patch Set Software</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABCCHDG">Reinstalling the Patch Set Software</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBIEJFA">Known Issues</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABHEFJD">Fixed Platform-Specific Bugs</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJCEDC">Patch Set Components</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABIBDDI">Documentation Accessibility</a>
+</p>
+</li>
+</ul><a id="BABHHHEA" name="BABHHHEA"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref1" name="sthref1"></a>
+<h2 class="sect1"><span class="secnum">1 </span>Patch Set Overview
+</h2>
+<p>Patch sets are a mechanism for delivering fully tested and
+integrated product fixes. Patch sets provide bug fixes only; they do
+not include new functionality and they do not require certification on
+the target system.
+</p>
+<p>Patch sets include all of the libraries that have been rebuilt to
+implement the bug fixes in the set. All of the fixes in the patch set
+have been tested and are certified to work with each other. Because
+patch sets include only low impact fixes, you are not required to
+certify applications or tools against the server unless directed to by
+the operating system vendor.
+</p>
+<p>Patch sets are cumulative. Patch set release 9.2.0.8 includes all
+fixes in patch sets 9.2.0.8 and earlier as well as new fixes for patch
+set 9.2.0.8. This means that unless the patch set documentation
+indicates otherwise, you can apply this patch set to any earlier
+release 9.2 installation. You do not have to install intermediate patch
+sets.
+</p>
+<p>Patch sets contain generic fixes that apply to all platforms. Patch sets may also include additional platform-specific patches.
+</p>
+<p>For a list of products included in this patch set, see the <a href="#BABJCEDC">"Patch Set Components"</a> section.
+</p>
+</div><!-- class="sect1" -->
+<a id="BABFHFED" name="BABFHFED"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref2" name="sthref2"></a>
+<h2 class="sect1"><span class="secnum">2 </span>Oracle Universal Installer Version Requirements
+</h2>
+<p>This patch set includes Oracle Universal Installer release 10.1.0.5.
+You must use this Oracle Universal Installer to install this patch set
+and not Oracle Universal Installer from the 9.2.0.<span class="italic">x</span> maintenance release media or Oracle home.
+</p>
+<p>This is not a complete software distribution. You must install it in an existing Oracle9<span class="italic">i</span> release 2 (9.2.0.<span class="italic">x.x</span>) installation. Users applying this patch set <span class="italic">must</span>
+use Oracle Universal Installer release 10.1.0.5 (provided as part of
+this patch set) or later to ensure that their Oracle home can be
+patched in the future. Oracle Universal Installer release 10.1.0.5 is
+also installed when you install this patch set.
+</p>
+</div><!-- class="sect1" -->
+<a id="BABGGBBA" name="BABGGBBA"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref3" name="sthref3"></a>
+<h2 class="sect1"><span class="secnum">3 </span>Patch Set Documentation
+</h2>
+<p>There are two documents related to this release of the Oracle9<span class="italic">i</span> release 2 patch set: 
+</p>
+<ul>
+<li type="disc">
+<p><span class="italic">Oracle9i Patch Set Notes, Release 2 (9.2.0.8) Patch Set 7 for </span> <span class="italic">Linux x86</span>  (this document)
+</p>
+<p>This document provides:
+</p>
+<ul>
+<li type="circle">
+<p>System requirements and information about how to install or reinstall the patch set
+</p>
+</li>
+<li type="circle">
+<p>A list of all bugs fixed to date that are specific to Oracle9<span class="italic">i</span> release 2 for Linux x86 
+</p>
+</li>
+<li type="circle">
+<p>A list of known issues relating to Oracle9<span class="italic">i</span> release 2 for Linux x86 
+</p>
+</li>
+</ul>
+</li>
+<li type="disc">
+<p><span class="italic">Oracle9i List of Bugs Fixed, Release 2 (9.2.0.8) Patch Set 7</span>
+</p>
+<p>The <span class="italic">List of Bugs Fixed</span> is a list of all generic bugs related to Oracle9<span class="italic">i</span> release 2 that have been fixed in this release.
+</p>
+</li>
+</ul>
+<p>Both of these documents are included with the patch set. The <span class="italic">Oracle9i List of Bugs Fixed</span> is also available on Oracle<span class="italic">Metalink</span>, from document 189908.1,
+</p>
+<p> <span class="italic">ALERT: Oracle9i Release 2 (9.2) Support Status and Alerts</span> at:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code><a href="http://metalink.oracle.com/">http://metalink.oracle.com</a></code>
+
+</pre>
+<p>To locate document 189908.1:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Click <span class="bold">Advanced</span> at the top of the Oracle<span class="italic">Metalink</span> page.
+</p>
+</li>
+<li>
+<p>Enter 189908.1 in the <span class="bold">Document ID</span> field, then click <span class="bold">Submit</span>.
+</p>
+</li>
+</ol>
+</div><!-- class="sect1" -->
+<a id="BABIJCGC" name="BABIJCGC"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref4" name="sthref4"></a>
+<h2 class="sect1"><span class="secnum">4 </span>System Requirements
+</h2>
+<p>The following are the system requirements for this patch set:
+</p>
+<ul>
+<li type="disc">
+<p>Operating System
+</p>
+<ul>
+<li type="circle">
+<p>SUSE Linux Enterprise Server (SLES) 8 or 9
+</p>
+</li>
+<li type="circle">
+<p>Red Hat Enterprise Linux AS/ES 2.1, 3, or 4
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>For all Linux Red Hat AS 2.1, the minimum kernel version requirement is 2.4.9-e.57.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<ul>
+<li type="disc">
+<p>Oracle9<span class="italic">i</span>
+</p>
+<p>Oracle9<span class="italic">i</span> release 2 (9.2.0.1.0) or later
+</p>
+</li>
+</ul>
+</div><!-- class="sect1" -->
+<a id="BABDCDFJ" name="BABDCDFJ"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref5" name="sthref5"></a>
+<h2 class="sect1"><span class="secnum">5 </span>Preinstallation Tasks
+</h2>
+<p>Complete the following preinstallation tasks before installing the patch set:
+</p>
+<ul>
+<li type="disc">
+<p><a href="#BABGFGIB">Review Known Preinstallation Issues</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBDJBGI">Review Changes in Oracle Text Filtering Technology</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#CHDIEGDB">Preinstallation Considerations for Oracle Real Application Clusters</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABFIDHA">Oracle RAC Only: Configure the hangcheck-timer Kernel Module</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABDIIFJ">Oracle RAC Only: Install the Oracle Cluster Manager 9.2.0.8 Patch</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJGABF">Oracle RAC Only: Configure Oracle Cluster Manager to Use the hangcheck-timer Module</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#CHDFEGFB">Identify the Oracle9<span class="italic">i</span> Installation</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABFFEDA">Check Postrelease Updates</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#CHDIBAHB">Download and Extract the Installation Software</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABCJEBC">Set the <code>ORACLE_HOME</code> and <code>ORACLE_SID</code> Environment Variables</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJJIBD">Shut Down Oracle Databases</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABEGGIB">Stop All Processes</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABEHFBA">Back Up the System</a>
+</p>
+</li>
+</ul><a id="BABGFGIB" name="BABGFGIB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref6" name="sthref6"></a>
+<h3 class="sect2"><span class="secnum">5.1 </span>Review Known Preinstallation Issues
+</h3>
+<p>Review the information in the following sections. If any of the
+issues apply to your Oracle installation, follow the instructions
+before installing the patch set.
+</p>
+<ul>
+<li type="disc">
+<p><a href="#BABCCBEH">Database Upgrade for Oracle E-Business Suite</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABBABID">Patch Set Application with Physical or Logical Standby Databases in Place</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBGJIIJ">Notes to OLAP users</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABGGFFF">Upgrading Preconfigured Standard Edition Databases</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABIFHFD">Oracle Streams</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABIFAAD">Oracle Data Guard</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJDDEG">Oracle Advanced Queuing</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABIFDHI">Event 10499: NUMBER Datatypes</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJDEIH">Oracle XDK</a>
+</p>
+</li>
+</ul><a id="BABCCBEH" name="BABCCBEH"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref7" name="sthref7"></a>
+<h4 class="sect3"><span class="secnum">5.1.1 </span>Database Upgrade for Oracle E-Business Suite
+</h4>
+<p>If you are an Oracle E-Business Suite customer and you want to upgrade your Oracle E-Business Suite release 11<span class="italic">i</span>
+database server to this patch set, then you must check the latest
+certification status and Interoperability Notes available on the Oracle<span class="italic">MetaLink</span> Web site at:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code><a href="http://metalink.oracle.com/">http://metalink.oracle.com</a></code>
+
+</pre>
+<p>All other customers wanting to upgrade their databases directly to this patch set should read <span class="italic">Upgrading Directly to a 9.2.0 Patch Set</span> available on Oracle<span class="italic">Metalink</span> from document 214887.1.
+</p>
+</div><!-- class="sect3" -->
+<a id="BABBABID" name="BABBABID"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref8" name="sthref8"></a>
+<h4 class="sect3"><span class="secnum">5.1.2 </span>Patch Set Application with Physical or Logical Standby Databases in Place
+</h4>
+<p>For information about applying a patch set to a current release of Oracle9<span class="italic">i</span> release 2 for a configuration that includes one or more physical standby databases, refer to notes available in Oracle<span class="italic">MetaLink</span> document 187242.1.
+</p>
+</div><!-- class="sect3" -->
+<a id="BGBGJIIJ" name="BGBGJIIJ"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref9" name="sthref9"></a>
+<h4 class="sect3"><span class="secnum">5.1.3 </span>Notes to OLAP users
+</h4>
+<p>Anyone desiring to use the OLAP option must have the Enterprise
+Edition of 9.2.0.1.0 with the OLAP option installed as their original
+base release, prior to installing any of the 9i patch sets, up to and
+including 9.2.0.8.0. Oracle highly recommends the Data Warehouse
+configuration type to optimize the database for OLAP.
+</p>
+<p>If you are moving your Oracle database from a 32-bit operating
+system to a 64-bit operating system, either prior to applying the patch
+set or after applying the patch set, review document 352306.1 on the
+Oracle<span class="italic">Metalink</span> Web site:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code><a href="http://metalink.oracle.com/">http://metalink.oracle.com</a></code>
+
+</pre>
+<p>To locate document 352306.1:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Log on to Oracle<span class="italic">Metalink</span>.
+</p>
+</li>
+<li>
+<p>Click <span class="bold">Advanced</span> at the top of the Oracle<span class="italic">Metalink</span> page.
+</p>
+</li>
+<li>
+<p>Enter 352306.1 in the <span class="bold">Document ID</span> field, then click <span class="bold">Submit</span>.
+</p>
+</li>
+</ol>
+</div><!-- class="sect3" -->
+<a id="BABGGFFF" name="BABGGFFF"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref10" name="sthref10"></a>
+<h4 class="sect3"><span class="secnum">5.1.4 </span>Upgrading Preconfigured Standard Edition Databases
+</h4>
+<p>If you are using an Oracle9<span class="italic">i</span> release 2
+(9.2) preconfigured Standard Edition database, then the database
+contains the following components that are not supported by the
+Standard Edition:
+</p>
+<ul>
+<li type="disc">
+<p>Oracle Data Mining
+</p>
+</li>
+<li type="disc">
+<p>Oracle OLAP Catalog
+</p>
+</li>
+<li type="disc">
+<p>Oracle OLAP Analytic Workspace
+</p>
+</li>
+<li type="disc">
+<p>Oracle OLAP API
+</p>
+</li>
+</ul>
+<p>The <code>catpatch.sql</code> script does not run the patch scripts for these components. It sets the component STATUS to <code>OPTION OFF</code> in the DBA_REGISTRY view. The original versions of the dictionary objects for the components remain in the database but the <code>catpatch.sql</code> script does not apply the patch to them. 
+</p>
+</div><!-- class="sect3" -->
+<a id="BABIFHFD" name="BABIFHFD"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref11" name="sthref11"></a>
+<h4 class="sect3"><span class="secnum">5.1.5 </span>Oracle Streams
+</h4>
+<p>All databases that use any features of Oracle Streams must be
+upgraded to release 9.2.0.2 or later. Operation between release 9.2.0.1
+and release 9.2.0.2 is not supported for databases using Oracle Streams
+features. </p>
+<p>Before you install the patch set software, review Oracle<span class="italic">MetaLink</span> note 283565.1.
+</p>
+</div><!-- class="sect3" -->
+<a id="BABIFAAD" name="BABIFAAD"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref12" name="sthref12"></a>
+<h4 class="sect3"><span class="secnum">5.1.6 </span>Oracle Data Guard
+</h4>
+<p>Several known issues relate to the following components of Oracle Data Guard:
+</p>
+<ul>
+<li type="disc">
+<p>Redo Apply (Physical Standby Databases)
+</p>
+</li>
+<li type="disc">
+<p>SQL Apply (Logical Standby Databases)
+</p>
+</li>
+<li type="disc">
+<p>Data Guard Broker
+</p>
+</li>
+<li type="disc">
+<p>Data Guard Broker Failover
+</p>
+</li>
+</ul>
+<p>Refer to Oracle<span class="italic">MetaLink</span> document 259804.1 for a complete set of release notes applicable to Oracle Data Guard in Oracle9<span class="italic">i</span> release 2.
+</p>
+<p>Before you install the patch set software, review Oracle<span class="italic">MetaLink</span> note 283565.1.
+</p>
+</div><!-- class="sect3" -->
+<a id="BABJDDEG" name="BABJDDEG"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref13" name="sthref13"></a>
+<h4 class="sect3"><span class="secnum">5.1.7 </span>Oracle Advanced Queuing
+</h4>
+<p>There are two known issues while upgrading from Oracle8<span class="italic">i</span> to Oracle9<span class="italic">i</span> release 2:
+</p>
+<p>Customers running Oracle Applications release 11.5.7 or 11.5.8 with
+Advanced Queuing configured with multiconsumer queues may encounter
+corruption problems after upgrading their database from any Oracle8<span class="italic">i</span> database to 9.2. 
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>Refer to Oracle<span class="italic">Metalink</span> note 231074.1 for more information. 
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>Oracle Streams Advanced Queuing (AQ) propagations that were previously scheduled must be unscheduled before upgrading an Oracle8<span class="italic">i</span> database. To unschedule AQ propagations, run the <code>DBMS_AQADM.UNSCHEDULE_PROPAGATION PL/SQL</code> procedure.
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">See Also:</p><span class="italic">PL/SQL Packages and Types Reference</span> for more information about this procedure
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</div><!-- class="sect3" -->
+<a id="BABIFDHI" name="BABIFDHI"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref14" name="sthref14"></a>
+<h4 class="sect3"><span class="secnum">5.1.8 </span>Event 10499: NUMBER Datatypes
+</h4>
+<p>Event 10499 was introduced in release 9.2.0.3 to allow customers to
+revert to the earlier behavior of NUMBER datatypes that have no
+explicit setting of their scale value. Any nonzero setting of the event
+level enables the old behavior. </p>
+<p>Before the introduction of this event, server code could return zero
+for the scale if a NUMBER datatype was created without specifying the
+scale. Other code paths would return -127. With this event, all code
+paths return -127, as this is the correct behavior. </p>
+<p>Client applications may rely on the previous (incorrect) behavior.
+Typically, client applications will test for a scale of -127 to
+distinguish between NUMBER and FLOAT datatypes. It is not sufficient to
+test the scale alone to distinguish between these two datatypes. You
+must test for a scale of -127 and a nonzero precision to identify a
+FLOAT. </p>
+<p>Client applications that rely on the old behavior can still work as
+before if the event is set. However, these applications must be
+corrected before upgrading to the next major release of the Oracle
+database. </p>
+</div><!-- class="sect3" -->
+<a id="BABJDEIH" name="BABJDEIH"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref15" name="sthref15"></a>
+<h4 class="sect3"><span class="secnum">5.1.9 </span>Oracle XDK
+</h4>
+<p>The Oracle9<span class="italic">i</span> release 2 (9.2.0.8) patch set contains XDK release 9.2.0.10. 
+</p>
+</div><!-- class="sect3" -->
+
+</div><!-- class="sect2" -->
+<a id="BGBDJBGI" name="BGBDJBGI"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref16" name="sthref16"></a>
+<h3 class="sect2"><span class="secnum">5.2 </span>Review Changes in Oracle Text Filtering Technology
+</h3>
+<p>Beginning with patch set release 9.2.0.7, INSO software is no longer
+shipped with Oracle Text. It is replaced with Verity KeyView Export
+from Verity, Inc. There are a number of differences between the old and
+the new filters. If you intend to use Oracle Text, review document
+296405.1 on the Oracle<span class="italic">Metalink</span> Web site:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code><a href="http://metalink.oracle.com/">http://metalink.oracle.com</a></code>
+
+</pre>
+<p>To locate document 296405.1:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Click <span class="bold">Advanced</span> at the top of the Oracle<span class="italic">Metalink</span> page.
+</p>
+</li>
+<li>
+<p>Enter 296405.1 in the <span class="bold">Document ID</span> field, then click <span class="bold">Submit</span>.
+</p>
+</li>
+</ol>
+</div><!-- class="sect2" -->
+<a id="CHDIEGDB" name="CHDIEGDB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref17" name="sthref17"></a>
+<h3 class="sect2"><span class="secnum">5.3 </span>Preinstallation Considerations for Oracle Real Application Clusters
+</h3>
+<p>If you plan to install this patch in an Oracle Real Application
+Clusters environment, read the following section before proceeding:
+</p>
+<ul>
+<li type="disc">
+<p><a href="#CHDIIEFF">Preinstallation Considerations for Oracle Real Application Clusters</a>
+</p>
+</li>
+</ul><a id="CHDIIEFF" name="CHDIIEFF"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref18" name="sthref18"></a>
+<h4 class="sect3"><span class="secnum">5.3.1 </span>Preinstallation Considerations for Oracle Real Application Clusters
+</h4>
+<p>This patch set enables you to install the included patches on
+multiple nodes in a cluster if release 9.2.0.1 or higher is already
+installed on those nodes. Oracle Universal Installer detects whether
+the system where you are installing the software is part of a cluster
+environment. If it is, then the Oracle Universal Installer displays the
+available nodes from the cluster. </p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>It is important that you install the patch
+set on the same set of nodes, which had the base release installation.
+Choosing a different set of nodes during the patch set installation
+than were chosen during the base release installation will cause
+unwanted results in your Real Application Clusters environment, as some
+nodes will be upgraded to the new software versions, while others will
+not.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</div><!-- class="sect3" -->
+
+</div><!-- class="sect2" -->
+<a id="BABFIDHA" name="BABFIDHA"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref19" name="sthref19"></a>
+<h3 class="sect2"><span class="secnum">5.4 </span>Oracle RAC Only: Configure the hangcheck-timer Kernel Module
+</h3>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If you have already configured the hangcheck-timer module, for example, if you applied a previous Oracle9<span class="italic">i</span> release 2 patch set or installed Oracle9<span class="italic">i</span> release 9.2.0.4, you do not need to complete this task.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>Starting with release 9.2.0.2, the hangcheck-timer module replaces the watchdog daemon (<code>watchdogd</code>)
+for Oracle RAC installations. The hangcheck-timer module is not
+required, however Oracle recommends that you use it. The following
+sections describe the hangcheck-timer module and describe how to
+configure it.
+</p>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref20" name="sthref20"></a>
+<h4 class="sect3"><span class="secnum">5.4.1 </span>hangcheck-timer Module
+</h4>
+<p>The hangcheck-timer module monitors the Linux kernel for long
+operating system hangs that could affect the reliability of an Oracle
+RAC node and cause corruption of an Oracle RAC database. If the
+operating system hangs, then the hangcheck-timer module will reboot the
+node. This approach has the following advantages:
+</p>
+<ul>
+<li type="disc">
+<p>Node reboots are triggered from within the Linux kernel, making them less affected by system load.
+</p>
+</li>
+<li type="disc">
+<p>The Oracle Cluster Manager on an Oracle RAC node can be stopped and
+reconfigured because its operation is completely independent of the
+kernel module.
+</p>
+</li>
+<li type="disc">
+<p>The features in the hangcheck-timer module closely resemble features
+found in the implementation of Oracle Cluster Manager for Oracle RAC on
+the Microsoft Windows platform, on which Oracle Cluster Manager for
+Linux x86 was based.
+</p>
+</li>
+</ul>
+<p>The deprecation and removal of the watchdog daemon requires several parameter changes in the <code>$ORACLE_HOME/oracm/admin/cmcfg.ora</code> file used to configure Oracle Cluster Manager. The changes are as follows:
+</p>
+<ul>
+<li type="disc">
+<p>The following parameters in the <code>cmcfg.ora</code> file are no longer valid:
+</p>
+<ul>
+<li type="circle">
+<p>WatchdogTimerMargin
+</p>
+</li>
+<li type="circle">
+<p>WatchdogSafetyMargin
+</p>
+</li>
+</ul>
+<p>These parameters should be removed from the <code>cmcfg.ora</code> file on all nodes in the cluster.
+</p>
+</li>
+<li type="disc">
+<p>The following configuration parameter has been added to allow the
+Oracle Cluster Manager to know the name of the hangcheck-timer module
+so it can be loaded correctly:
+</p>
+<ul>
+<li type="circle">
+<p><code>KernelModuleName</code>
+</p>
+</li>
+</ul>
+<p>If the module in the <code>KernelModuleName</code> is correctly
+specified but not loaded, or is incorrectly specified, then the Oracle
+Cluster Manager will produce a series of error messages in the system
+log (<code>/var/log/messages</code>). It will not prevent the process from running. The module must be loaded before you start Oracle Cluster Manager.
+</p>
+</li>
+<li type="disc">
+<p>The <code>CMDiskFile</code> parameter has been changed from optional
+to mandatory. This ensures a cluster manager quorum partition is used
+and allows the Oracle Cluster Manager to reliably handle certain
+hardware and software errors that affect cluster participation.
+</p>
+</li>
+<li type="disc">
+<p>The following configuration parameters have been added to be used when the module is loaded:
+</p>
+<ul>
+<li type="circle">
+<p>hangcheck_tick
+</p>
+<p>This parameter is the interval indicating how often the hangcheck-timer checks on the health of the system.
+</p>
+</li>
+<li type="circle">
+<p>hangcheck_margin
+</p>
+<p>This parameter sets the margin of error to prevent unnecessary
+system resets due to certain kernel activities that may randomly
+introduce delays in the operation of hangcheck-timer.
+</p>
+</li>
+</ul>
+<p>Together, these two parameters indicate how long an Oracle RAC node
+must hang before the hangcheck-timer module reboots the system. A node
+reboot occurs when the system hang time is greater than the sum of the
+times set in the hangcheck_tick and hangcheck_margin parameters.
+</p>
+</li>
+</ul>
+</div><!-- class="sect3" -->
+
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref21" name="sthref21"></a>
+<h4 class="sect3"><span class="secnum">5.4.2 </span>Recommended hangcheck-timer Configuration Defaults
+</h4>
+<p>The following are the recommended default configuration settings for
+the hangcheck-timer module. These are in addition to the
+recommendations for parameters in the Oracle RAC documentation.
+</p>
+<div class="inftblruleinformal">
+
+<table class="RuleInformal" title="hangcheck-timer settings" summary="hangcheck-timer default parameter settings." dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="border" rules="all" width="100%">
+<thead>
+<tr align="left" valign="top">
+<th id="r1c1-t7" align="left" valign="bottom">Parameter
+</th>
+<th id="r1c2-t7" align="left" valign="bottom">Service
+</th>
+<th id="r1c3-t7" align="left" valign="bottom">Setting
+</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td id="r2c1-t7" headers="r1c1-t7" align="left">hangcheck_tick
+</td>
+<td headers="r2c1-t7 r1c2-t7" align="left">hangcheck-timer
+</td>
+<td headers="r2c1-t7 r1c3-t7" align="left">30 seconds
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r3c1-t7" headers="r1c1-t7" align="left">hangcheck_margin
+</td>
+<td headers="r3c1-t7 r1c2-t7" align="left">hangcheck-timer
+</td>
+<td headers="r3c1-t7 r1c3-t7" align="left">180 seconds
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r4c1-t7" headers="r1c1-t7" align="left">KernelModuleName
+</td>
+<td headers="r4c1-t7 r1c2-t7" align="left">oracm
+</td>
+<td headers="r4c1-t7 r1c3-t7" align="left">hangcheck-timer
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r5c1-t7" headers="r1c1-t7" align="left">MissCount
+</td>
+<td headers="r5c1-t7 r1c2-t7" align="left">oracm
+</td>
+<td headers="r5c1-t7 r1c3-t7" align="left">hangcheck_tick + hancheck_margin (such as 210 second)
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblruleinformal -->
+
+</div><!-- class="sect3" -->
+
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref22" name="sthref22"></a>
+<h4 class="sect3"><span class="secnum">5.4.3 </span>Configure the hangcheck-timer Module
+</h4>
+<p>To configure the hangcheck-timer module:
+</p>
+<ol start="1" type="1">
+<li><a id="CACCBCBF" name="CACCBCBF"></a>
+<p>On Red Hat Enterprise Linux 2.1 or SUSE Linux Enterprise Server 8,
+enter the following command to determine the version of the kernel:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ uname -r
+
+</pre>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>The hangcheck-timer module is available by
+default with all Red Hat Enterprise Linux 3 and SUSE Linux Enterprise
+Server 9 installations.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</li>
+<li>
+<p>Remove or disable the mechanism that loads the softdog module at
+system start up, if that module is not used by other software on the
+node. This is necessary for subsequent steps in the installation
+process. This step may require log in as the <code>root</code> user.
+</p>
+<p>One method for setting up previous releases of Oracle RAC involved loading the softdog module in the <code>/etc/rc.local</code> file on Red Hat systems or the <code>/etc/init.d/boot.local</code> file on SUSE systems. If this method was used, then remove or comment out the following line in the file:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">/sbin/insmod softdog nowayout=0 soft_noboot=1 soft_margin=60 
+
+</pre>
+<p>If this method was not used, then check with the system
+administrator to determine where and how the softdog module is loaded
+and used. The softdog module is no longer needed in this release of
+Oracle Cluster Manager.
+</p>
+</li>
+<li>
+<p>Remove or disable the mechanism to start the Oracle <code>watchdogd</code> module at system start up. This action is necessary for the subsequent steps in the installation process.
+</p>
+<p>Check with the system administrator to determine where and how the watchdog daemon is started. If <code>watchdogd</code> is started using an <code>rc</code> script that starts Oracle or Oracle Cluster Manager, then remove or comment out the <code>watchdogd</code> start up in the script. If the watchdog daemon is started by a separate <code>rc</code> script, then ensure the references to this script are removed from the runlevel script directories.
+</p>
+</li>
+<li>
+<p>Append the following line to the <code>/etc/rc.local</code> file (Red Hat) or <code>/etc/init.d/boot.local</code> file (SUSE 8):
+</p>
+<pre xml:space="preserve" class="oac_no_warn">/sbin/insmod hangcheck-timer hangcheck_tick=30 hangcheck_margin=180 
+
+</pre>
+<p>For SUSE 9, append the following line to the <code>/etc/init.d/boot.local</code> file:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">/sbin/insmod hangcheck-timer hangcheck_tick=30 hangcheck_margin=180 hangcheck_reboot=1
+
+</pre>
+</li>
+<li><a id="CHDFACDI" name="CHDFACDI"></a>
+<p>For Red Hat and SUSE 8, load the hangcheck-timer kernel module using the following command as <code>root</code> user:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"># /sbin/insmod hangcheck-timer hangcheck_tick=30 hangcheck_margin=180 
+
+</pre>
+<p>For SUSE 9, load the hangcheck-timer kernel module using the following command as <code>root</code> user:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"># /sbin/insmod hangcheck-timer hangcheck_tick=30 hangcheck_margin=180 hangcheck_reboot=1
+
+</pre>
+</li>
+<li>
+<p>Repeat steps <a href="#CACCBCBF">1</a> through <a href="#CHDFACDI">5</a> on all Oracle RAC nodes where the kernel module must be installed.
+</p>
+</li>
+<li>
+<p>Shut down all Oracle services on all Oracle RAC nodes, including the following:
+</p>
+<ul>
+<li type="disc">
+<p>All Oracle databases using the SQL*Plus commands SHUTDOWN IMMEDIATE and SQL*Plus or SRVCTL.
+</p>
+</li>
+<li type="disc">
+<p>Global Services Daemon using the <code>gsdctl stop</code> command.
+</p>
+</li>
+<li type="disc">
+<p>All running Oracle listeners using the <code>lsnrctl stop</code> command.
+</p>
+</li>
+<li type="disc">
+<p>Oracle Intelligent Agent using the <code>agentctl stop</code> command.
+</p>
+</li>
+<li type="disc">
+<p>Oracle Cluster Manager using the <code>kill</code> or <code>killall</code> command.
+</p>
+</li>
+<li type="disc">
+<p>Oracle <code>watchdogd</code> using the <code>kill</code> or <code>killall</code> command.
+</p>
+<p>The <code>kill</code> and <code>killall</code> commands imply a full cluster restart because every node will restart when the commands are run if <code>watchdogd</code>
+is enabled. If one or more nodes restart, then ensure that none of the
+preceding services are running when the nodes come back up. Shut down
+any services that start after the restart.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Ensure that the hangcheck-timer module is loaded by running the following command as the <code>root</code> user:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"># /sbin/lsmod | grep hangcheck-timer
+
+</pre>
+<p>If the kernel module is not loaded, then load it manually, and check the following line in the <code>/etc/rc.local</code> file (Red Hat) or <code>/etc/init.d/boot.local</code> file (SUSE):
+</p>
+<pre xml:space="preserve" class="oac_no_warn">/sbin/insmod hangcheck-timer hangcheck_tick=30 hangcheck_margin=180 
+
+</pre>
+<p>Append the line to the appropriate file if necessary.
+</p>
+</li>
+</ol>
+</div><!-- class="sect3" -->
+
+</div><!-- class="sect2" -->
+<a id="BABDIIFJ" name="BABDIIFJ"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref23" name="sthref23"></a>
+<h3 class="sect2"><span class="secnum">5.5 </span>Oracle RAC Only: Install the Oracle Cluster Manager 9.2.0.8 Patch
+</h3>
+<p>Follow the steps in this section to install the Oracle Cluster Manager release 9.2.0.8 patch from a single node of the cluster. 
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>You must install the Oracle Cluster Manager patch and configure Oracle Cluster Manager before you install the Oracle9<span class="italic">i</span> release 2 Database patch set. 
+<p>Only one instance of Oracle Cluster Manager can run per node. If the
+system has multiple Oracle home directories, then make sure to apply
+the patch to the Oracle home directory where Oracle Cluster Manager is
+installed.
+</p>
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>To install the Oracle Cluster Manager release 9.2.0.8 patch:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Log in to an Oracle RAC node as the <code>oracle</code> user.
+</p>
+</li>
+<li>
+<p>If you are not installing the software on the local system, enter
+the following command to direct X applications to display on the local
+system:
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ DISPLAY=<code><span class="codeinlineitalic">local_host</span></code>:0.0 ; export DISPLAY
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv DISPLAY <code><span class="codeinlineitalic">local_host</span></code>:0.0
+
+</pre>
+</li>
+</ul>
+<p>In this example, <code><span class="codeinlineitalic">local_host</span></code>
+is the host name or IP address of the system that you want to use to
+display Oracle Universal Installer, for example, your workstation or
+PC.
+</p>
+</li>
+<li>
+<p>Ensure that the <code>ORACLE_HOME</code> environment variable is set correctly.
+</p>
+</li>
+<li>
+<p>Set the <code>LD_LIBRARY_PATH</code> environment variable to <code><span class="codeinlineitalic">$ORACLE_HOME/lib</span></code>
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib; export LD_LIBRARY_PATH
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv LD_LIBRARY_PATH $ORACLE_HOME/lib:$LD_LIBRARY_PATH
+
+</pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Change directory to the <code>Disk1</code> directory where you unpacked the patch set file.
+</p>
+</li>
+<li>
+<p>Start Oracle Universal Installer as follows:
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>Make sure that you run Oracle Universal Installer from the <code>Disk1/oracm</code> directory, and not from the <code>Disk1</code> directory.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<pre xml:space="preserve" class="oac_no_warn">$ ./oracm/runInstaller
+
+</pre>
+<p>The Welcome screen appears.
+</p>
+</li>
+<li>
+<p>Click <span class="bold">Next</span>. 
+</p>
+<p>The Specify File Locations screen appears.
+</p>
+</li>
+<li>
+<p>Specify the Oracle home name and path, then click <span class="bold">Next</span>. 
+</p>
+</li>
+<li>
+<p>Verify the information displayed, then click <span class="bold">Install</span>.
+</p>
+<p>The Oracle Cluster Manager patch will install the latest OUI on the
+primary node. After the software has been installed, the End of
+Installation screen appears.
+</p>
+</li>
+<li>
+<p>Enter the following commands, where <code>oracle_home</code> is the Oracle home where you installed Oracle Universal Installer 10.1.0.5:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd oracle_home/oui/bin
+$ ./runInstaller -updateNodeList -noClusterEnabled -local ORACLE_HOME=$ORACLE_HOME CLUSTER_NODES=node1,node2,node3
+
+</pre>
+</li>
+<li>
+<p>Click <span class="bold">Exit</span>, then click <span class="bold">Yes</span> to exit from Oracle Universal Installer.
+</p>
+</li>
+</ol>
+</div><!-- class="sect2" -->
+<a id="BABJGABF" name="BABJGABF"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref24" name="sthref24"></a>
+<h3 class="sect2"><span class="secnum">5.6 </span>Oracle RAC Only: Configure Oracle Cluster Manager to Use the hangcheck-timer Module
+</h3>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If you have already configured Oracle
+Cluster Manager to use the hangcheck-timer module, for example, if you
+applied a previous patch set or installed Oracle9<span class="italic">i</span> release 9.2.0.4, you do not need to complete this task.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>Configure Oracle Cluster Manager to use the hangcheck-timer module on all cluster nodes as follows:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Make any necessary changes to the <code>$ORACLE_HOME/oracm/admin/cmcfg.ora</code> file. The changes include the following:
+</p>
+<ul>
+<li type="circle">
+<p>Remove any lines containing WatchdogSafetyMargin and WatchdogTimerMargin.
+</p>
+</li>
+<li type="circle">
+<p>Adjust the value of the MissCount line based on the sum of the
+hangcheck_tick and hangcheck_margin values. The default value is 210.
+</p>
+</li>
+<li type="circle">
+<p>Verify that a valid <code>CmDiskFile</code> line exists in the following format:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">CmDiskFile=<code><span class="codeinlineitalic">file_or_raw_device_name</span></code>
+
+</pre>
+<p>In the preceding example, the file or raw device must be valid. If
+you specify the name of a file that does not exist, then the file is
+created if the base directory exists. If you specify a raw device, then
+that raw device must exist and have the correct ownership and
+permissions.
+</p>
+</li>
+<li type="circle">
+<p>Add the following line to set the value for <code>KernelModuleName</code> configuration parameter:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">KernelModuleName=hangcheck-timer
+
+</pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Modify the <code>ocmstartup.sh</code> and <code>ocmargs.ora</code> scripts to remove any <code>watchdogd</code> information, if they are used for start up. 
+</p>
+<ul>
+<li type="disc">
+<p>Remove the words <code>watchdogd and</code> from the line <code>Sample startup script for watchdogd and oracm</code> in the <code>$ORACLE_HOME/oracm/bin/ocmstart.sh</code> script.
+</p>
+</li>
+<li type="disc">
+<p>Remove all lines that contain <code>watchdogd</code>, both uppercase and lowercase, from the rest of the <code>$ORACLE_HOME/oracm/bin/ocmstart.sh</code> script.
+</p>
+</li>
+<li type="disc">
+<p>Remove the first line that contains <code>watchdogd</code> from the <code>$ORACLE_HOME/oracm/admin/ocmargs.ora</code> script.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Perform the following step if you are using a cluster file system (CFS) for the Quorum disk.
+</p>
+<ol type="a">
+<li>
+<p>Log in as the <code>root</code> user.
+</p>
+</li>
+<li>
+<p>Run the following command:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"># dd if=/dev/zero of=<span class="italic">quorum_disk_file</span> bs=4096 count=65
+
+</pre>
+<p>In this command, the <code>CmDiskFile</code> parameter in the <code>$ORACLE_HOME/oracm/admin/cmcfg.ora</code> file lists the file name used for the <code><span class="codeinlineitalic">quorum_disk_file</span></code>.
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Set the <code>LD_LIBRARY_PATH</code> environment variable to <code><span class="codeinlineitalic">$ORACLE_HOME/lib</span></code>
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib; export LD_LIBRARY_PATH
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv LD_LIBRARY_PATH $ORACLE_HOME/lib:$LD_LIBRARY_PATH
+
+</pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Restart Oracle Cluster Manager on all Oracle RAC nodes. 
+</p>
+</li>
+<li>
+<p>Make sure that Oracle Cluster Manager is running, and that the watchdog daemon process (<code>watchdogd</code>) is not running on all nodes before applying the database patch set.
+</p>
+</li>
+</ol>
+</div><!-- class="sect2" -->
+<a id="CHDFEGFB" name="CHDFEGFB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref25" name="sthref25"></a>
+<h3 class="sect2"><span class="secnum">5.7 </span>Identify the Oracle9<span class="italic">i</span> Installation
+</h3>
+<p>This is not a complete software distribution. You must install it in an existing Oracle9<span class="italic">i</span> Oracle home. To identify Oracle home directories, view the <code>/etc/oratab</code> file. 
+</p>
+<p>If you are installing this patch set on an existing Oracle RAC
+installation, you must run Oracle Universal Installer from the same
+node from which you performed the initial installation.
+</p>
+</div><!-- class="sect2" -->
+<a id="BABFFEDA" name="BABFFEDA"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref26" name="sthref26"></a>
+<h3 class="sect2"><span class="secnum">5.8 </span>Check Postrelease Updates
+</h3>
+<p>Before installing this patch set in a production environment, review document 189908.1, <span class="italic">ALERT: Oracle9i Release 2 (9.2) Support Status and Alerts</span>, available on the Oracle<span class="italic">MetaLink</span> Web site at:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code><a href="http://metalink.oracle.com/">http://metalink.oracle.com</a></code>
+
+</pre>
+<p>To locate this document:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Click <span class="bold">Advanced</span> at the top of the Oracle<span class="italic">Metalink</span> page.
+</p>
+</li>
+<li>
+<p>Enter 189908.1 in the <span class="bold">Document ID</span> field, then click <span class="bold">Submit</span>.
+</p>
+</li>
+</ol>
+<p>This document is created by Oracle Support Services and provides
+information about the status of issues discovered after this patch set
+was released. If you are unable to access this site, then contact
+Oracle Support Services before installing this patch set in a
+production environment.
+</p>
+</div><!-- class="sect2" -->
+<a id="CHDIBAHB" name="CHDIBAHB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref27" name="sthref27"></a>
+<h3 class="sect2"><span class="secnum">5.9 </span>Download and Extract the Installation Software
+</h3>
+<p>To download and extract the patch set installation software:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Download and extract the patch set <code>p4547809_9208_LINUX.zip</code> installation archive to a directory that is not the Oracle home directory or under the Oracle home directory. For example, <code>Oracle_patch</code>.
+</p>
+</li>
+<li>
+<p>Enter the following commands to unzip  and extract the installation files:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ unzip p4547809_9208_LINUX.zip
+
+</pre></li>
+</ol>
+</div><!-- class="sect2" -->
+<a id="BABCJEBC" name="BABCJEBC"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref28" name="sthref28"></a>
+<h3 class="sect2"><span class="secnum">5.10 </span>Set the <code>ORACLE_HOME</code> and <code>ORACLE_SID</code> Environment Variables
+</h3>
+<p>Enter the following commands to set the <code>ORACLE_HOME</code> and <code>ORACLE_SID</code> environment variables:
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+
+<pre xml:space="preserve" class="oac_no_warn">$ ORACLE_HOME=<span class="italic">oracle_home</span>
+$ ORACLE_SID=<span class="italic">sid</span>
+$ export ORACLE_HOME ORACLE_SID
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv ORACLE_HOME <span class="italic">oracle_home</span>
+% setenv ORACLE_SID <span class="italic">sid</span>
+
+</pre>
+</li>
+</ul>
+<p>In these examples, <code><span class="codeinlineitalic">oracle_home</span></code> is the Oracle home directory, where the Oracle9<span class="italic">i</span> installation that you want to upgrade is installed, and <code><span class="codeinlineitalic">sid</span></code> is the system identifier of the database that you want to upgrade.
+</p>
+</div><!-- class="sect2" -->
+<a id="BABJJIBD" name="BABJJIBD"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref29" name="sthref29"></a>
+<h3 class="sect2"><span class="secnum">5.11 </span>Shut Down Oracle Databases
+</h3>
+<p>Shut down any existing Oracle database instances with normal or
+immediate priority. On Oracle RAC systems, shut down all instances on
+each node.
+</p>
+</div><!-- class="sect2" -->
+<a id="BABEGGIB" name="BABEGGIB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref30" name="sthref30"></a>
+<h3 class="sect2"><span class="secnum">5.12 </span>Stop All Processes
+</h3>
+<p>Stop all listener and other processes running in the Oracle home directory where you want to install the patch set.
+</p>
+</div><!-- class="sect2" -->
+<a id="BABEHFBA" name="BABEHFBA"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref31" name="sthref31"></a>
+<h3 class="sect2"><span class="secnum">5.13 </span>Back Up the System
+</h3>
+<p>Oracle recommends that you create a backup of the Oracle9<span class="italic">i</span> installation before you install the patch set.
+</p>
+</div><!-- class="sect2" -->
+
+</div><!-- class="sect1" -->
+<a id="BABEDCGF" name="BABEDCGF"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref32" name="sthref32"></a>
+<h2 class="sect1"><span class="secnum">6 </span>Installation Tasks
+</h2>
+<p>You can install the patch set either interactively or
+noninteractively. See one of the following sections for information
+about how to complete the installation:
+</p>
+<ul>
+<li type="disc">
+<p>To install the patch set interactively, see the <a href="#BABJABEC">"Installing the Patch Set Interactively"</a> section.
+</p>
+</li>
+<li type="disc">
+<p>To install the patch set noninteractively, see the <a href="#BGBEJEHA">"Installing the Patch Set Noninteractively"</a> section.
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>You must use Oracle Universal Installer release 10.1.0.5 or later to install this patch set.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</li>
+</ul><a id="BABJABEC" name="BABJABEC"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref33" name="sthref33"></a>
+<h3 class="sect2"><span class="secnum">6.1 </span>Installing the Patch Set Interactively
+</h3>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If you attempt to install this patch set in an Oracle home directory that does not contain an Oracle9<span class="italic">i</span> installation, Oracle Universal Installer displays a warning dialog with the following error:
+<pre xml:space="preserve" class="oac_no_warn">There are no patches that need to be applied from the
+patchset Oracle9<span class="italic">i</span> patch set 9.2.0.8.0
+
+</pre>
+<p>The Oracle Universal Installer does not allow the installation to proceed. Click <span class="bold">OK</span>, then click <span class="bold">Cancel</span> to end the installation.
+</p>
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>The following procedure describes how to install the patch set interactively:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Log in as the Oracle software owner (typically oracle).
+</p>
+</li>
+<li>
+<p>If you are not installing the software on the local system, enter
+the following command to direct X applications to display on the local
+system:
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ DISPLAY=<code><span class="codeinlineitalic">local_host</span></code>:0.0 ; export DISPLAY
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv DISPLAY <code><span class="codeinlineitalic">local_host</span></code>:0.0
+
+</pre>
+</li>
+</ul>
+<p>In this example, <code><span class="codeinlineitalic">local_host</span></code>
+is the host name or IP address of the system that you want to use to
+display Oracle Universal Installer, for example, your workstation or
+PC.
+</p>
+</li>
+<li>
+<p>For Oracle RAC installations, enter the following commands, where <code>oracle_home</code> is the Oracle home where you installed Oracle Universal Installer 10.1.0.5:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$  cd <code>oracle_home</code>/oui/bin
+$ ./runInstaller -updateNodeList -noClusterEnabled -local  <code><span class="codeinlineitalic">ORACLE_HOME</span></code>=$<code><span class="codeinlineitalic">ORACLE_HOME</span></code> CLUSTER_NODES=node1,node2,node3
+
+</pre>
+</li>
+<li>
+<p>Set the <code>LD_LIBRARY_PATH</code> environment variable to <code><span class="codeinlineitalic">$ORACLE_HOME/lib</span></code>
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib; export LD_LIBRARY_PATH
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv LD_LIBRARY_PATH $ORACLE_HOME/lib:$LD_LIBRARY_PATH
+
+</pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter following commands to start Oracle Universal Installer, where <code><span class="codeinlineitalic">patchset_directory</span></code> is the directory you unzipped  the patch set software:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ <code><span class="codeinlineitalic">patchset_directory</span></code><code>/Disk1</code>
+$ ./runInstaller
+
+</pre>
+</li>
+<li>
+<p>On the Welcome screen, click <span class="bold">Next</span>.
+</p>
+</li>
+<li>
+<p>On the Specify File Locations screen, click <span class="bold">Browse</span> next to the <span class="bold">Path</span> field in the <span class="bold">Source</span> section. 
+</p>
+</li>
+<li>
+<p>Select the <code>products.xml</code> file from the stage directory where you unpacked the patch set files, then click <span class="bold">Next</span>. For example:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">patchset_directory</span>/Disk1/stage/products.xml
+
+</pre>
+</li>
+<li>
+<p>In the <span class="bold">Name</span> field in the <span class="bold">Destination</span> section, select the name of the Oracle home that you want to update from the drop down list, then click <span class="bold">Next</span>.
+</p>
+</li>
+<li>
+<p>If you are installing the patch set on an Oracle RAC cluster, click <span class="bold">Next</span> when the Selected Nodes screen appears.
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>The Selected Nodes screen lists the existing Oracle9<span class="italic">i</span> RAC release 2 (9.2) nodes. The first node in the list is the node from where Oracle9<span class="italic">i</span>
+RAC release 2 (9.2) was installed. You must install the patch set
+software from this node. If this is not the node where you are running
+Oracle Universal Installer, exit Oracle Universal Installer and install
+the patch set software from the first node in the list of nodes.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</li>
+<li>
+<p>On the Summary screen, click <span class="bold">Install</span>.
+</p>
+<p>This screen lists all of the patches available for installation.
+</p>
+</li>
+<li>
+<p>When prompted, run the <code>$ORACLE_HOME/root.sh</code> script as the root user. If you are applying the patch set to an Oracle RAC installation, then run the <code>root.sh</code> script on each node of the cluster. 
+</p>
+</li>
+<li>
+<p>On the End of Installation screen, click <span class="bold">Exit</span>, then click <span class="bold">Yes</span> to exit from Oracle Universal Installer.
+</p>
+</li>
+</ol>
+</div><!-- class="sect2" -->
+<a id="BGBEJEHA" name="BGBEJEHA"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref34" name="sthref34"></a>
+<h3 class="sect2"><span class="secnum">6.2 </span>Installing the Patch Set Noninteractively
+</h3>
+<p>The following procedure describes how to install the patch set noninteractively:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Log in as the Oracle software owner (typically oracle).
+</p>
+</li>
+<li>
+<p>Copy the response file template provided in the <code>response</code> directory where you the patch set archive file. 
+</p>
+</li>
+<li>
+<p>Edit the values for all fields labeled as <code>&lt;Value Required&gt;</code> as described by the comments and examples in the template. 
+</p>
+</li>
+<li>
+<p>To run Oracle Universal Installer, enter a command similar to the following, where <code><span class="codeinlineitalic">response_file</span></code> is the full path to the response file that you edited: 
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd <span class="italic">patchset_directory</span>/Disk1
+$ ./runInstaller -silent -responseFile <code><span class="codeinlineitalic">response_file</span></code>
+
+</pre>
+</li>
+<li>
+<p>After the installation, run the <code>$ORACLE_HOME/root.sh</code> script as the root user. If you are applying the patch set to an Oracle RAC installation, then run the <code>root.sh</code> script on each node of the cluster. 
+</p>
+</li>
+</ol>
+</div><!-- class="sect2" -->
+
+</div><!-- class="sect1" -->
+<a id="BABHBGGB" name="BABHBGGB"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref35" name="sthref35"></a>
+<h2 class="sect1"><span class="secnum">7 </span>Postinstallation Tasks
+</h2>
+<p>Review the information in this section before using the upgraded
+software. This section lists required and optional postinstallation
+tasks, depending on the installation type and the products that you
+want to use.
+</p>
+<ul>
+<li type="disc">
+<p><a href="#BABDGJIE">Upgrading Databases from Previous Releases Directly to Oracle9<span class="italic">i</span> Release 2 (9.2.0.8)</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJECGA">Required Postinstallation Tasks</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBEHIFG">Running changePerm.sh script on an Oracle database server home</a>
+</p>
+</li>
+</ul><a id="BABDGJIE" name="BABDGJIE"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref36" name="sthref36"></a>
+<h3 class="sect2"><span class="secnum">7.1 </span>Upgrading Databases from Previous Releases Directly to Oracle9<span class="italic">i</span> Release 2 (9.2.0.8)
+</h3>
+<p>To upgrade Oracle databases from a previous release directly to Oracle9<span class="italic">i</span> release 2 (9.2.0.8) follow the instructions in Oracle<span class="italic">Metalink</span> note 214887.1,<span class="italic"> Upgrading Directly to a 9.2.0 Patch Set</span>.
+</p>
+<div align="center">
+<div class="inftblnotealso">
+
+<br><table class="NoteAlso oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">See Also:</p>For more information about upgrading a database, see the <span class="italic">Oracle9i Database Migration</span> guide.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnotealso -->
+
+</div>
+</div><!-- class="sect2" -->
+<a id="BABJECGA" name="BABJECGA"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref37" name="sthref37"></a>
+<h3 class="sect2"><span class="secnum">7.2 </span>Required Postinstallation Tasks
+</h3>
+<p>Complete the following tasks after installing the patch set software:
+</p>
+<ul>
+<li type="disc">
+<p><a href="#BABBBIGI">Check Tablespace Sizes and Set Parameter Values</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABEGHCH">Upgrade the Database</a>
+</p>
+</li>
+</ul><a id="BABBBIGI" name="BABBBIGI"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref38" name="sthref38"></a>
+<h4 class="sect3"><span class="secnum">7.2.1 </span>Check Tablespace Sizes and Set Parameter Values
+</h4>
+<p>Review the following sections before upgrading a database.
+</p>
+<div class="sect4">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref39" name="sthref39"></a>
+<h5 class="sect4"><span class="secnum">7.2.1.1 </span>Check SYSTEM Tablespace Size
+</h5>
+<p>If JServer is part of the installation ensure that there is at least 10 MB of free space allocated to the SYSTEM tablespace.
+</p>
+</div><!-- class="sect4" -->
+
+<div class="sect4">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref40" name="sthref40"></a>
+<h5 class="sect4"><span class="secnum">7.2.1.2 </span>Check XDB Tablespace Size
+</h5>
+<p>For Oracle RAC installations, ensure that there is at least 50 MB of free space allocated to the XDB tablespace.
+</p>
+</div><!-- class="sect4" -->
+
+<div class="sect4">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref41" name="sthref41"></a>
+<h5 class="sect4"><span class="secnum">7.2.1.3 </span>Set the <code>SHARED_POOL_SIZE</code> and <code>JAVA_POOL_SIZE</code> Initialization Parameters
+</h5>
+<p>Users who have JVM (Java enabled) or JVM and XDB installed on their 9.2.0.1 databases should make sure that the <code>init.ora</code> parameters <code>SHARED_POOL_SIZE</code> and <code>JAVA_POOL_SIZE</code> are each 150 MB or more before running the <code>catpatch.sql</code>
+upgrade script. Failure to do so could result in an unrecoverable
+memory failure while running of the script. Please note that JVM and
+XML DB was shipped as part of the default 9.2.0.1 seed database, and
+will be present unless the user explicitly installed a 9.2.0.1 instance
+without them.
+</p>
+<p>Set the value of the <code>SHARED_POOL_SIZE</code> and the <code>JAVA_POOL_SIZE</code> initialization parameters as follows:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Use SQL*Plus to log in to the database as the <code>SYS</code> user with <code>SYSDBA</code> privileges:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog 
+SQL&gt; CONNECT SYS/<span class="italic">SYS_password</span> AS SYSDBA
+
+</pre>
+</li>
+<li>
+<p>Start the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP
+
+</pre>
+</li>
+<li>
+<p>If necessary, enter the following command to determine whether the system uses an initialization parameter file (<code>init</code><code><span class="codeinlineitalic">sid</span></code><code>.ora</code>) or a server parameter file (<code>spfile</code><code><span class="codeinlineitalic">dbname</span></code><code>.ora</code>):
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHOW PARAMETER PFILE; 
+
+</pre>
+<p>This command displays the name and location of the server parameter file or the initialization parameter file.
+</p>
+</li>
+<li>
+<p>Determine the current values of these parameters:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHOW PARAMETER SHARED_POOL_SIZE
+SQL&gt; SHOW PARAMETER JAVA_POOL_SIZE
+
+</pre>
+</li>
+<li>
+<p>If the system is using a server parameter file:
+</p>
+<ol type="a">
+<li>
+<p>If necessary, set the value of the <code>SHARED_POOL_SIZE</code> initialization parameter to at least 150 MB:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; ALTER SYSTEM SET SHARED_POOL_SIZE='150M' SCOPE=<span class="italic">spfile</span>; 
+
+</pre>
+</li>
+<li>
+<p>If necessary, set the value of the <code>JAVA_POOL_SIZE</code> initialization parameter to at least 150 MB:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; ALTER SYSTEM SET JAVA_POOL_SIZE='150M' SCOPE=<span class="italic">spfile</span>; 
+
+</pre>
+</li>
+</ol>
+</li>
+<li>
+<p>If the system uses an initialization parameter file, if necessary change the values of the <code>SHARED_POOL_SIZE</code> and the <code>JAVA_POOL_SIZE</code> initialization parameters to at least 150 MB in the initialization parameter file (<code>init</code><code><span class="codeinlineitalic">sid</span></code><code>.ora</code>).
+</p>
+</li>
+<li>
+<p>Shut down the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHUTDOWN
+
+</pre>
+</li>
+</ol>
+</div><!-- class="sect4" -->
+
+</div><!-- class="sect3" -->
+<a id="BABEGHCH" name="BABEGHCH"></a>
+<div class="sect3">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref42" name="sthref42"></a>
+<h4 class="sect3"><span class="secnum">7.2.2 </span>Upgrade the Database
+</h4>
+<p>After you install the patch set, you must perform the following
+steps on every database associated with the upgraded Oracle home:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Log in as the Oracle software owner (typically <code>oracle</code>).
+</p>
+</li>
+<li>
+<p>For Oracle RAC installations, start the Global Services Daemon (GSD) on each node of the cluster as follows:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ gsdctl start
+
+</pre>
+</li>
+<li>
+<p>Start the Oracle Net listener as follows:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ lsnrctl start
+
+</pre>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>For Oracle RAC installations, start the listener on each node of the cluster.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</li>
+<li>
+<p>For single-instance installations, use SQL*Plus to log in to the database as the <code>SYS</code> user with <code>SYSDBA</code> privileges:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog
+SQL&gt; CONNECT SYS/<span class="italic">SYS_password</span> AS SYSDBA
+
+</pre>
+</li>
+<li>
+<p>For Oracle RAC installations:
+</p>
+<ol type="a">
+<li>
+<p>Start the database as follows, where <code><span class="codeinlineitalic">db_name</span></code> is the database name:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ srvctl start database -d <span class="italic">db_name</span>
+
+</pre>
+</li>
+<li>
+<p>Use SQL*Plus to log in to the database as the <code>SYS</code> user with <code>SYSDBA</code> privileges:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog 
+SQL&gt; CONNECT SYS/<span class="italic">SYS_password</span> AS SYSDBA
+
+</pre>
+</li>
+<li>
+<p>Set the <code>CLUSTER_DATABASE</code> initialization parameter to <code>FALSE</code>:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"> SQL&gt; ALTER SYSTEM SET CLUSTER_DATABASE=FALSE SCOPE=<span class="italic">spfile</span>; 
+
+</pre>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If the system uses an initialization parameter file, change the value of the <code>CLUSTER_DATABASE</code> initialization parameter to <code>FALSE</code> in the initialization parameter file (<code>init</code><code><span class="codeinlineitalic">sid</span></code><code>.ora</code>).
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</li>
+<li>
+<p>Exit SQL*Plus and shut down the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; EXIT
+$ srvctl stop database -d <code><span class="codeinlineitalic">db_name</span></code>
+
+</pre>
+</li>
+<li>
+<p>Use SQL*Plus to log in to the database as the <code>SYS</code> user with <code>SYSDBA</code> privileges:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog
+SQL&gt; CONNECT SYS/SYS_password AS SYSDBA 
+
+</pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Enter the following SQL*Plus commands: 
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP MIGRATE
+SQL&gt; SPOOL patch.log
+SQL&gt; @?/rdbms/admin/catpatch.sql
+SQL&gt; SPOOL OFF
+
+</pre>
+</li>
+<li>
+<p>Review the <code>patch.log</code> file for errors and inspect the list of components that is displayed at the end of <code>catpatch.sql</code> script. 
+</p>
+<p>This list provides the version and status of each <code>SERVER</code> component in the database. 
+</p>
+</li>
+<li>
+<p>If necessary, rerun the <code>catpatch.sql</code> script after correcting any problems.
+</p>
+</li>
+<li>
+<p>Restart the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHUTDOWN
+SQL&gt; STARTUP
+
+</pre>
+</li>
+<li>
+<p>Run the <code>utlrp.sql</code> script to recompile all invalid
+PL/SQL packages now instead of when the packages are accessed for the
+first time. This step is optional but recommended.
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; @?/rdbms/admin/utlrp.sql
+
+</pre>
+</li>
+<li>
+<p>For Oracle RAC installations:
+</p>
+<ol type="a">
+<li>
+<p>Set the <code>CLUSTER_DATABASE</code> initialization parameter to <code>TRUE</code>:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"> SQL&gt; ALTER SYSTEM SET CLUSTER_DATABASE=TRUE SCOPE=<span class="italic">spfile</span>; 
+</pre>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If the system uses an initialization parameter file, change the value of the <code>CLUSTER_DATABASE</code> initialization parameters to <code>TRUE</code> in the initialization parameter file (<code>init</code><code><span class="codeinlineitalic">sid</span></code><code>.ora</code>).
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</li>
+<li>
+<p>Restart the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHUTDOWN
+SQL&gt; EXIT
+$ srvctl start database -d <span class="italic">db_name</span>
+
+</pre>
+</li>
+</ol>
+</li>
+<li>
+<p>If you are using the Oracle Recovery Manager catalog, enter the following command:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ rman catalog <span class="italic">username</span>/<span class="italic">password</span>@<span class="italic">alias</span>
+RMAN&gt; UPGRADE CATALOG; 
+
+</pre>
+</li>
+<li>
+<p>If Oracle Internet Directory release 9.2.0 is installed in the Oracle home, run the following shell script:
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>Make sure that the database and database listener are running, and all parameters for the <code>oidpatchca.sh</code> script are specified before running the script.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<pre xml:space="preserve" class="oac_no_warn">$<code>ORACLE_HOME/bin/oidpatchca.sh</code> 
+-connect <code><span class="codeinlineitalic">Connect_String</span></code> 
+-lsnrport <code><span class="codeinlineitalic">Listener_Port</span></code> 
+-systempwd <code><span class="codeinlineitalic">SYSTEM_Password</span></code> 
+-odspwd <code><span class="codeinlineitalic">ODS_Password</span></code> 
+-sudn <code><span class="codeinlineitalic">Super-User_DN</span></code> 
+-supwd <code><span class="codeinlineitalic">Super-User_Password</span></code> 
+-dippwd <code><span class="codeinlineitalic">Password_to_register_DIP_Server</span></code> 
+
+</pre>
+<p>In the preceding example, <code>Password_to_register_DIP_Server</code> must conform to the password policy in the Oracle Internet Directory server.
+</p>
+</li>
+</ol>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If you are using the Oracle OLAP option, then you must run <code>catpatch.sql</code> and <code>utlrp.sql</code> on any additional instance created from your main 9.2.0.8 database. Your <code>catpatch</code> log should show the status of the three OLAP components as follows:
+<pre xml:space="preserve" class="oac_no_warn">OLAP Analytic Workspace    UPGRADED  9.2.0.8.0
+Oracle OLAP API            UPGRADED  9.2.0.8.0
+OLAP Catalog               VALID     9.2.0.8.0
+
+</pre>
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</div><!-- class="sect3" -->
+
+</div><!-- class="sect2" -->
+<a id="BGBEHIFG" name="BGBEHIFG"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref43" name="sthref43"></a>
+<h3 class="sect2"><span class="secnum">7.3 </span>Running changePerm.sh script on an Oracle database server home
+</h3>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Important:</p>Oracle recommends using the most restrictive file permissions possible for your given implementation. Perform these <span class="italic">optional</span> steps only after considering all security ramifications and only if you need to share this installation.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>During patchset installation, all new files and directories are
+created with restricted access, by default. Users or third party
+applications with a different group identifier from that of the
+database, which try to access client-side utilities or libraries in the
+database home, will see permission errors when trying to access these
+files or directories. Perform the following steps only if you wish to
+change the permissions
+</p>
+<ol start="1" type="1">
+<li>
+<p>Change your directory to:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code>$ cd $ORACLE_HOME/install</code>
+
+</pre>
+</li>
+<li>
+<p>Run <code>changePerm.sh</code> and specify the patched server Oracle home location, before accessing client-side utilities or libraries in the database home.
+</p>
+</li>
+</ol>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If you are patching Oracle RAC home, then you will need to run this script on all the nodes.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+</div><!-- class="sect2" -->
+
+</div><!-- class="sect1" -->
+<a id="BABEEGCJ" name="BABEEGCJ"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref44" name="sthref44"></a>
+<h2 class="sect1"><span class="secnum">8 </span>Removing the Patch Set Software
+</h2>
+<p>Starting in 9.2.0.7.0, there is a new script called <code>catbkout.sql</code>. This script enables the user to restore the Oracle9<span class="italic">i</span>
+installation of the database back to the original 9.2 patch release (as
+long as it is 9.2.0.4 or greater) that the user backed up before
+applying the patch set. Perform the following steps for backing out
+from the 9.2.0.8 patch release:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Before restoring the Oracle home to the original release, perform the following steps:
+</p>
+<p>For Oracle RAC installations:
+</p>
+<ol type="a">
+<li>
+<p>Use SQL*Plus to log in to the database as the <code>SYS</code> user with <code>SYSDBA</code> privileges:
+</p>
+<pre xml:space="preserve" class="oac_no_warn"> $ sqlplus /nolog
+ SQL&gt; CONNECT SYS/<span class="italic">SYS_password</span> AS SYSDBA
+
+</pre>
+</li>
+<li>
+<p> Set the <code>CLUSTER_DATABASE</code> initialization parameter to <code>FALSE</code>:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; ALTER SYSTEM SET CLUSTER_DATABASE=FALSE SCOPE=<span class="italic">spfile</span>; 
+
+</pre>
+</li>
+<li>
+<p>Exit SQL*Plus and shut down the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; EXIT
+$ srvctl stop database -d <span class="italic">db_name</span>
+
+</pre>
+</li>
+</ol>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog
+SQL&gt; CONNECT SYS / <span class="italic">SYS_password</span> SYSDBA
+SQL&gt; STARTUP MIGRATE
+SQL&gt; SPOOL catbkout.out
+SQL&gt; @?/rdbms/admin/catbkout.sql
+SQL&gt; SPOOL OFF
+SQL&gt; SHUTDOWN IMMEDIATE
+
+</pre>
+<p>For Single Instance:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog
+SQL&gt; CONNECT SYS / <span class="italic">SYS_password</span> SYSDBA
+SQL&gt; SHUTDOWN
+SQL&gt; STARTUP MIGRATE
+SQL&gt; SPOOL catbkout.out
+SQL&gt; @?/rdbms/admin/catbkout.sql
+SQL&gt; SPOOL OFF
+SQL&gt; SHUTDOWN IMMEDIATE
+
+</pre>
+</li>
+<li>
+<p>Restore the Oracle9<span class="italic">i</span> installation and Inventory (see <code>/etc/oraInst.loc</code>) that you backed up before applying the patch set.
+</p>
+</li>
+<li>
+<p>After restoring the original Oracle home, perform the following steps:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog
+SQL&gt; CONNECT SYS / <span class="italic">SYS_password</span> SYSDBA
+SQL&gt; STARTUP MIGRATE
+SQL&gt; SPOOL catpatch.out
+SQL&gt; @?/rdbms/admin/catpatch.sql
+SQL&gt; SPOOL OFF
+
+</pre>
+</li>
+<li>
+<p>If Oracle Spatial is installed with the database, perform the following steps:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; alter session set current_schema =  mdsys;
+SQL&gt; @?/md/admin/prvtmd.plb
+SQL&gt; @?/md/admin/prvtmd2.plb
+SQL&gt; @?/md/admin/sdopidx.sql
+SQL&gt; @?/md/admin/prvtpidx.plb
+SQL&gt; @?/md/admin/prvtsidx.plb
+SQL&gt; @?/md/admin/sdogeom.sql
+SQL&gt; @?/md/admin/prvt3glh.plb
+SQL&gt; @?/md/admin/prvtgeom.plb
+SQL&gt; @?/md/admin/prvt3gl.plb
+SQL&gt; alter session set current_schema = sys;
+
+</pre>
+</li>
+<li>
+<p>Shut down the database:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHUTDOWN IMMEDIATE
+
+</pre>
+</li>
+<li>
+<p>Start the database and recompile the remaining invalid objects:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP
+SQL&gt; @?/rdbms/admin/utlrp.sql
+
+</pre>
+</li>
+<li>
+<p>Review <code>catbkout.out</code> and <code>catpatch.out</code> for errors.
+</p>
+</li>
+<li>
+<p>Restart the database:
+</p>
+<p>For Oracle RAC installations:
+</p>
+<ol type="a">
+<li>
+<p>Set the <code>CLUSTER_DATABASE</code> initialization parameter to <code>TRUE</code>:
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>If the system uses an initialization parameter file, change the value of the <code>CLUSTER_DATABASE</code> initialization parameters to <code>TRUE</code> in the initialization parameter file (<code>init</code><code><span class="codeinlineitalic">sid</span></code><code>.ora</code>).
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<pre xml:space="preserve" class="oac_no_warn"> SQL&gt; ALTER SYSTEM SET CLUSTER_DATABASE=TRUE SCOPE=<span class="italic">spfile</span>;
+ SQL&gt; SHUTDOWN
+ SQL&gt; EXIT
+ $ srvctl start database -d <span class="italic">db_name</span>
+
+</pre>
+</li>
+</ol>
+<p>For Single Instance:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHUTDOWN
+SQL&gt; STARTUP
+
+</pre>
+</li>
+</ol>
+</div><!-- class="sect1" -->
+<a id="BABCCHDG" name="BABCCHDG"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref45" name="sthref45"></a>
+<h2 class="sect1"><span class="secnum">9 </span>Reinstalling the Patch Set Software
+</h2>
+<p>If necessary, you can reinstall a patch set that has been applied to an Oracle9<span class="italic">i</span> installation. You must reinstall the patch set interactively.
+</p>
+<p>To reinstall the patch set:
+</p>
+<ol start="1" type="1">
+<li>
+<p>Log in as the Oracle software owner (typically <code>oracle</code>).
+</p>
+</li>
+<li>
+<p>If you are not installing the software on the local system, enter
+the following command to direct X applications to display on the local
+system:
+</p>
+<ul>
+<li type="disc">
+<p>Bourne, Bash, or Korn shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ DISPLAY=<code><span class="codeinlineitalic">local_host</span></code>:0.0 ; export DISPLAY
+
+</pre>
+</li>
+<li type="disc">
+<p>C shell:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv DISPLAY <code><span class="codeinlineitalic">local_host</span></code>:0.0
+
+</pre>
+</li>
+</ul>
+<p>In this example, <code><span class="codeinlineitalic">local_host</span></code>
+is the host name or IP address of the system that you want to use to
+display Oracle Universal Installer, for example, your workstation or
+PC.
+</p>
+</li>
+<li>
+<p>Enter the following commands to start the Oracle Universal Installer, where <code><span class="codeinlineitalic">patchset_directory</span></code> is the directory where you unzipped  the patch set software:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd <span class="italic">patchset_directory</span>/Disk1
+$ ./runInstaller
+
+</pre>
+</li>
+<li>
+<p>On the Specify File Locations screen, click <span class="bold">Browse</span> next to the <span class="bold">Path</span> field in the <span class="bold">Source</span> section. 
+</p>
+</li>
+<li>
+<p>Select the <code>products.xml</code> file from the stage directory where you unpacked the patch set files. For example: 
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">patchset_directory</span>/Disk1/stage/products.xml
+
+</pre>
+</li>
+<li>
+<p>Select the Oracle home that you want to upgrade in the <span class="bold">Name</span> field in the <span class="bold">Destination</span> section, then click <span class="bold">Next</span>. 
+</p>
+<div align="center">
+<div class="inftblnote">
+
+<br><table class="Note oac_no_warn" summary="This is a layout table to format a note" title="This is a layout table to format a note" dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="80%">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p> If you are not sure of the name of the Oracle home, click <span class="bold">Installed Products</span> to determine the name of the Oracle home that you want to upgrade.
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblnote -->
+
+</div>
+<p>If you are installing the patch on an Oracle RAC cluster, click <span class="bold">Next</span> on the Selected Nodes screen.
+</p>
+<p>The Available Product Component screen appears. This screen contains
+a list of all components that have been patched by the original patch
+set installation. These components are grayed out, indicating they
+cannot be selected for installation.
+</p>
+</li>
+<li>
+<p>Expand the nodes for each component listed in the tree to display the patch that corresponds to each component. 
+</p>
+</li>
+<li>
+<p>Select the patches that you want to install. 
+</p>
+<p>When you select a patch, the <span class="bold">Install Status</span> column changes to <span class="bold">Reinstall</span>.
+</p>
+</li>
+<li>
+<p>Repeat the process for each patch bundled in the patch set, then click <span class="bold">Next</span>. 
+</p>
+</li>
+<li>
+<p>On the Summary screen, verify the list of patches to be reinstalled, then click <span class="bold">Install</span>. 
+</p>
+</li>
+<li>
+<p>On the End of Installation screen, click <span class="bold">Exit</span>, then click <span class="bold">Yes</span> to exit from Oracle Universal Installer.
+</p>
+</li>
+</ol>
+</div><!-- class="sect1" -->
+<a id="BGBIEJFA" name="BGBIEJFA"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref46" name="sthref46"></a>
+<h2 class="sect1"><span class="secnum">10 </span>Known Issues
+</h2>
+<p>Review the following known issues after you apply the patch set.The following known issues apply to this patch set release:
+</p>
+<ul>
+<li type="disc">
+<p><a href="#BGBJCDEH">Procedural Gateway for APPC or Transparent Gateway for IBM DRDA: Unspecified Error Message</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBIGDFI">Oracle Procedural Gateway for APPC Configuration Parameters</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABDDEBB">Upgrade and SYS Schema</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABFJJDJ">PL/SQL Cursor Caching</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#CHDCICFI">Database Configuration Assistant Fails to Create Oracle Database</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABJEJAC">OID Registration Fails</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BABCAAAG">Remote Nodes Listed Twice in OUI Summary Screen</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#CHDECDJG">Error While Executing runInstaller.sh</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBEEEBE">Bug 2602782</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBDAFJH">Bug 3259636</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBCICFB">Bug 4270038</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#BGBCFCEJ">Bug 4615483</a>
+</p>
+</li>
+<li type="disc">
+<p><a href="#CHDGHAGF">Bug 5020611</a>
+</p>
+</li>
+</ul><a id="BGBJCDEH" name="BGBJCDEH"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref47" name="sthref47"></a>
+<h3 class="sect2"><span class="secnum">10.1 </span>Procedural Gateway for APPC or Transparent Gateway for IBM DRDA: Unspecified Error Message
+</h3>
+<p>During the installation of Procedural Gateway for APPC or
+Transparent Gateway for IBM DRDA, you may encounter an error message
+regarding an unspecified target of the makefile. The error message can
+be ignored. The following is an example of a message that can be
+ignored:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">Error while invoking target &lt;blank&gt; of makefile
+<code>/oracle/9.2.0.8/gateway/lib/gateway.mk</code>
+
+</pre>
+<p>The following is an example of a valid error message. Notice that
+the target of the makefile is identified. Messages similar to the
+following should not be ignored, and you should contact Oracle Support
+Services.
+</p>
+<pre xml:space="preserve" class="oac_no_warn">Error while invoking target install of makefile
+<code>/oracle/9.2.0.8/gateway/lib/gateway.mk</code>
+</pre>
+</div><!-- class="sect2" -->
+<a id="BGBIGDFI" name="BGBIGDFI"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref48" name="sthref48"></a>
+<h3 class="sect2"><span class="secnum">10.2 </span>Oracle Procedural Gateway for APPC Configuration Parameters
+</h3>
+<p>If you use Oracle Procedural Gateway for APPC, comment out the
+following parameters if they are present in the gateway shell script or
+<code>init</code><code><span class="codeinlineitalic">sid</span></code><code>.ora</code> files:
+</p>
+<ul>
+<li type="disc">
+<p><code>FDS_CLASS</code>
+</p>
+</li>
+<li type="disc">
+<p><code>FDS_CLASS_VERSION</code>
+</p>
+</li>
+<li type="disc">
+<p><code>FDS_INSTANCE</code>
+</p>
+</li>
+</ul>
+</div><!-- class="sect2" -->
+<a id="BABDDEBB" name="BABDDEBB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref49" name="sthref49"></a>
+<h3 class="sect2"><span class="secnum">10.3 </span>Upgrade and SYS Schema
+</h3>
+<p>This is a generic issue applicable to the upgrade mode, for example, <code>ALTER DATABASE OPEN MIGRATE</code>. During an upgrade from release 9.2.0.1 or later, the <code>catpatch.sql</code> script can take a long time if there are statistics for the <code>SYS</code> schema. Delete the statistics on all of the objects in the <code>SYS</code> schema, and then recollect the statistics after normal database open, if necessary. 
+</p>
+<p>To drop and re-create the statistics, enter the following commands in SQL*Plus: 
+</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; EXECUTE DBMS_STATS.DELETE_SCHEMA_STATS('SYS');
+SQL&gt; EXECUTE DBMS_STATS.GATHER_SCHEMA_STATS('SYS');
+</pre>
+</div><!-- class="sect2" -->
+<a id="BABFJJDJ" name="BABFJJDJ"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref50" name="sthref50"></a>
+<h3 class="sect2"><span class="secnum">10.4 </span>PL/SQL Cursor Caching
+</h3>
+<p> In release 9.2.0.4 and earlier, the maximum number of cursors that
+could be cached for fast lookup by PL/SQL was bounded by the value of
+the <code>OPEN_CURSORS</code> initialization parameter. If you
+currently have this parameter set to a high value (for example, greater
+than 1000), it might be causing large numbers of PL/SQL cursors to be
+cached in the shared pool. This could lead to issues with memory
+management, frequent reloading of library cache objects, and <code>ORA-04031</code> errors.
+</p>
+<p>Starting with release 9.2.0.5, the <code>SESSION_CACHED_CURSORS</code> initialization parameter now determines the upper bound for PL/SQL cursor caching instead of the <code>OPEN_CURSORS</code> initialization parameter.
+</p>
+<p>Most users do not need to modify the value of either of these parameters. If the <code>SESSION_CACHED_CURSORS</code> parameter value is greater than the <code>OPEN_CURSORS</code> parameter value, then this change has no performance affect on your system.
+</p>
+<p>However, if the <code>SESSION_CACHED_CURSORS</code> parameter value is zero or a value significantly lower than the <code>OPEN_CURSORS</code> parameter value, and you want to cache PL/SQL cursors for optimal performance, then increase the <code>SESSION_CACHED_CURSORS</code> parameter value appropriately. 
+</p>
+<p>This issue is tracked with Oracle bug 3150705.
+</p>
+</div><!-- class="sect2" -->
+<a id="CHDCICFI" name="CHDCICFI"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref51" name="sthref51"></a>
+<h3 class="sect2"><span class="secnum">10.5 </span>Database Configuration Assistant Fails to Create Oracle Database
+</h3>
+<p>On some Linux platforms, the following error may display when trying
+to create a database using Database Configuration Assistant:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/bin/dbca: line 124:  4730 Killed  $JRE_DIR/bin/jre -DORACLE_
+HOME=$OH -DJDBC_PROTOCOL=thin -mx64m -classpath $CLASSPATH 
+oracle.sysman.assistants.dbca.Dbca $ARGUMENTS 
+
+</pre><a id="sthref52" name="sthref52"></a>
+<p class="subhead2">Workaround:</p>
+<p>Add <code>-native</code> to the last line of the <code>$ORACLE_HOME/bin/dbca</code> script.
+</p>
+<p>This issue is tracked with Oracle bug 5391480.
+</p>
+</div><!-- class="sect2" -->
+<a id="BABJEJAC" name="BABJEJAC"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref53" name="sthref53"></a>
+<h3 class="sect2"><span class="secnum">10.6 </span>OID Registration Fails
+</h3>
+<p>Oracle Internet Directory (OID) registration fails if you try to
+register a database after creating it using Database Configuration
+Assistant (DBCA).
+</p><a id="sthref54" name="sthref54"></a>
+<p class="subhead2">Workaround:</p>
+<p>Apply patch 5396877.
+</p>
+<p>This issue is tracked with Oracle Bug 5396877
+</p>
+</div><!-- class="sect2" -->
+<a id="BABCAAAG" name="BABCAAAG"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref55" name="sthref55"></a>
+<h3 class="sect2"><span class="secnum">10.7 </span>Remote Nodes Listed Twice in OUI Summary Screen
+</h3>
+<p>When installing 9.2.0.8 Oracle RAC database using Oracle Universal
+Installer, you might find remote nodes listed twice in the Oracle
+Universal Installer summary screen.
+</p>
+<p>This issue is tracked with Oracle Bug 5221624.
+</p>
+</div><!-- class="sect2" -->
+<a id="CHDECDJG" name="CHDECDJG"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref56" name="sthref56"></a>
+<h3 class="sect2"><span class="secnum">10.8 </span>Error While Executing runInstaller.sh
+</h3>
+<p>When you start Oracle Universal Installer using the command <code>runInstaller</code>, it tries to run <code>$ORACLE_HOME/bin/runInstaller</code> script and the following error occurs:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">cd: /oui/bin/linux: No such file or directory 
+./runInstaller: No such file or directory 
+
+</pre><a id="sthref57" name="sthref57"></a>
+<p class="subhead2">Workaround:</p>
+<p>Replace the variable <code>$ADE_VIEW_ROOT</code> in the <code>runInstaller.sh</code> script with <code>$ORACLE_HOME</code> .
+</p>
+<p>This issue is tracked with Oracle Bug 5470416
+</p>
+</div><!-- class="sect2" -->
+<a id="BGBEEEBE" name="BGBEEEBE"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref58" name="sthref58"></a>
+<h3 class="sect2"><span class="secnum">10.9 </span>Bug 2602782
+</h3>
+<p>Scrollable ResultSet returns 3 times NCHAR character byte size when
+database Ncharset is UTF8. This problem occurs only with the JDBC Thin
+driver. </p>
+</div><!-- class="sect2" -->
+<a id="BGBDAFJH" name="BGBDAFJH"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref59" name="sthref59"></a>
+<h3 class="sect2"><span class="secnum">10.10 </span>Bug 3259636
+</h3>
+<p>If you use Database Configuration Assistant (DBCA) to create a new
+database, using the seed database option, some of the components are
+from an older version. This is because the seed database was created
+before the patch release.
+</p>
+<p>To update all the components, ensure that you have followed the steps described in the "<a href="#BABEGHCH">Upgrade the Database</a>" section. 
+</p>
+</div><!-- class="sect2" -->
+<a id="BGBCICFB" name="BGBCICFB"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref60" name="sthref60"></a>
+<h3 class="sect2"><span class="secnum">10.11 </span>Bug 4270038
+</h3>
+<p>When using Database Configuration Assistant in standalone mode to create a database, the following error will occur:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">ORA-29807: specified operator does not exist
+</pre><a id="sthref61" name="sthref61"></a>
+<p class="subhead2">Workaround:</p>
+<p>Click <span class="bold">Ignore</span>.
+</p>
+</div><!-- class="sect2" -->
+<a id="BGBCFCEJ" name="BGBCFCEJ"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref62" name="sthref62"></a>
+<h3 class="sect2"><span class="secnum">10.12 </span>Bug 4615483
+</h3>
+<p>If you deinstall Oracle home, then the following independent products present in it should be deinstalled:
+</p>
+<ul>
+<li type="disc">
+<p>Oracle 9<span class="italic">i</span> Databse, Release 2 (9.2.0.1) and Patch Set (9.2.0.8)
+</p>
+</li>
+<li type="disc">
+<p>Oracle Universal Installer 10.1.0.5
+</p>
+</li>
+</ul>
+<p>However, the Oracle Universal Installer 10.1.0.5 is not deinstalled automatically, which stops the deinstallation.
+</p><a id="sthref63" name="sthref63"></a>
+<p class="subhead2">Workaround:</p>
+<p>Manually select both the products under Oracle home for deinstall and proceed.
+</p>
+</div><!-- class="sect2" -->
+<a id="CHDGHAGF" name="CHDGHAGF"></a>
+<div class="sect2">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref64" name="sthref64"></a>
+<h3 class="sect2"><span class="secnum">10.13 </span>Bug 5020611
+</h3>
+<p>When you try to install 9.2.0.8 patch, the Oracle Universal
+Installer screen disappears without displaying the summary page for
+Oracle Cluster Manager. An error message similar to the following is
+displayed in the log:
+</p>
+<pre xml:space="preserve" class="oac_no_warn">oracle.ops.mgmt.cluster.ClusterInfoException:
+lsnodes: error while loading shared libraries: libcmdll.so: cannot open 
+shared object file: No such file or directory 
+
+</pre><a id="sthref65" name="sthref65"></a>
+<p class="subhead2">Workaround:</p>
+<p>Set the environment variable <code>LD_LIBRARY_PATH</code> to <code>ORACLE_HOME/lib</code> and try again.
+</p>
+</div><!-- class="sect2" -->
+
+</div><!-- class="sect1" -->
+<a id="BABHEFJD" name="BABHEFJD"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref66" name="sthref66"></a>
+<h2 class="sect1"><span class="secnum">11 </span>Fixed Platform-Specific Bugs
+</h2>
+<p>The following table is a cumulative list of the platform-specific bugs fixed in all Oracle9<span class="italic">i</span> patch sets to date:
+</p>
+<div class="inftblinformal">
+
+<table class="Informal" title="Bugs fixed in all Oracle 9i patchsets for your platform" summary="table shows a list of all HP platform-specific bugs fixed in Oracle Database 10g patch set 1." dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="hsides" rules="groups" width="100%">
+<thead>
+<tr align="left" valign="top">
+<th id="r1c1-t25" align="left" valign="bottom">Fixed in Release
+</th>
+<th id="r1c2-t25" align="left" valign="bottom">Bug Number
+</th>
+<th id="r1c3-t25" align="left" valign="bottom">Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td id="r2c1-t25" headers="r1c1-t25" align="left">9.2.0.2
+</td>
+<td headers="r2c1-t25 r1c2-t25" align="left">2286367
+</td>
+<td headers="r2c1-t25 r1c3-t25" align="left">OCISTMTFETCH2 FAILS WITH ORA-600 [KPOSCWR2] OR [KPOSCF10]
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r3c1-t25" headers="r1c1-t25" align="left">9.2.0.2
+</td>
+<td headers="r3c1-t25 r1c2-t25" align="left">2288229
+</td>
+<td headers="r3c1-t25 r1c3-t25" align="left">INVALID TIMEZONE RETURNED BY AGENT TO THE OMS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r4c1-t25" headers="r1c1-t25" align="left">9.2.0.2
+</td>
+<td headers="r4c1-t25 r1c2-t25" align="left">2389423
+</td>
+<td headers="r4c1-t25 r1c3-t25" align="left">JDBC THICK DRIVER PERFORMANCE PROBLEMS WITH ECPERF WORKLOAD 
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r5c1-t25" headers="r1c1-t25" align="left">9.2.0.2
+</td>
+<td headers="r5c1-t25 r1c2-t25" align="left">2395838
+</td>
+<td headers="r5c1-t25 r1c3-t25" align="left">MEMORY LEAK IN JVM IF USING SLTS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r6c1-t25" headers="r1c1-t25" align="left">9.2.0.2
+</td>
+<td headers="r6c1-t25 r1c2-t25" align="left">2026123
+</td>
+<td headers="r6c1-t25 r1c3-t25" align="left">V$SESSION.PROGRAM DISPLAYS '?' FROM AN OCI CLIENT PROGRAM
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r7c1-t25" headers="r1c1-t25" align="left">9.2.0.3
+</td>
+<td headers="r7c1-t25 r1c2-t25" align="left">2444960
+</td>
+<td headers="r7c1-t25 r1c3-t25" align="left">TCL COMMAND 'EXEC' SHOULD NOT PRODUCE DEFUNCT PROCESS IF CMD TO EXECUTE IS ""
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r8c1-t25" headers="r1c1-t25" align="left">9.2.0.3
+</td>
+<td headers="r8c1-t25 r1c2-t25" align="left">2660531
+</td>
+<td headers="r8c1-t25 r1c3-t25" align="left">SRVCONFIG FAILS DUE TO MULTIPLE OPEN OF SHARED FILE WITHOUT CLOSING IT ON OCFS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r9c1-t25" headers="r1c1-t25" align="left">9.2.0.3
+</td>
+<td headers="r9c1-t25 r1c2-t25" align="left">2378501
+</td>
+<td headers="r9c1-t25 r1c3-t25" align="left">SECOND INSTANCE STARTUP CAUSES 1ST TO CRASH W/ORA-7445 LMS PROCESS @KCLFLOGFLUSH
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r10c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r10c1-t25 r1c2-t25" align="left">2420930
+</td>
+<td headers="r10c1-t25 r1c3-t25" align="left">GET ORA-00600 [KSXPMPRP1] DURING STARTUP IN ORACLE RAC MODE WITH &gt;10GB OF BUFFERS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r11c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r11c1-t25 r1c2-t25" align="left">2495727
+</td>
+<td headers="r11c1-t25 r1c3-t25" align="left">MAKE SSKGMHCHECK() LIGHTER WEIGHT
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r12c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r12c1-t25 r1c2-t25" align="left">2646914
+</td>
+<td headers="r12c1-t25 r1c3-t25" align="left">ORA-600 [KCCSBCK_FIRST], [2] IF ORACM&amp;ORACLE WAS RESTARTED ON ONE NODE
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r13c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r13c1-t25 r1c2-t25" align="left">2661173
+</td>
+<td headers="r13c1-t25 r1c3-t25" align="left">PROGRAM COLUMN IN V$SESSION POPULATED INCONSISTANTLY BY MODPLSQL SOLARIS / LINUX
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r14c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r14c1-t25 r1c2-t25" align="left">2700033
+</td>
+<td headers="r14c1-t25 r1c3-t25" align="left">TRACE FILE GENERATED FOR EVERY LOGIN WITH: CMCLI WARNING: CMINITCONTEXT
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r15c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r15c1-t25 r1c2-t25" align="left">2820871
+</td>
+<td headers="r15c1-t25 r1c3-t25" align="left">ORA-29740 NODE EVICTION DESIGN ALGORITHM AND ABRUPT TIME CHANGE
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r16c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r16c1-t25 r1c2-t25" align="left">2844009
+</td>
+<td headers="r16c1-t25 r1c3-t25" align="left">MISSING LIBCXA.SO.3 LIBRARY ISSUE IN PSR 9203
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r17c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r17c1-t25 r1c2-t25" align="left">2861550
+</td>
+<td headers="r17c1-t25 r1c3-t25" align="left">2861550 - GSD FAILS WITH PRKR-1064
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r18c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r18c1-t25 r1c2-t25" align="left">2896667
+</td>
+<td headers="r18c1-t25 r1c3-t25" align="left">PSRC: INCORRECT RESULT WHEN CALLING JAVAVM THROUGH ORACLE SERVER
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r19c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r19c1-t25 r1c2-t25" align="left">2974707
+</td>
+<td headers="r19c1-t25 r1c3-t25" align="left">EXT3 FILE SYSTEM IS NOT RECOGNIZED BY AGENT COLLECTION CART
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r20c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r20c1-t25 r1c2-t25" align="left">2981273
+</td>
+<td headers="r20c1-t25 r1c3-t25" align="left">PSRC:CORE ON LINUX JDBC OCI
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r21c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r21c1-t25 r1c2-t25" align="left">3045792
+</td>
+<td headers="r21c1-t25 r1c3-t25" align="left">MEMORY LEAK IN SLTSTSPAWN()
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r22c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r22c1-t25 r1c2-t25" align="left">3238244
+</td>
+<td headers="r22c1-t25 r1c3-t25" align="left">ENVIRON POINTER IS NULL WHEN USING GENMAKE
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r23c1-t25" headers="r1c1-t25" align="left">9.2.0.4
+</td>
+<td headers="r23c1-t25 r1c2-t25" align="left">3274319
+</td>
+<td headers="r23c1-t25 r1c3-t25" align="left">SELECT LN(1.0144572) FROM DUAL HANGS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r24c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r24c1-t25 r1c2-t25" align="left">2448994
+</td>
+<td headers="r24c1-t25 r1c3-t25" align="left">DIRECT IO SUPPORT
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r25c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r25c1-t25 r1c2-t25" align="left">2854962
+</td>
+<td headers="r25c1-t25 r1c3-t25" align="left">UDLM VERSION OF SKGXN CAN ONLY SUPPORT 4 CLUSTER NODES
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r26c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r26c1-t25 r1c2-t25" align="left">3016968
+</td>
+<td headers="r26c1-t25 r1c3-t25" align="left">ASYNCIO FUNCTIONALITY IS NOT WORKING ON LINUX
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r27c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r27c1-t25 r1c2-t25" align="left">3108162
+</td>
+<td headers="r27c1-t25 r1c3-t25" align="left">ERROR: READOTHERSDSKINFO(): READFILE(/OCFSDISK1/QUORUM/QUORUMFILE) FAILED(22)
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r28c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r28c1-t25 r1c2-t25" align="left">3119415
+</td>
+<td headers="r28c1-t25 r1c3-t25" align="left">INS_OEMAGENT.MK IS NOT USING THE GLIBC STUBS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r29c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r29c1-t25 r1c2-t25" align="left">3210770
+</td>
+<td headers="r29c1-t25 r1c3-t25" align="left">RTREE INDEX CREATION FAILURE IN MDRCRRDMDDATA
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r30c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r30c1-t25 r1c2-t25" align="left">3268331
+</td>
+<td headers="r30c1-t25 r1c3-t25" align="left">INDEX REBUILD AND SNP PROCESSES ARE FAILING WITH ORA -27103
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r31c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r31c1-t25 r1c2-t25" align="left">3285741
+</td>
+<td headers="r31c1-t25 r1c3-t25" align="left">ORA-00600 [KCCSBCK_FIRST] [2] [832017739] AFTER REBOOT
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r32c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r32c1-t25 r1c2-t25" align="left">3403600
+</td>
+<td headers="r32c1-t25 r1c3-t25" align="left">CHANGE G++ TO LD IN GENOCCISH SCRIPT
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r33c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r33c1-t25 r1c2-t25" align="left">3417742
+</td>
+<td headers="r33c1-t25 r1c3-t25" align="left">LCK KEEPS LOGGING --KSIMPOLL: SKGXNPSTAT ON (IGMXTSTALL,IGMXTSTMXTST) FAILED
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r34c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r34c1-t25 r1c2-t25" align="left">3523919
+</td>
+<td headers="r34c1-t25 r1c3-t25" align="left">ERROR CONNECTING TO PERFMON - IBVPPDC.SO: UNDEFINED SYMBOL: _VEC_MEMCPY
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r35c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r35c1-t25 r1c2-t25" align="left">3553791
+</td>
+<td headers="r35c1-t25 r1c3-t25" align="left">ORACM VERSION 49 (9.2.0.5) WITH 3+ NODES GIVES ORA-29740 EVICTION
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r36c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r36c1-t25 r1c2-t25" align="left">3596858
+</td>
+<td headers="r36c1-t25 r1c3-t25" align="left">HIGH SYSTEM TIME IN VLM MODE ON RHEL 3
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r37c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r37c1-t25 r1c2-t25" align="left">3604572
+</td>
+<td headers="r37c1-t25 r1c3-t25" align="left">LINIKING FAILS IN PRO*FORTRAN SUITS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r38c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r38c1-t25 r1c2-t25" align="left">3615482
+</td>
+<td headers="r38c1-t25 r1c3-t25" align="left">OIDSERVER HANGS DURING STACK DUMP
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r39c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r39c1-t25 r1c2-t25" align="left">3800687
+</td>
+<td headers="r39c1-t25 r1c3-t25" align="left">_DB_BLOCK_CACHE_PROTECT NOT WORKING WITH LINUX VLM BIGPAGES
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r40c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r40c1-t25 r1c2-t25" align="left">3935301
+</td>
+<td headers="r40c1-t25 r1c3-t25" align="left">SPURIOUS ACP REFRESH EVENTS IN ACTIVE/ACTIVE OID CONFIGURATION
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r41c1-t25" headers="r1c1-t25" align="left">9.2.0.5
+</td>
+<td headers="r41c1-t25 r1c2-t25" align="left">3942667
+</td>
+<td headers="r41c1-t25 r1c3-t25" align="left">CANNOT START ORACLE INSTANCE WHEN SHMGET RETURNS ZERO SHMID
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r42c1-t25" headers="r1c1-t25" align="left">9.2.0.6
+</td>
+<td headers="r42c1-t25 r1c2-t25" align="left">3928450
+</td>
+<td headers="r42c1-t25 r1c3-t25" align="left">DIRECTIO IS REQUIRED ON X86_64 SLES9 AND NAS
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r43c1-t25" headers="r1c1-t25" align="left">9.2.0.6
+</td>
+<td headers="r43c1-t25 r1c2-t25" align="left">3186847
+</td>
+<td headers="r43c1-t25 r1c3-t25" align="left">FILESYSTEMIO_OPTIONS=DIRECTIO IS IGNORED ON LINUX
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r44c1-t25" headers="r1c1-t25" align="left">9.2.0.6
+</td>
+<td headers="r44c1-t25 r1c2-t25" align="left">3901015
+</td>
+<td headers="r44c1-t25 r1c3-t25" align="left">ORACM ON AMD64 EXITS UNEXPECTEDLY ON SLES9
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r45c1-t25" headers="r1c1-t25" align="left">9.2.0.7
+</td>
+<td headers="r45c1-t25 r1c2-t25" align="left">4368927
+</td>
+<td headers="r45c1-t25 r1c3-t25" align="left">APPSST:APPSRAP: 9206 CLUSTER MANAGER PATCHSET INSTALLS ONLY ON FIRST NODE
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r46c1-t25" headers="r1c1-t25" align="left">9.2.0.8
+</td>
+<td headers="r46c1-t25 r1c2-t25" align="left">4636159
+</td>
+<td headers="r46c1-t25 r1c3-t25" align="left">[LINUX X86] APPLYING PSR 9.2.0.7 DOES NOT UPGRADE ORACM
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblinformal -->
+
+</div><!-- class="sect1" -->
+<a id="BABJCEDC" name="BABJCEDC"></a>
+<div class="sect1">
+
+<!-- infolevel="all" infotype="General" --><a id="sthref67" name="sthref67"></a>
+<h2 class="sect1"><span class="secnum">12 </span>Patch Set Components
+</h2>
+<p>The following table lists the components included in this patch set:
+</p>
+<div class="inftblruleinformal">
+
+<table class="RuleInformal" title="Patch Set Components" summary="Table lists the patch set components in this release." dir="ltr" border="1" cellpadding="3" cellspacing="0" frame="border" rules="all" width="100%">
+<thead>
+<tr align="left" valign="top">
+<th id="r1c1-t26" align="left" valign="bottom">Component
+</th>
+<th id="r1c2-t26" align="left" valign="bottom">Version
+</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td id="r2c1-t26" headers="r1c1-t26" align="left">Advanced Queuing (AQ) API
+</td>
+<td headers="r2c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r3c1-t26" headers="r1c1-t26" align="left">Agent required support files
+</td>
+<td headers="r3c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r4c1-t26" headers="r1c1-t26" align="left">Assistant common files
+</td>
+<td headers="r4c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r5c1-t26" headers="r1c1-t26" align="left">Data Management Services common files
+</td>
+<td headers="r5c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r6c1-t26" headers="r1c1-t26" align="left">Authentication and encryption
+</td>
+<td headers="r6c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r7c1-t26" headers="r1c1-t26" align="left">Database SQL scripts
+</td>
+<td headers="r7c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r8c1-t26" headers="r1c1-t26" align="left">Database Verify utility
+</td>
+<td headers="r8c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r9c1-t26" headers="r1c1-t26" align="left">DCE integration
+</td>
+<td headers="r9c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r10c1-t26" headers="r1c1-t26" align="left">Export/import
+</td>
+<td headers="r10c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r11c1-t26" headers="r1c1-t26" align="left">External naming: NIS
+</td>
+<td headers="r11c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r12c1-t26" headers="r1c1-t26" align="left">Generic connectivity common files
+</td>
+<td headers="r12c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r13c1-t26" headers="r1c1-t26" align="left">Generic connectivity using ODBC
+</td>
+<td headers="r13c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r14c1-t26" headers="r1c1-t26" align="left">JDBC common files
+</td>
+<td headers="r14c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r15c1-t26" headers="r1c1-t26" align="left">JDBC/OCI common files
+</td>
+<td headers="r15c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r16c1-t26" headers="r1c1-t26" align="left">LDAP required support files
+</td>
+<td headers="r16c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r17c1-t26" headers="r1c1-t26" align="left">Migration utility
+</td>
+<td headers="r17c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r18c1-t26" headers="r1c1-t26" align="left">Object Type Translator
+</td>
+<td headers="r18c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r19c1-t26" headers="r1c1-t26" align="left">Oracle C++ Call Interface
+</td>
+<td headers="r19c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r20c1-t26" headers="r1c1-t26" align="left">Oracle Call Interface (OCI)
+</td>
+<td headers="r20c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r21c1-t26" headers="r1c1-t26" align="left">Oracle Client required support files
+</td>
+<td headers="r21c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r22c1-t26" headers="r1c1-t26" align="left">Oracle Connection Manager
+</td>
+<td headers="r22c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r23c1-t26" headers="r1c1-t26" align="left">Oracle Core required support files
+</td>
+<td headers="r23c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r24c1-t26" headers="r1c1-t26" align="left">Oracle database demos
+</td>
+<td headers="r24c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r25c1-t26" headers="r1c1-t26" align="left">Oracle database utilities
+</td>
+<td headers="r25c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r26c1-t26" headers="r1c1-t26" align="left">Oracle Data Mining
+</td>
+<td headers="r26c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r27c1-t26" headers="r1c1-t26" align="left">Oracle <span class="italic">inter</span>Media Client compatibility files
+</td>
+<td headers="r27c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r28c1-t26" headers="r1c1-t26" align="left">Oracle <span class="italic">inter</span>Media Java Advanced Imaging
+</td>
+<td headers="r28c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r29c1-t26" headers="r1c1-t26" align="left">Oracle Internet Directory Client
+</td>
+<td headers="r29c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r30c1-t26" headers="r1c1-t26" align="left">Oracle Internet Directory Server
+</td>
+<td headers="r30c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r31c1-t26" headers="r1c1-t26" align="left">Oracle Intelligent Agent
+</td>
+<td headers="r31c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r32c1-t26" headers="r1c1-t26" align="left">Oracle <span class="italic">inter</span>Media Locator
+</td>
+<td headers="r32c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r33c1-t26" headers="r1c1-t26" align="left">Oracle JDBC Development Drivers
+</td>
+<td headers="r33c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r34c1-t26" headers="r1c1-t26" align="left">Oracle JDBC Thin Driver for JDK 1.2
+</td>
+<td headers="r34c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r35c1-t26" headers="r1c1-t26" align="left">Oracle JDBC Thin Driver for JDK 1.4
+</td>
+<td headers="r35c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r36c1-t26" headers="r1c1-t26" align="left">Oracle JVM
+</td>
+<td headers="r36c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r37c1-t26" headers="r1c1-t26" align="left">Oracle Java Tools
+</td>
+<td headers="r37c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r38c1-t26" headers="r1c1-t26" align="left">Oracle Label Security
+</td>
+<td headers="r38c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r39c1-t26" headers="r1c1-t26" align="left">Oracle Names
+</td>
+<td headers="r39c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r40c1-t26" headers="r1c1-t26" align="left">Oracle Net Configuration Assistant
+</td>
+<td headers="r40c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r41c1-t26" headers="r1c1-t26" align="left">Oracle Net Listener
+</td>
+<td headers="r41c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r42c1-t26" headers="r1c1-t26" align="left">Oracle Net Manager
+</td>
+<td headers="r42c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r43c1-t26" headers="r1c1-t26" align="left">Oracle Net
+</td>
+<td headers="r43c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r44c1-t26" headers="r1c1-t26" align="left">Oracle Net Protocol Support
+</td>
+<td headers="r44c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r45c1-t26" headers="r1c1-t26" align="left">Oracle Net required support files
+</td>
+<td headers="r45c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r46c1-t26" headers="r1c1-t26" align="left">Oracle OLAP
+</td>
+<td headers="r46c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r47c1-t26" headers="r1c1-t26" align="left">Oracle Partitioning
+</td>
+<td headers="r47c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r48c1-t26" headers="r1c1-t26" align="left">Oracle Procedural Gateway for IBM MQSeries
+</td>
+<td headers="r48c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r49c1-t26" headers="r1c1-t26" align="left">Oracle Procedural Gateway for APPC
+</td>
+<td headers="r49c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r50c1-t26" headers="r1c1-t26" align="left">Oracle9<span class="italic">i</span> Real Application Clusters Guard
+</td>
+<td headers="r50c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r51c1-t26" headers="r1c1-t26" align="left">Oracle Text
+</td>
+<td headers="r51c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r52c1-t26" headers="r1c1-t26" align="left">Oracle Transparent Gateway for Informix
+</td>
+<td headers="r52c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r53c1-t26" headers="r1c1-t26" align="left">Oracle Transparent Gateway for DRDA
+</td>
+<td headers="r53c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r54c1-t26" headers="r1c1-t26" align="left">Oracle Transparent Gateway for INGRES II
+</td>
+<td headers="r54c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r55c1-t26" headers="r1c1-t26" align="left">Oracle Transparent Gateway for Sybase
+</td>
+<td headers="r55c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r56c1-t26" headers="r1c1-t26" align="left">Oracle Transparent Gateway for Teradata
+</td>
+<td headers="r56c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r57c1-t26" headers="r1c1-t26" align="left">Oracle Ultra Search common files
+</td>
+<td headers="r57c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r58c1-t26" headers="r1c1-t26" align="left">Oracle Ultra Search middle-tier
+</td>
+<td headers="r58c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r59c1-t26" headers="r1c1-t26" align="left">Oracle UltraSearch server
+</td>
+<td headers="r59c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r60c1-t26" headers="r1c1-t26" align="left">Oracle Wallet Manager
+</td>
+<td headers="r60c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r61c1-t26" headers="r1c1-t26" align="left">Oracle XML Developer's Kit
+</td>
+<td headers="r61c1-t26 r1c2-t26" align="left">9.2.0.10.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r62c1-t26" headers="r1c1-t26" align="left">Oracle XML SQL utility
+</td>
+<td headers="r62c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r63c1-t26" headers="r1c1-t26" align="left">Oracle9<span class="italic">i</span> release 2 Globalization
+</td>
+<td headers="r63c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r64c1-t26" headers="r1c1-t26" align="left">Oracle9<span class="italic">i</span> release 2 Real Application Clusters
+</td>
+<td headers="r64c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r65c1-t26" headers="r1c1-t26" align="left">Oracle9<span class="italic">i</span> release 2
+<br>
+</td>
+<td headers="r65c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r66c1-t26" headers="r1c1-t26" align="left">Oracle PL/SQL
+</td>
+<td headers="r66c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r67c1-t26" headers="r1c1-t26" align="left">Oracle PL/SQL required support files
+</td>
+<td headers="r67c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r68c1-t26" headers="r1c1-t26" align="left">Precompiler common files
+</td>
+<td headers="r68c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r69c1-t26" headers="r1c1-t26" align="left">Precompiler required support files
+</td>
+<td headers="r69c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r70c1-t26" headers="r1c1-t26" align="left">Pro*C/C++
+</td>
+<td headers="r70c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r71c1-t26" headers="r1c1-t26" align="left">Pro*COBOL
+</td>
+<td headers="r71c1-t26 r1c2-t26" align="left">1.8.77.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r72c1-t26" headers="r1c1-t26" align="left">Pro*COBOL
+</td>
+<td headers="r72c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r73c1-t26" headers="r1c1-t26" align="left">Pro*FORTRAN
+</td>
+<td headers="r73c1-t26 r1c2-t26" align="left">1.8.77.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r74c1-t26" headers="r1c1-t26" align="left">Oracle database required support files
+</td>
+<td headers="r74c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r75c1-t26" headers="r1c1-t26" align="left">Oracle Recovery Manager
+</td>
+<td headers="r75c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r76c1-t26" headers="r1c1-t26" align="left">Secure Socket Layer (SSL)
+</td>
+<td headers="r76c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r77c1-t26" headers="r1c1-t26" align="left">SQL*Loader
+</td>
+<td headers="r77c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r78c1-t26" headers="r1c1-t26" align="left">SQL*Plus
+</td>
+<td headers="r78c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r79c1-t26" headers="r1c1-t26" align="left">SQLJ Runtime
+</td>
+<td headers="r79c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r80c1-t26" headers="r1c1-t26" align="left">SSL required support files
+</td>
+<td headers="r80c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r81c1-t26" headers="r1c1-t26" align="left">Utilities common files
+</td>
+<td headers="r81c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r82c1-t26" headers="r1c1-t26" align="left">XML Parser for C
+</td>
+<td headers="r82c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r83c1-t26" headers="r1c1-t26" align="left">XML Parser for C++
+</td>
+<td headers="r83c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r84c1-t26" headers="r1c1-t26" align="left">XML Parser for Java
+</td>
+<td headers="r84c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r85c1-t26" headers="r1c1-t26" align="left">XML Parser for PL/SQL
+</td>
+<td headers="r85c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r86c1-t26" headers="r1c1-t26" align="left">XML Parser for Oracle JVM
+</td>
+<td headers="r86c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+<tr align="left" valign="top">
+<td id="r87c1-t26" headers="r1c1-t26" align="left">XSQL Servlet
+</td>
+<td headers="r87c1-t26 r1c2-t26" align="left">9.2.0.8.0
+</td>
+</tr>
+</tbody>
+</table><br>
+</div><!-- class="inftblruleinformal -->
+
+</div><!-- class="sect1" -->
+<a id="BABIBDDI" name="BABIBDDI"></a>
+<div class="sect1">
+<a id="sthref68" name="sthref68"></a>
+<h2 class="sect1"><span class="secnum">13 </span>Documentation Accessibility
+</h2>
+<p>Our goal is to make Oracle products, services, and supporting
+documentation accessible, with good usability, to the disabled
+community. To that end, our documentation includes features that make
+information available to users of assistive technology. This
+documentation is available in HTML format, and contains markup to
+facilitate access by the disabled community. Accessibility standards
+will continue to evolve over time, and Oracle is actively engaged with
+other market-leading technology vendors to address technical obstacles
+so that our documentation can be accessible to all of our customers.
+For more information, visit the Oracle Accessibility Program Web site
+at
+</p>
+<pre xml:space="preserve" class="oac_no_warn"><code><a href="http://www.oracle.com/accessibility/">http://www.oracle.com/accessibility/</a></code>
+</pre><a id="sthref69" name="sthref69"></a>
+<p class="subhead2">Accessibility of Code Examples in Documentation</p>
+<p>Screen readers may not always correctly read the code examples in
+this document. The conventions for writing code require that closing
+braces should appear on an otherwise empty line; however, some screen
+readers may not always read a line of text that consists solely of a
+bracket or brace.
+</p><a id="sthref70" name="sthref70"></a>
+<p class="subhead2">Accessibility of Links to External Web Sites in Documentation</p>
+<p>This documentation may contain links to Web sites of other companies
+or organizations that Oracle does not own or control. Oracle neither
+evaluates nor makes any representations regarding the accessibility of
+these Web sites.
+</p><a id="sthref71" name="sthref71"></a>
+<p class="subhead2">TTY Access to Oracle Support Services</p>
+<p>Oracle provides dedicated Text Telephone (TTY) access to Oracle
+Support Services within the United States of America 24 hours a day,
+seven days a week. For TTY support, call 800.446.2398.
+</p>
+</div><!-- class="sect1" -->
+<a id="sthref72" name="sthref72"></a>
+<hr>
+<p>
+Oracle9<span class="italic">i </span>Patch Set Notes, Release 2 (9.2.0.8) Patch Set 7 for Linux x86
+</p>
+<p>
+
+</p>
+<p>
+Copyright © 2006,&nbsp;Oracle. All rights reserved.
+</p>
+<p>The Programs (which include both the software and documentation)
+contain proprietary information; they are provided under a license
+agreement containing restrictions on use and disclosure and are also
+protected by copyright, patent, and other intellectual and industrial
+property laws. Reverse engineering, disassembly, or decompilation of
+the Programs, except to the extent required to obtain interoperability
+with other independently created software or as specified by law, is
+prohibited.
+</p>
+<p>The information contained in this document is subject to change
+without notice. If you find any problems in the documentation, please
+report them to us in writing. This document is not warranted to be
+error-free. Except as may be expressly permitted in your license
+agreement for these Programs, no part of these Programs may be
+reproduced or transmitted in any form or by any means, electronic or
+mechanical, for any purpose.
+</p>
+<p>If the Programs are delivered to the United States Government or
+anyone licensing or using the Programs on behalf of the United States
+Government, the following notice is applicable:
+</p>
+<p>U.S. GOVERNMENT RIGHTS Programs, software, databases, and related
+documentation and technical data delivered to U.S. Government customers
+are "commercial computer software" or "commercial technical data"
+pursuant to the applicable Federal Acquisition Regulation and
+agency-specific supplemental regulations. As such, use, duplication,
+disclosure, modification, and adaptation of the Programs, including
+documentation and technical data, shall be subject to the licensing
+restrictions set forth in the applicable Oracle license agreement, and,
+to the extent applicable, the additional rights set forth in FAR
+52.227-19, Commercial Computer Software—Restricted Rights (June 1987).
+Oracle Corporation, 500 Oracle Parkway, Redwood City, CA 94065
+</p>
+<p>The Programs are not intended for use in any nuclear, aviation, mass
+transit, medical, or other inherently dangerous applications. It shall
+be the licensee's responsibility to take all appropriate fail-safe,
+backup, redundancy and other measures to ensure the safe use of such
+applications if the Programs are used for such purposes, and we
+disclaim liability for any damages caused by such use of the Programs.
+</p>
+<p>Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks
+of Oracle Corporation and/or its affiliates. Other names may be
+trademarks of their respective owners.
+</p>
+<p>The Programs may provide links to Web sites and access to content,
+products, and services from third parties. Oracle is not responsible
+for the availability of, or any content provided on, third-party Web
+sites. You bear all risks associated with the use of such content. If
+you choose to purchase any products or services from a third party, the
+relationship is directly between you and the third party. Oracle is not
+responsible for: (a) the quality of third-party products or services;
+or (b) fulfilling any of the terms of the agreement with the third
+party, including delivery of products or services and warranty
+obligations related to purchased products or services. Oracle is not
+responsible for any loss or damage of any sort that you may incur from
+dealing with any third party. </p>
+</div>
+<!-- Start Footer -->
+<div class="footer">
+<p style="text-align: center;"><img alt="Oracle Logo" src="patchnotes_files/oracle.gif"><br>
+Copyright © 2006, Oracle. All rights reserved.</p>
+<!--<p>Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners.</p>-->
+</div>
+<!-- class="footer" -->
+
+</body></html>
