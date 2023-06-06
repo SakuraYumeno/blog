@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Exadata Cell Virtual Machine | Hexo</title><meta name="author" content="Sakura Yumeno"><meta name="copyright" content="Sakura Yumeno"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Exadata Cell Virtual MachineCell Node System Operation: Oracle Linux Release 7 Update 4Exadata Softeware: V983555-01.zipSystem Memory: 16GBX3-2   Setting network and hostname. # 网卡 ens32 作为 service 网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exadata Cell Virtual Machine">
+<meta property="og:url" content="https://sakurayumeno.github.io/blog/posts/db2e84da.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Exadata Cell Virtual MachineCell Node System Operation: Oracle Linux Release 7 Update 4Exadata Softeware: V983555-01.zipSystem Memory: 16GBX3-2   Setting network and hostname. # 网卡 ens32 作为 service 网络">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sakurayumeno.github.io/blog/img/avatar.jpg">
+<meta property="article:published_time" content="2023-06-01T06:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-06T15:58:12.122Z">
+<meta property="article:author" content="Sakura Yumeno">
+<meta property="article:tag" content="exadata">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sakurayumeno.github.io/blog/img/avatar.jpg"><link rel="shortcut icon" href="/blog/img/favicon.png"><link rel="canonical" href="https://sakurayumeno.github.io/blog/posts/db2e84da.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"/blog/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Exadata Cell Virtual Machine',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-06 23:58:12'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/blog/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/blog/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">133</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">71</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/assets/html/"><i class="fa-fw fas fa-file-code"></i><span> HTML</span></a></li><li><a class="site-page child" href="/blog/assets/pdf/"><i class="fa-fw fas fa-file-pdf"></i><span> PDF</span></a></li><li><a class="site-page child" href="/blog/assets/script/"><i class="fa-fw fas fa-terminal"></i><span> Script</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-headphones"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blog/img/background002.jpg')"><nav id="nav"><span id="blog-info"><a href="/blog/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/assets/html/"><i class="fa-fw fas fa-file-code"></i><span> HTML</span></a></li><li><a class="site-page child" href="/blog/assets/pdf/"><i class="fa-fw fas fa-file-pdf"></i><span> PDF</span></a></li><li><a class="site-page child" href="/blog/assets/script/"><i class="fa-fw fas fa-terminal"></i><span> Script</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-headphones"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Exadata Cell Virtual Machine</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-01T06:00:00.000Z" title="发表于 2023-06-01 14:00:00">2023-06-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-06T15:58:12.122Z" title="更新于 2023-06-06 23:58:12">2023-06-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Database/Oracle/Exadata/">Exadata</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Exadata Cell Virtual Machine"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Exadata-Cell-Virtual-Machine"><a href="#Exadata-Cell-Virtual-Machine" class="headerlink" title="Exadata Cell Virtual Machine"></a>Exadata Cell Virtual Machine</h1><h2 id="Cell-Node"><a href="#Cell-Node" class="headerlink" title="Cell Node"></a>Cell Node</h2><blockquote>
+<p>System Operation: Oracle Linux Release 7 Update 4<br>Exadata Softeware: V983555-01.zip<br>System Memory: 16GB<br>X3-2</p>
+</blockquote>
+<ol>
+<li><p>Setting network and hostname.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 网卡 ens32 作为 service 网络，ens35 作为 infiniband 网络</span>
+nmcli con modify ens32 ipv4.add <span class="token number">192.168</span>.3.110/24 ipv4.gate <span class="token number">192.168</span>.3.1 ipv4.dns <span class="token number">114.114</span>.114.114 ipv4.method manual autoconnect <span class="token function">yes</span>
+nmcli con modify ens35 ipv4.add <span class="token number">100.100</span>.100.110/24 ipv4.method manual autoconnect <span class="token function">yes</span>
+
+<span class="token comment"># 将 ifcfg-ens35 网卡配置文件中的 PREFIX=24 参数变更为 NETMASK=255.255.255.0，具体情况查看 Installation Errors</span>
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/PREFIX=24/s/PREFIX=24/NETMASK=255.255.255.0/'</span> /etc/sysconfig/network-scripts/ifcfg-ens35
+
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/::1/s/::1/# ::1/'</span> /etc/hosts
+<span class="token builtin class-name">echo</span> <span class="token string">"100.100.100.110 exacell01"</span> <span class="token operator">>></span> /etc/hosts
+
+systemctl disable firewalld <span class="token parameter variable">--now</span>
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/^SELINUX=/s/enforcing/disabled/'</span> /etc/selinux/config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Configuring kernel parameters</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">>></span> /etc/sysctl.conf <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+fs.file-max = 65536
+fs.aio-max-nr = 500000000
+vm.min_free_kbytes = 512000
+net.core.rmem_default = 262144
+net.core.wmem_default = 262144
+net.core.rmem_max = 8388608
+net.core.wmem_max = 4194304
+EOF</span>
+
+<span class="token function">cat</span> <span class="token operator">>></span> /etc/security/limits.conf <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+root soft nofile 131072
+root hard nofile 131072
+celladmin soft nproc 2047
+celladmin hard nproc 16384
+celladmin soft nofile 131072
+celladmin hard nofile 131072
+EOF</span>
+
+<span class="token function">cat</span> <span class="token operator">>></span> /etc/modprobe.d/rds.conf <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+install rds /sbin/modprobe --ignore -install rds &amp;&amp; /sbin/modprobe rds_tcp &amp;&amp; /sbin/modprobe rds_rdma
+EOF</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Creating log directories.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /var/log/oracle
+<span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">775</span> /var/log/oracle<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>Installing Cell software.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /tmp/V983555-01
+<span class="token function">unzip</span> <span class="token parameter variable">-d</span> /tmp/V983555-01 /tmp/V983555-01.zip
+<span class="token builtin class-name">cd</span> /tmp/V983555-01
+<span class="token function">tar</span> <span class="token parameter variable">-xvf</span> nfsimg-18.1.20.0.0-190911-cell.tar
+<span class="token builtin class-name">cd</span> cellbits/
+<span class="token function">tar</span> <span class="token parameter variable">-jxvf</span> cellrpms.tbz
+yum <span class="token parameter variable">-y</span> localinstall jdk1.8-1.8.0_221-fcs.x86_64.rpm
+<span class="token function">unzip</span> cell.bin
+yum <span class="token parameter variable">-y</span> localinstall cell-18.1.20.0.0_LINUX.X64_190911-1.x86_64.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+<li><p>Starting Cell services.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># cd /opt/oracle/cell/cellsrv/bin/</span>
+<span class="token comment"># ./cellcli</span>
+
+CellCLI<span class="token operator">></span> alter cell restart services all
+Stopping RS services<span class="token punctuation">..</span>.
+CELL-01509: Restart Server <span class="token punctuation">(</span>RS<span class="token punctuation">)</span> not responding.
+Starting the RS services<span class="token punctuation">..</span>.
+Getting the state of RS services<span class="token punctuation">..</span>.  running
+Restarting CELLSRV services<span class="token punctuation">..</span>.
+The RESTART of CELLSRV services was not successful.
+CELL-01531: Unable to parse the cellinit.ora <span class="token function">file</span> due to incorrect parameters <span class="token keyword">in</span> the file.
+Restarting MS services<span class="token punctuation">..</span>.
+The RESTART of MS services was successful.
+
+CellCLI<span class="token operator">></span> create cell exacell01 <span class="token assign-left variable">interconnect1</span><span class="token operator">=</span>ens35<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Creating virtual disks.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /opt/oracle/cell/disks/raw
+
+<span class="token function">cat</span> <span class="token operator">></span> /tmp/disk.sh <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk01 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk02 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk03 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk04 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk05 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk06 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk07 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk08 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk09 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk10 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk11 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/disk12 bs=1M count=5120
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/FLASH01 bs=1M count=1024
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/FLASH02 bs=1M count=1024
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/FLASH03 bs=1M count=1024
+dd if=/dev/zero of=/opt/oracle/cell/disks/raw/FLASH04 bs=1M count=1024
+EOF</span>
+
+<span class="token function">sh</span> /tmp/disk.sh
+<span class="token function">chmod</span> <span class="token number">660</span> /opt/oracle/cell/disks/raw/*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Creating Cell grid disks.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cellcli <span class="token parameter variable">-e</span> create celldisk all
+cellcli <span class="token parameter variable">-e</span> create flashcache all <span class="token assign-left variable">size</span><span class="token operator">=</span>2G
+cellcli <span class="token parameter variable">-e</span> create flashlog all
+cellcli <span class="token parameter variable">-e</span> create griddisk all harddisk <span class="token assign-left variable">prefix</span><span class="token operator">=</span>data,size<span class="token operator">=</span>2G
+cellcli <span class="token parameter variable">-e</span> create griddisk all harddisk <span class="token assign-left variable">prefix</span><span class="token operator">=</span>arch,size<span class="token operator">=</span>1G
+cellcli <span class="token parameter variable">-e</span> create griddisk all harddisk <span class="token assign-left variable">prefix</span><span class="token operator">=</span>ocr,size<span class="token operator">=</span>500M
+cellcli <span class="token parameter variable">-e</span> list griddisk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h2 id="DB-Node"><a href="#DB-Node" class="headerlink" title="DB Node"></a>DB Node</h2><h3 id="Installing-Oracle-11g-RAC"><a href="#Installing-Oracle-11g-RAC" class="headerlink" title="Installing Oracle 11g RAC"></a>Installing Oracle 11g RAC</h3><ul>
+<li><a href="/blog/posts/cb2b044.html">Installing Oracle 11g RAC</a></li>
+</ul>
+<h3 id="Setting-Up-Configuration-Files-for-a-Database-Server-Host"><a href="#Setting-Up-Configuration-Files-for-a-Database-Server-Host" class="headerlink" title="Setting Up Configuration Files for a Database Server Host"></a>Setting Up Configuration Files for a Database Server Host</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /etc/oracle/cell/network-config
+
+<span class="token builtin class-name">echo</span> <span class="token string">"ipaddress1=100.100.100.210/24"</span> <span class="token operator">></span> /etc/oracle/cell/network-config/cellinit.ora
+<span class="token function">cat</span> <span class="token operator">></span> /etc/oracle/cell/network-config/cellip.ora <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+cell="100.100.100.110","100.100.100.111","100.100.100.112"
+EOF</span>
+
+<span class="token function">chown</span> <span class="token parameter variable">-R</span> grid:oinstall /etc/oracle/cell/network-config
+<span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">775</span> /etc/oracle/cell/network-config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>kfod</code> verify.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Login as grid</span>
+<span class="token comment"># Path is GI Software Unzip Location</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LD_LIBRARY_PATH</span><span class="token operator">=</span>/soft/grid/stage/ext/lib:/lib:/usr/lib
+/soft/grid/stage/ext/bin/kfod <span class="token assign-left variable">disks</span><span class="token operator">=</span>all <span class="token assign-left variable">dscvgroup</span><span class="token operator">=</span>true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Cell-Node-Installation-Errors"><a href="#Cell-Node-Installation-Errors" class="headerlink" title="Cell Node Installation Errors"></a>Cell Node Installation Errors</h2><p>See: <code>/opt/oracle/cell/log/diag/asm/cell/exacell01/trace/alert.log</code></p>
+<h3 id="CELL-02598"><a href="#CELL-02598" class="headerlink" title="CELL-02598"></a>CELL-02598</h3><p>执行 <code>create cell cell1 interconnect1=ens35</code> 时，出现如下错误</p>
+<pre class="line-numbers language-cellcli" data-language="cellcli"><code class="language-cellcli">CellCLI&gt; create cell exacell01 interconnect1&#x3D;ens35
+CELL-02598: Ipaddress&#x2F;Netmask attribute is not properly configured for interconnect ens35.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>将 ifcfg-ens35 网卡配置文件中的 <code>PREFIX=24</code> 参数变更为<code>NETMASK=255.255.255.0</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/PREFIX=24/s/PREFIX=24/NETMASK=255.255.255.0/'</span> /etc/sysconfig/network-scripts/ifcfg-ens35<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="CELL-02018"><a href="#CELL-02018" class="headerlink" title="CELL-02018"></a>CELL-02018</h3><p>执行 <code>create cell cell1 interconnect1=ens35</code> 时，出现如下错误</p>
+<pre class="line-numbers language-cellcli" data-language="cellcli"><code class="language-cellcli">CellCLI&gt; create cell exacell01 interconnect1&#x3D;ens35
+Cell exacell03 successfully created
+Starting CELLSRV services...
+The STARTUP of CELLSRV services was not successful.
+CELL-02018: Internal error detected: Not enough open file descriptors.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>资源限制 <code>nofile</code> 参数设置不足，增加该参数值。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>celladmin@exacell03 ~<span class="token punctuation">]</span>$ <span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-Sn</span>
+<span class="token number">131072</span>
+<span class="token punctuation">[</span>celladmin@exacell03 ~<span class="token punctuation">]</span>$ <span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-Hn</span>
+<span class="token number">131072</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="CELL-01554"><a href="#CELL-01554" class="headerlink" title="CELL-01554"></a>CELL-01554</h3><p>重启 cell 服务，MS 服务无法启动</p>
+<pre class="line-numbers language-cellcli" data-language="cellcli"><code class="language-cellcli">CellCLI&gt; alter cell restart services all
+
+Stopping RS services...
+The SHUTDOWN of RS services was successful.
+Starting the RS services...
+Getting the state of RS services...  running
+Restarting CELLSRV services...
+The RESTART of CELLSRV services was successful.
+Restarting MS services...
+The RESTART of MS services was not successful.
+CELL-01554: MS startup failed for unknown reasons.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查看 <code>/opt/oracle/cell/log/diag/asm/cell/exacell01/trace/alert.log</code> 日志文件</p>
+<pre class="line-numbers language-log" data-language="log"><code class="language-log"><span class="token date number">2023-06-05T</span><span class="token time number">21:14:33.160755+08:00</span>
+<span class="token punctuation">[</span>RS<span class="token punctuation">]</span> <span class="token property">Start service MS failed with error:</span> <span class="token operator">-</span><span class="token number">74</span><span class="token punctuation">.</span>
+<span class="token date number">2023-06-05T</span><span class="token time number">21:14:33.165961+08:00</span>
+<span class="token punctuation">[</span>RS<span class="token punctuation">]</span> Monitoring process <span class="token file-path string">/opt/oracle/cell18.1.20.0.0_LINUX.X64_190911/cellsrv/bin/cellrsmmt</span> <span class="token operator">(</span>pid<span class="token operator">:</span> <span class="token number">1042</span><span class="token operator">)</span> returned with error<span class="token operator">:</span> <span class="token number">162</span>
+<span class="token date number">2023-06-05T</span><span class="token time number">21:14:33.166253+08:00</span>
+<span class="token punctuation">[</span>RS<span class="token punctuation">]</span> Service MS is no longer present
+Errors in file <span class="token file-path string">/opt/oracle/cell18.1.20.0.0_LINUX.X64_190911/log/diag/asm/cell/exacell01/trace/rstrc_556_mmt.trc</span>  <span class="token operator">(</span>incident<span class="token operator">=</span><span class="token number">137</span><span class="token operator">)</span><span class="token operator">:</span>
+RS<span class="token operator">-</span><span class="token number">7445</span> <span class="token punctuation">[</span>Serv MS is absent<span class="token punctuation">]</span> <span class="token punctuation">[</span>It will not be restarted<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token property">Incident details in:</span> <span class="token file-path string">/opt/oracle/cell18.1.20.0.0_LINUX.X64_190911/log/diag/asm/cell/exacell01/incident/incdir_137/rstrc_556_mmt_i137.trc</span>
+
+<span class="token punctuation">[</span>RS<span class="token punctuation">]</span> Stopped Service MS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查看提示的 <code>trace</code> 文件</p>
+<pre class="line-numbers language-log" data-language="log"><code class="language-log"><span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.037</span> <span class="token operator">:</span><span class="token number">00000038</span><span class="token operator">:</span> MS process is not alive<span class="token punctuation">.</span> Pid is missing<span class="token punctuation">.</span>
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.037</span> <span class="token operator">:</span><span class="token number">00000039</span><span class="token operator">:</span> Missed a heartbeat for process MS or leaking memory<span class="token punctuation">,</span> error<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">75</span>
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.037</span> <span class="token operator">:</span><span class="token number">0000003A</span><span class="token operator">:</span> Service MS was not alive<span class="token punctuation">,</span> try starting
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.255</span> <span class="token operator">:</span><span class="token number">00000048</span><span class="token operator">:</span> OS system dependent operation<span class="token operator">:</span>connect_error failed with status<span class="token operator">:</span> <span class="token number">111</span>
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.255</span> <span class="token operator">:</span><span class="token number">00000049</span><span class="token operator">:</span> OS failure message<span class="token operator">:</span> Connection
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.255</span> <span class="token operator">:</span><span class="token number">0000004A</span><span class="token operator">:</span> failure occurred at<span class="token operator">:</span> sosstcpconne
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.255</span> <span class="token operator">:</span><span class="token number">0000004B</span><span class="token operator">:</span> Failed to heartbeat MS <span class="token operator">(</span>port<span class="token operator">:</span> <span class="token number">5043</span> timeout<span class="token operator">:</span> <span class="token number">60</span> sec<span class="token operator">)</span>
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.255</span> <span class="token operator">:</span><span class="token number">0000004C</span><span class="token operator">:</span> socket open error<span class="token operator">:</span> Port no<span class="token operator">:</span> <span class="token number">8888</span><span class="token punctuation">.</span> Received errorno <span class="token number">111</span><span class="token punctuation">.</span> Connection refused
+<span class="token date number">2023-06-05</span> <span class="token time number">21:14:23.356</span> <span class="token operator">:</span><span class="token number">0000004D</span><span class="token operator">:</span> mon_proc_pid oldpid<span class="token operator">:</span> <span class="token number">1097</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h4><p>原因暂时未排查清楚，用 root 用户可正常重启</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@exacell01 ~<span class="token punctuation">]</span><span class="token comment"># cd /opt/oracle/cell/cellsrv/bin</span>
+<span class="token punctuation">[</span>root@exacell01 bin<span class="token punctuation">]</span><span class="token comment">#</span>
+<span class="token punctuation">[</span>root@exacell01 bin<span class="token punctuation">]</span><span class="token comment"># ./cellcli -e alter cell restart services all</span>
+Stopping RS services<span class="token punctuation">..</span>.
+The SHUTDOWN of RS services was successful.
+Starting the RS services<span class="token punctuation">..</span>.
+Getting the state of RS services<span class="token punctuation">..</span>.  running
+Restarting CELLSRV services<span class="token punctuation">..</span>.
+The RESTART of CELLSRV services was successful.
+Restarting MS services<span class="token punctuation">..</span>.
+The RESTART of MS services was successful.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://sakurayumeno.github.io/blog">Sakura Yumeno</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://sakurayumeno.github.io/blog/posts/db2e84da.html">https://sakurayumeno.github.io/blog/posts/db2e84da.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sakurayumeno.github.io/blog" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/exadata/">exadata</a></div><div class="post_share"><div class="social-share" data-image="/blog/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/posts/6a9e00b5.html" title="deleting-oracle-19c-rac-from-nodes-on-linux"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">deleting-oracle-19c-rac-from-nodes-on-linux</div></div></a></div><div class="next-post pull-right"><a href="/blog/posts/a127f611.html" title="Creating a Physical Standby Database"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Creating a Physical Standby Database</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/blog/posts/39334fc0.html" title="Create ASM DiskGroup"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-06</div><div class="title">Create ASM DiskGroup</div></div></a></div><div><a href="/blog/posts/78416e0d.html" title="Exadata Virtual Machine 11"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-20</div><div class="title">Exadata Virtual Machine 11</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sakura Yumeno</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">133</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">71</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Exadata-Cell-Virtual-Machine"><span class="toc-number">1.</span> <span class="toc-text">Exadata Cell Virtual Machine</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cell-Node"><span class="toc-number">1.1.</span> <span class="toc-text">Cell Node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DB-Node"><span class="toc-number">1.2.</span> <span class="toc-text">DB Node</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Installing-Oracle-11g-RAC"><span class="toc-number">1.2.1.</span> <span class="toc-text">Installing Oracle 11g RAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Setting-Up-Configuration-Files-for-a-Database-Server-Host"><span class="toc-number">1.2.2.</span> <span class="toc-text">Setting Up Configuration Files for a Database Server Host</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cell-Node-Installation-Errors"><span class="toc-number">1.3.</span> <span class="toc-text">Cell Node Installation Errors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CELL-02598"><span class="toc-number">1.3.1.</span> <span class="toc-text">CELL-02598</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">Solution</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CELL-02018"><span class="toc-number">1.3.2.</span> <span class="toc-text">CELL-02018</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution-1"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">Solution</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CELL-01554"><span class="toc-number">1.3.3.</span> <span class="toc-text">CELL-01554</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution-2"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">Solution</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/93568fe7.html" title="ORA-15274 Not enough failgroups (3) to create voting files">ORA-15274 Not enough failgroups (3) to create voting files</a><time datetime="2023-06-06T14:00:00.000Z" title="发表于 2023-06-06 22:00:00">2023-06-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/39334fc0.html" title="Create ASM DiskGroup">Create ASM DiskGroup</a><time datetime="2023-06-06T11:30:00.000Z" title="发表于 2023-06-06 19:30:00">2023-06-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/c8fcf40e.html" title="Excution rootcrs.pl fails">Excution rootcrs.pl fails</a><time datetime="2023-06-06T06:00:00.000Z" title="发表于 2023-06-06 14:00:00">2023-06-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/6a9e00b5.html" title="deleting-oracle-19c-rac-from-nodes-on-linux">deleting-oracle-19c-rac-from-nodes-on-linux</a><time datetime="2023-06-04T05:15:46.000Z" title="发表于 2023-06-04 13:15:46">2023-06-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/db2e84da.html" title="Exadata Cell Virtual Machine">Exadata Cell Virtual Machine</a><time datetime="2023-06-01T06:00:00.000Z" title="发表于 2023-06-01 14:00:00">2023-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sakura Yumeno</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ObOTebhiQ1tVSc4sMZ3BFYIy-gzGzoHsz',
+      appKey: 'z9b7gBGBmNvGjy5bNbOHd6So',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/blog/js/search/local-search.js"></script></div></div></body></html>
