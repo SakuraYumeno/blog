@@ -53,7 +53,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-06-11 20:39:12'
+  postUpdate: '2023-06-12 19:53:04'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -184,148 +184,103 @@ Operating System - Oracle Linux Server 7.9Oracle Database - Enterprise Edition -
 SYMPTOMS 节点 2 alert_+ASM2.log 日志文件持续出现如下错误:
 Tue Mar 29 07:31:25 2022
 skgxpvfynet: mtype: 61 process 4632 failed because of a resource problem in the OS. The OS has most likely run out of buffers (rval: 4)
-Errors in file &#x2F;u01&#x2F;app&#x2F;grid&#x2F;diag&#x2F;asm&#x2F;+asm&#x2F;+ASM2&#x2F;trace&#x2F;+ASM2_m000_4632.trc  (inci ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/ce80a7f9.html" title="Active Database Duplication">Active Database Duplication</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/RMAN/">RMAN</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/duplication/">duplication</a></span></div><div class="content">
-Creating a Password File for the Auxiliary Instance, When you create a standby database by using RMAN duplication, password files are always copied.
+Errors in file &#x2F;u01&#x2F;app&#x2F;grid&#x2F;diag&#x2F;asm&#x2F;+asm&#x2F;+ASM2&#x2F;trace&#x2F;+ASM2_m000_4632.trc  (inci ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/c0cd38d7.html" title="High CPU Usage">High CPU Usage</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Optimization/">Optimization</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/optimization/">optimization</a></span></div><div class="content">数据库运行慢，登录操作系统发现 CPU 使用率比平常要高  查看当前会话运行的 SQL Text 和 PLAN
+SQL> select sql_id, count(1) from gv$session where type='USER' and status = 'ACTIVE' group by sql_id;
+SQL_ID          COUNT(1)
+------------- ----------
+arz2wrgd05c5z          1
 
-Add Net Services for primary and standby databases in the tnsnames.ora file.
+SQL> select addr,spid from v$process where spid='3268';
 
-Adding Static Service to Listener in the listener.ora file.
+SQL> select sid,sql_id from v$session where paddr='0000000090CCF600';
 
-Create an Initialization Parameter File for the Auxiliary Instance.
+SQL> select sql_text from v$sql where sql_id='arz2wrgd05c5z';
 
-Start the auxiliary instance in NOMOUNT mode.
+SQL> 
+select sql_id
+ from v$session
+ where paddr in (select addr from v$pro ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/d13c15c9.html" title="exp 9i - 11g">exp 9i - 11g</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Migrate/">Migrate</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/exp/">exp</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/blog/tags/imp/">imp</a></span></div><div class="content">
+ 检查 segment 大小、对象个数、job、所有表的记录数 
 
-Duplication database.
-rman target sys/oracle@Matrix auxiliary sys/oracle@Matrix_DR0
+spool check_object_source/target.log
+set pagesize 10000
+prompt ---------------segments_bytes_G
+select sum(bytes)/1024/1024/1024 from dba_segments where owner='XXXX';
+prompt ---------------object total amounts
+select count(*) from dba_objects where owner='XXXX';
+prompt ---------------object type amounts
+select owner,object_type,count(*) from dba_objects where owner='XXXX' group by owner,object_type order by 1,2;
+prompt-----------------job amounts
+select job,what ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/24a83795.html" title="endian_format">endian_format</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Migrate/">Migrate</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/endian/">endian</a></span></div><div class="content">SQL> select * from v$transportable_platform order by platform_id;
 
-run &#123 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/65ab7f54.html" title="Backup for Linux">Backup for Linux</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/RMAN/">RMAN</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/rman/">rman</a></span></div><div class="content">
- 创建备份目录 
-mkdir -p /rmanbackup/rmanlog
-mkdir -p /rmanbackup/dbbak
-mkdir -p /rmanbackup/scripts
-mkdir -p /rmanbackup/week
-mkdir -p /rmanbackup/day
-chown -R oracle:oinstall /rmanbackup
-chmod -R 755 /rmanbackup
-
- 备份脚本 &#x2F;rmanbackup&#x2F;scripts&#x2F;rmanbackup.sh
-#/bin/bash 
-export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1
-export ORACLE_OWNER=oracle
-export ORACLE_SID=nwppdb_1
-export ORACLE_UNQNAME=nwppdb
-export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:/usr/ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/62d30125.html" title="Backup for Windows">Backup for Windows</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/RMAN/">RMAN</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/rman/">rman</a></span></div><div class="content">
-full backup
-REM 需要修改的变量值开始 
-set ORACLE_SID=xpxyy
-set BACKUP_PATH=E:\RMAN
-set SYS_PASSWD=oracle
-REM 修改变量结束 
-
-REM 在服务器上保留 3 个备份的脚本 
-if exist %BACKUP_PATH%\*.OLD del /F /Q %BACKUP_PATH%\*.001
-if exist %BACKUP_PATH%\*.BAK rename %BACKUP_PATH%\*.OLD  *.001
-if exist %BACKUP_PATH%\*.BAK rename %BACKUP_PATH%\*.BAK  *.OLD
-
-REM 在服务器上保留 2 个备份的脚本 
-REM  if exist %BACKUP_PATH%\*.BAK del /F /Q  %BACKUP_PATH%\*.OLD
-REM  if exist %BACKUP_PATH%\*.BAK rename %BACKUP_PATH%\*.BAK  *.OLD
-
-REM 在服务器上保留 1 个备份的脚本 
-REM i ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/486a1663.html" title="Restore">Restore</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/RMAN/">RMAN</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/rman/">rman</a></span></div><div class="content">Restore parameter file
-rman target / nocatalog
-
-RUN &#123;
- ALLOCATE CHANNEL ch00 TYPE DISK;
- RESTORE SPFILE FROM '/BACKUP/SPFILE_01UUF10M_1_1.BAK' TO PFILE '/tmp/initTEMP.ora';
- RELEASE CHANNEL ch00;
-&#125;
-
-STARTUP FORCE PFILE='/tmp/initTEMP.ora';
-
-Restore control file
-rman target / nocatalog
-
-startup nomount;
-set dbid 320066378;
-
-run &#123;
- allocate channel ch00 type disk;
- restore controlfile from '/backup/cntrl_46_1_730733685';
- release channel ch00;
-&#125;
-
-Restore database file
-rman targ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/68862bf4.html" title="Datapump">Datapump</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Utilities/">Utilities</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/datapump/">datapump</a></span></div><div class="content">DatapumpCreate a directory and grant privilegesCheck directory
-set linesize 200 pages 100
-col privilege for a10
-col directory_path for a25
-select t.owner, privilege, directory_name, directory_path
-from user_tab_privs t, all_directories d 
-where t.table_name(+) = d.directory_name order by 3, 2;
-
-select * from dba_directories;
-
-Create directory
-create directory expdp1 as '/expdp';
-grant read,write on directory expdp1 to sys,system;
-
-Drop directory
-drop directory expdp1;
-
-Export Mode
-Full Mode
-expo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/82bc98c5.html" title="Block Browser and EDitor">Block Browser and EDitor</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Utilities/">Utilities</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/bbed/">bbed</a></span></div><div class="content">
- 编译 bbed
-
-[oracle@centos7 ~]$ cd $ORACLE_HOME/rdbms/lib
-[oracle@centos7 lib]$ make -f ins_rdbms.mk $ORACLE_HOME/rdbms/lib/bbed
-[oracle@centos7 lib]$ ./bbed
-Password: blockedit
-
-BBED: Release 2.0.0.0.0 - Limited Production on Tue Mar 8 14:35:08 2022
-
-Copyright (c) 1982, 2007, Oracle.  All rights reserved.
-
-************* !!! For Oracle Internal Use only !!! ***************
-
-BBED>
+PLATFORM_ID PLATFORM_NAME                            ENDIAN_FORMAT
+----------- ---------------------------------------- --------------
+          1 Solaris[tm] OE (32-bit)                  Big
+          2 Solaris[tm] OE (64-bit)                  Big
+          3 HP-UX (64-bit)                           Big
+          4 HP-UX IA (64-bit)                        Big
+          5 HP Tru64 UNIX                            Little
+           ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/c6c09ea3.html" title="Migration Method Comparison">Migration Method Comparison</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Migrate/">Migrate</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/migration/">migration</a></span></div><div class="content"> 数据库平台迁移，常用工具优缺点对比：
 
 
- 设置参数 
 
- 查询数据文件信息，并保存至 bbed filelist 文件中 
-SQL> set heading off
-SQL> set feedback off
-SQL> spool /u01/bbedlist.parf
-S ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/dcd52c13.html" title="OSWatcher">OSWatcher</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Utilities/">Utilities</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/oswatcher/">oswatcher</a></span></div><div class="content">安装  将下载好的安装包（文件名为 oswbb***.tar）上传至每个数据库节点，并解压
-mkdir /u01/oswatcher
-tar -xvf oswbb840.tar
+ 方法 
+ 优点 
+ 缺点 
 
-配置
-（可选）追踪 RAC 私有网络
-将 Exampleprivate.net 拷贝至 private.net，编辑 private.net
-Linux 平台上的 private.net 示例条目：
-######################################################################
-#Linux Example
-######################################################################
-echo "zzz ***"`date`
-traceroute -r -F rac01-priv
-traceroute -r -F rac02-priv
-######################################################################
-rm lo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/b39ef565.html" title="Delete ArchiveLog">Delete ArchiveLog</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/RMAN/">RMAN</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/archivelog/">archivelog</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/blog/tags/rman/">rman</a></span></div><div class="content">Delete ArchiveLogexport ORACLE_SID=coco
-export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/11.2.0.4/db_1
-$ORACLE_HOME/bin/rman log=/home/oracle/rmarch.log &lt;&lt; EOF
-connect target /
-run&#123;
-crosscheck archivelog all;
-delete noprompt expired archivelog all;
-delete noprompt archivelog all completed before 'sysdate - 1';
-&#125;
-exit;
-EOF</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/4fc711ab.html" title="Patch 20299014_10205">Patch 20299014_10205</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Update/">Update</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/patch/">patch</a></span></div><div class="content">
+
+
+RMAN
+ 操作简单 
+ 不适用于不同字节序之间的平台迁移 
+
+
+ 数据泵 
+ 操作简单 
+ 数据量大时需要的停机时间很长 
+
+
+OGG
+ 对源端目标端平台无要求 
+ 操作较复杂，维护成本高 
+
+
+XTTS
+ 源端与目标端字节序可以不同，停机时间短 
+ 被移动的表空间不能包含 offline 的数据文件 
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/787d9e55.html" title="Optimization">Optimization</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Optimization/">Optimization</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/optimization/">optimization</a></span></div><div class="content">
+what oracle waiting for ???
+select * from 
+ (select count(*), event, sql_id, program, inst_id
+  from gv$active_session_history
+  where sample_time > sysdate-5/1440
+  group by event, sql_id, program, inst_id
+  order by 1 desc)
+where rownum &lt;= 20;
+
+query execution plan
+select plan_table_output from table(dbms_xplan.display_cursor('&amp;sql_id')); -- 已知 SQL_Id 的情况下 
+
+explain plan for (SQL_TEXT); select * from table(dbms_xplan.display);
+
+set autotrace on explain -- 显示值和执行计划 
+set autotrace traceo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/b99fec6c.html" title="Patch 18370031_112040">Patch 18370031_112040</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Update/">Update</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/patch/">patch</a></span></div><div class="content">p18370031_112040_Linux-x86-64
+p18370031_112040_Linux-x86-64_README
+
+RecordYou must use the OPatch utility version 11.2.0.3.0 or later to apply this patch.
+$ &lt;ORACLE_HOME>/OPatch/opatch version
+
+if not, patch p6880880.
+Validation of Oracle InventoryBefore beginning patch application, check the consistency of inventory information for GI home and each database home to be patched. Run the following command as respective Oracle home owner to check the consistency.
+$ &lt;ORACLE_HOME>/OPatch/opatch ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/4d1d7773.html" title="Patch 31718723_112040">Patch 31718723_112040</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Update/">Update</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/patch/">patch</a></span></div><div class="content">
+Patch 31718723 - Oracle Grid Infrastructure Patch Set Update 11.2.0.4.201020
+
+p31718723_112040_Linux-x86-64
+p31718723_112040_Linux-x86-64_README
+
+Record</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/4fc711ab.html" title="Patch 20299014_10205">Patch 20299014_10205</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Update/">Update</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/patch/">patch</a></span></div><div class="content">
 Patch 20299014 - Database Patch Set Update 10.2.0.5.19 (Includes CPUJul2015)
 
 p20299014_10205_Linux-x86-64
@@ -337,7 +292,13 @@ Record
 
 Update OPatch
 [root@centos7 ~]# chmod 775 /soft/p6880880_102000_Linux-x86-64-opatch.zip
-[root@centos7 ~]# chown /soft/oracle:oinst ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/12/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/12/#content-inner">12</a><span class="page-number current">13</span><a class="page-number" href="/blog/page/14/#content-inner">14</a><a class="page-number" href="/blog/page/15/#content-inner">15</a><a class="extend next" rel="next" href="/blog/page/14/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sakura Yumeno</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">143</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">76</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/19ab1444.html" title="Manage Docker as a non-root user">Manage Docker as a non-root user</a><time datetime="2023-06-10T11:44:29.000Z" title="发表于 2023-06-10 19:44:29">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/a703d20e.html" title="Import and Export">Import and Export</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/871b8dc0.html" title="LVM Snapshot">LVM Snapshot</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/fdedf5dc.html" title="MysqlDump">MysqlDump</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/42df2eeb.html" title="xtarbackup">xtarbackup</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+[root@centos7 ~]# chown /soft/oracle:oinst ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/posts/7442eb0a.html" title="Patch 32226239_190000">Patch 32226239_190000</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-20T14:00:00.000Z" title="发表于 2023-05-20 22:00:00">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/Database/">Database</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/">Oracle</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/blog/categories/Database/Oracle/Update/">Update</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/blog/tags/patch/">patch</a></span></div><div class="content">
+Patch 32226239 - GI Release Update 19.10.0.0.210119
+
+p32226239_190000_Linux-x86-64
+p32226239_190000_Linux-x86-64_README
+
+Record</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/blog/page/12/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/12/#content-inner">12</a><span class="page-number current">13</span><a class="page-number" href="/blog/page/14/#content-inner">14</a><a class="page-number" href="/blog/page/15/#content-inner">15</a><a class="extend next" rel="next" href="/blog/page/14/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Sakura Yumeno</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">143</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">76</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">36</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/19ab1444.html" title="Manage Docker as a non-root user">Manage Docker as a non-root user</a><time datetime="2023-06-10T11:44:29.000Z" title="发表于 2023-06-10 19:44:29">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/a703d20e.html" title="Import and Export">Import and Export</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/871b8dc0.html" title="LVM Snapshot">LVM Snapshot</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/fdedf5dc.html" title="mysqldump">mysqldump</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/posts/42df2eeb.html" title="xtarbackup">xtarbackup</a><time datetime="2023-06-10T11:00:00.000Z" title="发表于 2023-06-10 19:00:00">2023-06-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/blog/categories/" title="查看更多">
@@ -345,7 +306,7 @@ Update OPatch
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/"><span class="card-category-list-name">Database</span><span class="card-category-list-count">93</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">12</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/MySQL/Configuration/"><span class="card-category-list-name">Configuration</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/MySQL/Installation/"><span class="card-category-list-name">Installation</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/MySQL/Replication/"><span class="card-category-list-name">Replication</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/MySQL/Troubleshooting/"><span class="card-category-list-name">Troubleshooting</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/Oracle/"><span class="card-category-list-name">Oracle</span><span class="card-category-list-count">77</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/Database/Oracle/ASM/"><span class="card-category-list-name">ASM</span><span class="card-category-list-count">8</span></a></li></ul></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/blog/tags/grub2/" style="font-size: 1.1em; color: #999">grub2</a> <a href="/blog/tags/bbed/" style="font-size: 1.1em; color: #999">bbed</a> <a href="/blog/tags/ilom/" style="font-size: 1.1em; color: #999">ilom</a> <a href="/blog/tags/index/" style="font-size: 1.1em; color: #999">index</a> <a href="/blog/tags/hacmp/" style="font-size: 1.1em; color: #999">hacmp</a> <a href="/blog/tags/troubleshooting/" style="font-size: 1.5em; color: #99a9bf">troubleshooting</a> <a href="/blog/tags/iscsi/" style="font-size: 1.1em; color: #999">iscsi</a> <a href="/blog/tags/qemu/" style="font-size: 1.1em; color: #999">qemu</a> <a href="/blog/tags/non-root/" style="font-size: 1.1em; color: #999">non-root</a> <a href="/blog/tags/architecture/" style="font-size: 1.1em; color: #999">architecture</a> <a href="/blog/tags/yum/" style="font-size: 1.1em; color: #999">yum</a> <a href="/blog/tags/export/" style="font-size: 1.1em; color: #999">export</a> <a href="/blog/tags/overview/" style="font-size: 1.2em; color: #999da3">overview</a> <a href="/blog/tags/THP/" style="font-size: 1.1em; color: #999">THP</a> <a href="/blog/tags/table/" style="font-size: 1.1em; color: #999">table</a> <a href="/blog/tags/imp/" style="font-size: 1.1em; color: #999">imp</a> <a href="/blog/tags/osi/" style="font-size: 1.1em; color: #999">osi</a> <a href="/blog/tags/rman/" style="font-size: 1.4em; color: #99a5b6">rman</a> <a href="/blog/tags/maintenance/" style="font-size: 1.1em; color: #999">maintenance</a> <a href="/blog/tags/endian/" style="font-size: 1.1em; color: #999">endian</a> <a href="/blog/tags/statistics/" style="font-size: 1.1em; color: #999">statistics</a> <a href="/blog/tags/systemd/" style="font-size: 1.2em; color: #999da3">systemd</a> <a href="/blog/tags/cmd/" style="font-size: 1.1em; color: #999">cmd</a> <a href="/blog/tags/share/" style="font-size: 1.1em; color: #999">share</a> <a href="/blog/tags/pxe/" style="font-size: 1.2em; color: #999da3">pxe</a> <a href="/blog/tags/xtts/" style="font-size: 1.4em; color: #99a5b6">xtts</a> <a href="/blog/tags/config/" style="font-size: 1.3em; color: #99a1ac">config</a> <a href="/blog/tags/exp/" style="font-size: 1.1em; color: #999">exp</a> <a href="/blog/tags/deinstall/" style="font-size: 1.1em; color: #999">deinstall</a> <a href="/blog/tags/snapshot/" style="font-size: 1.1em; color: #999">snapshot</a> <a href="/blog/tags/datapump/" style="font-size: 1.1em; color: #999">datapump</a> <a href="/blog/tags/ansible/" style="font-size: 1.1em; color: #999">ansible</a> <a href="/blog/tags/swap/" style="font-size: 1.1em; color: #999">swap</a> <a href="/blog/tags/duplication/" style="font-size: 1.1em; color: #999">duplication</a> <a href="/blog/tags/voting/" style="font-size: 1.2em; color: #999da3">voting</a> <a href="/blog/tags/physical-standby/" style="font-size: 1.1em; color: #999">physical standby</a> <a href="/blog/tags/powercli/" style="font-size: 1.1em; color: #999">powercli</a> <a href="/blog/tags/ocr/" style="font-size: 1.1em; color: #999">ocr</a> <a href="/blog/tags/optimization/" style="font-size: 1.2em; color: #999da3">optimization</a> <a href="/blog/tags/delete/" style="font-size: 1.1em; color: #999">delete</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/blog/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/blog/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">129</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">143</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-06-11T12:39:11.232Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sakura Yumeno</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/blog/tags/non-root/" style="font-size: 1.1em; color: #999">non-root</a> <a href="/blog/tags/udev/" style="font-size: 1.1em; color: #999">udev</a> <a href="/blog/tags/exp/" style="font-size: 1.1em; color: #999">exp</a> <a href="/blog/tags/deinstall/" style="font-size: 1.1em; color: #999">deinstall</a> <a href="/blog/tags/restore/" style="font-size: 1.1em; color: #999">restore</a> <a href="/blog/tags/osi/" style="font-size: 1.1em; color: #999">osi</a> <a href="/blog/tags/image/" style="font-size: 1.18em; color: #999ca1">image</a> <a href="/blog/tags/ocr/" style="font-size: 1.1em; color: #999">ocr</a> <a href="/blog/tags/systemd/" style="font-size: 1.18em; color: #999ca1">systemd</a> <a href="/blog/tags/install/" style="font-size: 1.34em; color: #99a3b0">install</a> <a href="/blog/tags/lvm/" style="font-size: 1.1em; color: #999">lvm</a> <a href="/blog/tags/statistics/" style="font-size: 1.1em; color: #999">statistics</a> <a href="/blog/tags/migration/" style="font-size: 1.1em; color: #999">migration</a> <a href="/blog/tags/bbed/" style="font-size: 1.1em; color: #999">bbed</a> <a href="/blog/tags/prerequisites/" style="font-size: 1.1em; color: #999">prerequisites</a> <a href="/blog/tags/qemu/" style="font-size: 1.1em; color: #999">qemu</a> <a href="/blog/tags/snapshot/" style="font-size: 1.1em; color: #999">snapshot</a> <a href="/blog/tags/duplication/" style="font-size: 1.1em; color: #999">duplication</a> <a href="/blog/tags/patch/" style="font-size: 1.42em; color: #99a6b7">patch</a> <a href="/blog/tags/index/" style="font-size: 1.1em; color: #999">index</a> <a href="/blog/tags/privs/" style="font-size: 1.1em; color: #999">privs</a> <a href="/blog/tags/archivelog/" style="font-size: 1.18em; color: #999ca1">archivelog</a> <a href="/blog/tags/asmlib/" style="font-size: 1.1em; color: #999">asmlib</a> <a href="/blog/tags/optimization/" style="font-size: 1.18em; color: #999ca1">optimization</a> <a href="/blog/tags/voting/" style="font-size: 1.18em; color: #999ca1">voting</a> <a href="/blog/tags/password/" style="font-size: 1.26em; color: #999fa8">password</a> <a href="/blog/tags/powercli/" style="font-size: 1.1em; color: #999">powercli</a> <a href="/blog/tags/sshd/" style="font-size: 1.1em; color: #999">sshd</a> <a href="/blog/tags/pacemaker/" style="font-size: 1.26em; color: #999fa8">pacemaker</a> <a href="/blog/tags/backup/" style="font-size: 1.26em; color: #999fa8">backup</a> <a href="/blog/tags/architecture/" style="font-size: 1.1em; color: #999">architecture</a> <a href="/blog/tags/kickstart/" style="font-size: 1.1em; color: #999">kickstart</a> <a href="/blog/tags/ansible/" style="font-size: 1.1em; color: #999">ansible</a> <a href="/blog/tags/iscsi/" style="font-size: 1.1em; color: #999">iscsi</a> <a href="/blog/tags/cmd/" style="font-size: 1.1em; color: #999">cmd</a> <a href="/blog/tags/precheck/" style="font-size: 1.1em; color: #999">precheck</a> <a href="/blog/tags/sanswitch/" style="font-size: 1.18em; color: #999ca1">sanswitch</a> <a href="/blog/tags/troubleshooting/" style="font-size: 1.5em; color: #99a9bf">troubleshooting</a> <a href="/blog/tags/delete/" style="font-size: 1.1em; color: #999">delete</a> <a href="/blog/tags/job/" style="font-size: 1.1em; color: #999">job</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/blog/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/blog/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">129</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">143</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-06-12T11:53:02.578Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sakura Yumeno</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
