@@ -1,0 +1,300 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>How to Shutdown and Startup Exadata Compute Nodes and Storage Cells (including SuperCluster) When Performing Hardware Maintenance (X5 and later)</title>
+<link href="../../images/intstyle.css" rel="stylesheet" type="text/css">
+<link href="mailto:ssh-feedback@whitecastle.us.oracle.com" rev="made">
+</head>
+<body bgcolor="#666699" text="black" link="#666699" vlink="#666699" alink="#ff0000">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr valign="top">
+<td align="right" rowspan="2" width="1%"><a href="http://www.sun.com/"><img src="../../images/O_Sun_joint_logo.jpg" border="0" alt="Sun Microsystems, Inc."></a></td><td colspan="3" width="99%" bgcolor="#000000" valign="middle"><font face="Geneva, Arial, Helvetica, lucida sans, sans-serif" color="#ffffff" class="nonuw" size="3"><b>&nbsp;&nbsp;Oracle System Handbook</b> - ISO 8.3 May 2023 Internal/Partner Edition</font></td>
+</tr>
+<tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr align="center" valign="middle">
+<td valign="middle">&nbsp;&nbsp;
+<font color="#ff9900" face="Geneva, Arial, Helvetica" size="2"><a href="../../index.html"><font color="#ffffff" class="nonuw">Home</font></a> |
+<a href="../../Systems/index.html"><font color="#ffffff" class="nonuw">Current Systems</font></a> |
+<a href="../../STK/STK_index.html"><font color="#ffffff" class="nonuw">Former
+STK Products</font></a> |
+<a href="../../Systems/eolSystemList.html"><font color="#ffffff" class="nonuw">EOL Systems</font></a> |
+<a href="../../Devices/index.html"><font color="#ffffff" class="nonuw">Components</font></a> |
+<a href="../../General/index.html"><font color="#ffffff" class="nonuw">General Info</font></a> |
+
+<a href="/Search.html"><font color="#ffffff" class="nonuw">Search</font></a> |
+<a href="mailto:ssh-feedback@whitecastle.us.oracle.com"><font color="#ffffff" class="nonuw">Feedback</font></a></font></td>
+</tr>
+</tbody>
+</table>
+</td><td align="right" colspan="2">
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr bgcolor="#000000">
+<td><img src="../../images/dot.gif" width="620" height="2" border="0" alt=""></td>
+</tr>
+<tr valign="top" bgcolor="#ffffff">
+<td>
+<div>
+<STYLE TYPE="text/css" MEDIA="screen">
+<!--
+          pre {
+            white-space:-moz-pre-wrap;
+            white-space:pre-wrap;
+            word-wrap:break-word;
+            margin:0px }
+          pre.sunFormat{ font-family:Arial,Helvetica,FreeSans,"Luxi-sans","Nimbus Sans L",sans-serif;
+            font-size:13px;
+            color:#000;
+            white-space:-moz-pre-wrap;
+            white-space:pre-wrap;
+            word-wrap:break-word;
+            margin:0px}
+        -->
+</STYLE>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr>
+<td valign="top" width="3%" nowrap=""><b>Asset ID:</b></td><td align="left" valign="top">
+        1-71-1982342.1</td>
+</tr>
+<tr>
+<td valign="top" width="3%" nowrap=""><b>Update Date:</b></td><td align="left" valign="top">2022-06-03</td>
+</tr>
+<tr>
+<td valign="top" width="3%" nowrap=""><b>Keywords:</b></td><td align="left" valign="top"></td>
+</tr>
+</table>
+<hr>
+  <b><font color="#4682B4">Solution Type&nbsp;</font>
+    Technical Instruction Sure
+  <br>
+<br>
+<font color="#4682B4"> Solution&nbsp;
+1982342.1</font>
+: &nbsp;
+How to Shutdown and Startup Exadata Compute Nodes and Storage Cells (including SuperCluster) When Performing Hardware Maintenance (X5 and later)
+&nbsp;</b>
+<br>
+<br>
+<div>
+<table border="1" width="100%">
+<tr bgcolor="#4682B4">
+<td><font color="white">Related Items</font></td>
+</tr>
+<tr>
+<td>
+<pre class="sunFormat">
+<ul>
+<li>Oracle SuperCluster T5-8 Full Rack</li>&nbsp;<li>Zero Data Loss Recovery Appliance X6 Hardware</li>&nbsp;<li>Exadata X7-2 Hardware</li>&nbsp;<li>Oracle SuperCluster T5-8 Half Rack</li>&nbsp;<li>Exadata X5-2 Eighth Rack</li>&nbsp;<li>Exadata X6-2 Hardware</li>&nbsp;<li>Exadata X6-8 Hardware</li>&nbsp;<li>Exadata X5-2 Hardware</li>&nbsp;<li>Exadata X5-2 Full Rack</li>&nbsp;<li>Exadata X5-2 Quarter Rack</li>&nbsp;<li>Exadata X4-8 Hardware</li>&nbsp;<li>Zero Data Loss Recovery Appliance X5 Hardware</li>&nbsp;<li>Exadata X5-2 Half Rack</li>&nbsp;<li>Oracle SuperCluster T5-8 Hardware</li>&nbsp;<li>Oracle SuperCluster M6-32 Hardware</li>&nbsp;</ul>
+</pre>
+</td>
+</tr>
+</table>
+<table border="1" width="100%">
+<tr bgcolor="#4682B4">
+<td><font color="white">Related Categories</font></td>
+</tr>
+<tr>
+<td>
+<pre class="sunFormat">
+<ul>
+<li>PLA-Support&gt;Sun Systems&gt;x86&gt;Engineered Systems HW&gt;SN-x64: EXADATA</li>&nbsp;<li>KB Review&gt;KB Review.Reviewed-OK</li>&nbsp;</ul>
+</pre>
+</td>
+</tr>
+</table>
+</div>
+<br>
+<b><font color="#4682B4"></font></b>
+<br>
+<pre class="sunFormat"></pre>
+<br><!-- class=km before in this document marker --><p><B>In this Document</B><br>
+<table><tr><td width='0'></td><td><A HREF="#GOAL">Goal</A></td></tr></table>
+<table><tr><td width='0'></td><td><A HREF="#FIX">Solution</A></td></tr></table>
+<table><tr><td width='0'></td><td><A HREF="#REF">References</A></td></tr></table><hr size=1><p>
+<!-- class=km before applies to --><H2 class=km>Applies to:  </H2>
+Exadata X5-2 Quarter Rack - Version All Versions and later<br />Exadata X4-8 Hardware - Version All Versions and later<br />Oracle SuperCluster T5-8 Full Rack - Version All Versions and later<br />Oracle SuperCluster T5-8 Half Rack - Version All Versions and later<br />Oracle SuperCluster T5-8 Hardware - Version All Versions and later<br />Information in this document applies to any platform.<br />
+
+<H2 class=km><A NAME="GOAL"></A>Goal</H2>
+<p>&nbsp;This document is to provide a guide for shutting down and starting up when hardware maintenance is performed on Exadata compute nodes and storage cells (including SuperCluster) for models running 12.1.x.x.x or later images as shipped on X5-2 or later.</p>
+<H2 class=km><A NAME="FIX"></A>Solution</H2>
+<p>&nbsp;<span style="font-size: small;"><strong><span style="text-decoration: underline;"></span>Shutdown of Storage Cells</strong></span></p>
+<div class="kmnotebox">For Extended information on this section check MOS Note:<br />ID <a href="&lt;&lt;INLINE_NOTE:1188080.1&gt;&gt;" alt="1188080.1" title="1188080.1">1188080.1</a> Steps to shut down or reboot an Exadata storage cell without affecting ASM<br />Where noted, the SQL, CellCLI and commands under &lsquo;root&rsquo; should be run by the<br />Customers DBA, unless the Customer provides login access to the Field Engineer</div>
+<p>&nbsp;</p>
+<div class="kmnotebox">
+<p>NOTE: If the Exadata X5 cell is to be shutdown for maintenance for a perceived bad flash device or when changing flashcachemode from WB (write-back) to non-WB (write-through) then it will be necessary to flush the flash cache.Please refer to doc <a href="&lt;&lt;INLINE_NOTE:1500257.1&gt;&gt;" alt="1500257.1" title="1500257.1">1500257.1</a> for details.</p>
+<p>This is not required for normal shutdown of the cell.</p>
+</div>
+<p>&nbsp;</p>
+<p><br /><strong>Customer Activity:</strong></p>
+<p>1. ASM drops a disk shortly after it/they are taken offline. The default DISK_REPAIR_TIME<br />attribute value of 3.6hrs should be adequate for replacing components, but may have been<br />changed by the Customer. To check this parameter, have the Customer log into ASM and<br />perform the following query:</p>
+<div class="kmcodeblock">SQL&gt; select dg.name,a.value from v$asm_attribute a, v$asm_diskgroup dg<br />where a.name = 'disk_repair_time' and a.group_number = dg.group_number;</div>
+<p>As long as the value is large enough to comfortably replace the hardware in a<br />storage cell, there is no need to change it.</p>
+<p><br />2. Check if ASM will be OK if the grid disks go OFFLINE.</p>
+<div class="kmcodeblock"># cellcli -e list griddisk attributes name,asmmodestatus,asmdeactivationoutcome<br />...snipit ...<br />DATA_CD_09_cel01 ONLINE Yes<br />DATA_CD_10_cel01 ONLINE Yes<br />DATA_CD_11_cel01 ONLINE Yes<br />RECO_CD_00_cel01 ONLINE Yes<br />etc....</div>
+<p>If one or more disks return <strong><em>asmdeactivationoutcome='No'</em></strong>, you should wait for some time<br />and repeat the query until all disks return <strong><em>asmdeactivationoutcome='Yes'</em></strong>.</p>
+<div class="kmnotebox">NOTE: Taking the storage server offline while one or more disks return a status of<br />asmdeactivationoutcome='No' will cause Oracle ASM to dismount the affected disk<br />group, causing the databases to shut down abruptly.</div>
+<p>3. Run cellcli command to Inactivate all grid disks on the cell you wish to power down/reboot.<br />(this could take up to 10 minutes or longer)</p>
+<div class="kmcodeblock"># cellcli<br />...<br />CellCLI&gt; ALTER GRIDDISK ALL INACTIVE<br />GridDisk DATA_CD_00_dmorlx8cel01 successfully altered<br />GridDisk DATA_CD_01_dmorlx8cel01 successfully altered<br />GridDisk DATA_CD_02_dmorlx8cel01 successfully altered<br />GridDisk RECO_CD_00_dmorlx8cel01 successfully altered<br />...etc...</div>
+<p>4. Execute the command below and the output should show asmmodestatus='UNUSED' or<br />'OFFLINE' and &lsquo;asmdeactivationoutcome=Yes&rsquo; for all griddisks once the disks are offline and<br />inactive in ASM.</p>
+<div class="kmcodeblock">CellCLI&gt; list griddisk attributes name,status,asmmodestatus,asmdeactivationoutcome<br />DATA_CD_00_dmorlx8cel01 inactive OFFLINE Yes<br />DATA_CD_01_dmorlx8cel01 inactive OFFLINE Yes<br />DATA_CD_02_dmorlx8cel01 inactive OFFLINE Yes<br />RECO_CD_00_dmorlx8cel01 inactive OFFLINE Yes<br />...etc...</div>
+<p>5. <span>Stop the cell services</span>.</p>
+<div class="kmcodeblock">CellCLI&gt; ALTER CELL SHUTDOWN SERVICES ALL<br />Stopping the RS, CELLSRV, and MS services... <br />The SHUTDOWN of services was successful.</div>
+<p>&nbsp;</p>
+<p><strong>Customer or Service Engineer Activity:</strong></p>
+<p>You can now shutdown the Cell using the following command:</p>
+<div class="kmcodeblock"># shutdown -hP now</div>
+<p>Disconnect the power cords before opening the top of the server</p>
+<p>&nbsp;</p>
+<p><span style="font-size: small;"><strong>Start-up of Storage Cells</strong></span></p>
+<p><strong>Service Engineer Activity:</strong><br /><br />To start the cells, begin by booting the server. Once the power cords have been re-attached and<br />the ILOM has booted you will see a slow blink on the green LED for the server. Power on the<br />server by pressing the power button on the front of the unit.</p>
+<p><br /><strong>Customer or Service Engineer Activity:</strong></p>
+<p><br />1.Connect to the console graphics screen, and monitor the boot ,it may also be necessary to connect to the ILOM cli console.</p>
+<p>2. Before activating the cell disks verify all are visible to the server.</p>
+<p>3. Start the cell services.</p>
+<p><span style="text-decoration: underline;"><strong>High Capacity ( HC ) Systems only</strong></span></p>
+<p>Verify the 12 disks are visible .</p>
+<p>&nbsp;The following command should show 12 disks:</p>
+<div class="kmcodeblock"># lsscsi | grep -i LSI<br />[0:2:0:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sda<br />[0:2:1:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdb<br />[0:2:2:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdc<br />[0:2:3:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdd<br />[0:2:4:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sde<br />[0:2:5:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdf<br />[0:2:6:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdg<br />[0:2:7:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdh<br />[0:2:8:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdi<br />[0:2:9:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdj<br />[0:2:10:0]&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdk<br />[0:2:11:0]&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; LSI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MR9361-8i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.23&nbsp; /dev/sdl</div>
+<p>Ensure the NVME devices are visible</p>
+<div class="kmcodeblock"># ls -l /dev | grep nvme | grep brw<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp;&nbsp; 0 Feb 20 13:43 nvme0n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp;&nbsp; 1 Feb 20 13:43 nvme1n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp;&nbsp; 2 Feb 20 13:43 nvme2n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp;&nbsp; 3 Feb 20 13:43 nvme3n1</div>
+<p>We expect 4 NVME block device entries to be shown above.<br /><br />If the device count is not correct above the server should be re-opened and the<br />device connections checked to be sure they are secure BEFORE the following CellCLI<br />commands are issued.</p>
+<p>Verify that the 4 Sun F160 Flash AIC cards are visible to the cell&rsquo;s software stack:</p>
+<div class="kmcodeblock"># cellcli -e "list lun where disktype=flashdisk"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1_1&nbsp;&nbsp;&nbsp;&nbsp; 1_1&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2_1&nbsp;&nbsp;&nbsp;&nbsp; 2_1&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4_1&nbsp;&nbsp;&nbsp;&nbsp; 4_1&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5_1&nbsp;&nbsp;&nbsp;&nbsp; 5_1&nbsp;&nbsp;&nbsp;&nbsp; normal</div>
+<p>If something is in status other than "normal" then it needs to be resolved.<br /><br />Confirming the AIC card health status:</p>
+<div class="kmcodeblock"># nvmecli --identify --all | grep -i ind<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy</div>
+<p>&nbsp;<br /><span style="text-decoration: underline;"><strong>Extreme Flash ( EF ) Storage cells only</strong></span></p>
+<p>Verify that the 2 boot USB &ldquo;disks&rdquo; are visible and online:</p>
+<div class="kmcodeblock"># lsscsi<br />[6:0:0:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; ORACLE&nbsp;&nbsp; SSM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PMAP&nbsp; /dev/sda<br />[7:0:0:0]&nbsp;&nbsp;&nbsp; disk&nbsp;&nbsp;&nbsp; ORACLE&nbsp;&nbsp; SSM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PMAP&nbsp; /dev/sdb</div>
+<p>Display the NVME logical devices:</p>
+<div class="kmcodeblock"># ls -l /dev | grep nvme | grep brw | grep -v n1p<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp;&nbsp; 0 Jan 30 17:14 nvme0n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 12 Jan 30 17:14 nvme1n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 24 Feb 20 13:53 nvme2n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 25 Feb 20 13:52 nvme3n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 26 Feb 20 13:52 nvme4n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 27 Feb 20 13:53 nvme5n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 28 Feb 20 13:52 nvme6n1<br />brw-rw----&nbsp; 1 root disk&nbsp;&nbsp;&nbsp; 259,&nbsp; 29 Feb 20 13:53 nvme7n1</div>
+<p>We expect 8 or 12 NVME block device entries to be shown above<br />(depending on the model).</p>
+<p>If the device count is not correct in the above output, then the server should be re-opened and the<br />device connections checked to be sure they are secure BEFORE the following CellCLI<br />commands are issued.</p>
+<p>Verify that the Flash is visible to the cell&rsquo;s software stack:</p>
+<div class="kmcodeblock"># cellcli -e "list lun where disktype=flashdisk"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_0&nbsp;&nbsp;&nbsp;&nbsp; 0_0&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_1&nbsp;&nbsp;&nbsp;&nbsp; 0_1&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_3&nbsp;&nbsp;&nbsp;&nbsp; 0_3&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_4&nbsp;&nbsp;&nbsp;&nbsp; 0_4&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_6&nbsp;&nbsp;&nbsp;&nbsp; 0_6&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_7&nbsp;&nbsp;&nbsp;&nbsp; 0_7&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_9&nbsp;&nbsp;&nbsp;&nbsp; 0_9&nbsp;&nbsp;&nbsp;&nbsp; normal<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0_10&nbsp;&nbsp;&nbsp; 0_10&nbsp;&nbsp;&nbsp; normal</div>
+<p>If something is in status other than "normal" then it needs to be resolved.</p>
+<p>Confirm the health status</p>
+<div class="kmcodeblock"># nvmecli --identify --all | grep -i ind<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy<br />Health Indicator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Healthy</div>
+<p><br /><strong>Customer Activity:</strong></p>
+<p><br />1. Once the operating system is alive you will need to activate the grid disks.</p>
+<div class="kmcodeblock"># cellcli<br />&hellip;<br />CellCLI&gt; alter griddisk all active<br />GridDisk DATA_CD_00_dmorlx8cel01 successfully altered<br />GridDisk DATA_CD_01_dmorlx8cel01 successfully altered<br />GridDisk RECO_CD_00_dmorlx8cel01 successfully altered<br />GridDisk RECO_CD_01_dmorlx8cel01 successfully altered<br />...etc...</div>
+<p>2. Issue the command below and all disks should show 'active':</p>
+<div class="kmcodeblock">CellCLI&gt; list griddisk<br />DATA_CD_00_dmorlx8cel01 active<br />DATA_CD_01_dmorlx8cel01 active<br />RECO_CD_00_dmorlx8cel01 active<br />RECO_CD_01_dmorlx8cel01 active<br />...etc...</div>
+<p>Proceed to Verification of Storage Cells below</p>
+<p>Verifying Storage Cells have returned to service.</p>
+<p><br /><strong>Customer Activity:</strong></p>
+<p><br />Verify all grid disks have been successfully put online using the following command. Wait until<br />asmmodestatus is ONLINE for all grid disks. The following is an example of the output early in<br />the activation process.</p>
+<div class="kmcodeblock">CellCLI&gt; list griddisk attributes name,status,asmmodestatus,asmdeactivationoutcome<br />DATA_CD_00_dmorlx8cel01 active ONLINE Yes<br />DATA_CD_01_dmorlx8cel01 active ONLINE Yes<br />DATA_CD_02_dmorlx8cel01 active ONLINE Yes<br />RECO_CD_00_dmorlx8cel01 active SYNCING Yes<br />...etc...</div>
+<p>Notice in the above example that RECO_CD_00_dmorlx8cel01 is still in the 'SYNCING' process.<br />Oracle ASM synchronization is only complete when ALL grid disks show<br />&lsquo;asmmodestatus=ONLINE&rsquo;. This process can take some time depending on how busy the<br />machine is, and has been while this individual server was down for repair.</p>
+<p>&nbsp;</p>
+<p><span style="font-size: small;"><strong>Shutdown of DB nodes</strong></span></p>
+<p><br /><strong>Customer Activity:</strong></p>
+<p>if running OVM then go to section "<strong>For Compute Node running OVM - </strong>for non-OVM proceed as follows:<strong><br /></strong></p>
+<p>&nbsp;<strong>Shutdown crs</strong></p>
+<p><br />(a) As root user do the following to stop crs and disable autostart of crs on reboot:&nbsp;</p>
+<div class="kmcodeblock">
+<p># . oraenv<br />ORACLE_SID = [root] ? +ASM1<br />The Oracle base for ORACLE_HOME=/u01/app/11.2.0/grid is /u01/app/oracle</p>
+<p># $ORACLE_HOME/bin/crsctl <span id="kmPgTpl:r1:ot71" class="kmContent" style="color: black;">disable crs</span></p>
+<p># $ORACLE_HOME/bin/crsctl stop crs<br />&nbsp;&nbsp;&nbsp;&nbsp; or<br /># &lt;GI_HOME&gt;/bin/crsctl stop crs</p>
+</div>
+<p>where GI_HOME environment variable is typically set to &ldquo;/u01/app/11.2.0/grid&rdquo; but will depend on the customer's environment.</p>
+<p>In the above output the &ldquo;1&rdquo; of &ldquo;+ASM1&rdquo; refers to the DB node number. For example, Db node #3 the value would be +ASM3.</p>
+<p>(b) Validate CRS is down cleanly. There should be no processes running.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<div class="kmcodeblock"># ps -ef | grep css</div>
+<p>&nbsp;</p>
+<p>(c) The customer or the field engineer can now shutdown the server operating system:</p>
+<p>Linux:</p>
+<div class="kmcodeblock"># shutdown -hP now</div>
+<p>&nbsp;</p>
+<p>(d) The field engineer can now slide out the server for maintenance. Remember to disconnect the power cords before opening the top of the server .</p>
+<p>&nbsp;</p>
+<p><strong>&nbsp;For Compute Node running OVM proceed as follows:</strong></p>
+<p>If there are any concerns engage EEST engineer.</p>
+<p>The customer should perform the following:<strong><br /></strong></p>
+<p>(a) See what user domains are running (record result )</p>
+<p>Connect to the management domain (domain zero, or dom0).</p>
+<p class="oac_no_warn" dir="ltr">&nbsp;<span class="awizStartDelimiter"> This is an example with just two domains and the management domain Domain-0</span></p>
+<div class="kmcodeblock"># xm list<br />&nbsp;Name ID Mem VCPUs State Time(s)<br />&nbsp;Domain-0 0 8192 4 r----- 409812.7<br />&nbsp;dm01db01vm01 8 8192 2 -b---- 156610.6<br />&nbsp;dm01db01vm02 9 8192 2 -b---- 152169.8</div>
+<p class="oac_no_warn" dir="ltr">connect to each domain using the command</p>
+<div class="kmcodeblock"># xm console <em>domainname</em></div>
+<p class="oac_no_warn" dir="ltr">where domainname would be <em>dm01db01vm01</em> or <em>dm01db01vm02</em> if using the above examples.</p>
+<p class="oac_no_warn" dir="ltr">Shut down any instances of crs, refer to the example above in previous section "<strong>shutdown crs</strong>" in all user domains</p>
+<div class="kmnotebox">
+<p class="oac_no_warn" dir="ltr">Note: Omit the following command for OVM as it is not not required.</p>
+<p class="oac_no_warn" dir="ltr"># $ORACLE_HOME/bin/crsctl <span id="kmPgTpl:r1:ot71" class="kmContent" style="color: black;">disable crs</span></p>
+</div>
+<p class="oac_no_warn" dir="ltr">Press CTRL+] to disconnect from the console.</p>
+<p class="oac_no_warn" dir="ltr">&nbsp;</p>
+<p class="oac_no_warn" dir="ltr">(b)Shutdown all user domains from dom0<br /><span class="awizStartDelimiter"></span></p>
+<div class="kmcodeblock"># xm shutdown -a -w</div>
+<p class="oac_no_warn" dir="ltr">(c) See what user domains are running (should be only Domain-0)<br /><br class="oac_no_warn" /></p>
+<p>(d) The customer or the field engineer can now shutdown the server operating system:</p>
+<div class="kmcodeblock"># shutdown -hP now</div>
+<p>(e)The field engineer can now slide out the server for maintenance. Remember to disconnect the power cords before opening the top of the server</p>
+<p>&nbsp;</p>
+<p><span style="font-size: small;"><strong>Start-up of DB Nodes</strong></span></p>
+<p><br />To start the DB nodes, begin by booting the server. Once the power cords have been reattached<br />and the ILOM has booted you will see a slow blink on the green LED for the server.<br />Power on the server by pressing the power button on the front of the unit.<br /><br /></p>
+<p>This is for compute nodes <strong><span style="text-decoration: underline;">NOT</span> </strong>running OVM proceed as follows, if running OVM see later section "<strong>For compute node running OVM</strong>"</p>
+<p>You can now hand the system back to the customer DBA to check all ASM or DB CRS services can be brought up and are online before obtaining sign-off. This step<br />may take more than 10 minutes to complete based on the current load on the database. See detailed information below. If the customer DBA requires assistance<br />beyond this, then you should direct them to callback the parent SR owner in EEST.</p>
+<p><br /><strong>DB Node Startup Verification:</strong></p>
+<p>1. Startup CRS and re-enable autostart of crs. After the OS is up, the Customer DBA should validate that CRS is running. As root execute:<span class="awizStartDelimiter"> <br /></span></p>
+<div class="kmcodeblock">
+<p># . oraenv<br />ORACLE_SID = [root] ? +ASM1<br />The Oracle base for ORACLE_HOME=/u01/app/11.2.0/grid is /u01/app/oracle</p>
+<p># $ORACLE_HOME/bin/crsctl start crs<br /># $ORACLE_HOME/bin/crsctl check crs</p>
+<p>Now re-enable autostart</p>
+<p># $ORACLE_HOME/bin/crsctl enable crs<br />or<br /># &lt;GI_HOME&gt;/bin/crsctl check crs</p>
+<p># &lt;GI_HOME&gt;/bin/crsctl enable crs</p>
+</div>
+<p>where GI_HOME environment variable is typically set to &ldquo;/u01/app/11.2.0/grid&rdquo; but will depend on the customer's environment.<br />In the above output the &ldquo;1&rdquo; of &ldquo;+ASM1&rdquo; refers to the DB node number. For example, Db node #3 the value would be +ASM3.<br />Example output when all is online is:</p>
+<div class="kmcodeblock"># /u01/app/11.2.0/grid/bin/crsctl check crs<br />CRS-4638: Oracle High Availability Services is online<br />CRS-4537: Cluster Ready Services is online<br />CRS-4529: Cluster Synchronization Services is online<br />CRS-4533: Event Manager is online</div>
+<p>2. Validate that instances are running:</p>
+<div class="kmcodeblock"># ps -ef |grep pmon</div>
+<p>It should return a record for the ASM instance and a record for each database.</p>
+<p>&nbsp;</p>
+<p><strong>For Compute Node running OVM</strong></p>
+<p>If the customer requires assistance please ask them to contact EEST engineer or parent case owner.</p>
+<p>&nbsp;</p>
+<p>See what user domains are running (compare against result from previously collected data)</p>
+<div class="kmcodeblock"># xm list</div>
+<p>&nbsp;</p>
+<p>if any not auto-started then Startup a single user domain</p>
+<div class="kmcodeblock"># xm create -c /EXAVMIMAGES/GuestImages/<em>DomainName</em>/vm.cfg</div>
+<p>&nbsp;Check that crs has started in user domains ,refer to previous section "DB Node Startup Verification"</p><b>
+<br>
+<font color="#4682B4">Attachments</font></b>
+<pre class="sunFormat">This solution has no attachment</pre>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="2" width="100%">
+<tr>
+<td bgcolor="#cc0033"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td><td bgcolor="#cc9900"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td><td bgcolor="#cccc33"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td><td bgcolor="#ff9900"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td>
+</tr>
+<tr>
+<td bgcolor="#000000" colspan="4"><FONT FACE="Geneva, Helvetica, Arial, SunSans-Regular" COLOR="#FFFFFF" SIZE="2">      &nbsp;
+
+<a href="/syshbk/Systems/common-docs/legal_notice.html">Copyright &copy; 2023 Oracle, Inc. &nbsp;All rights reserved.</a>
+<BR>&nbsp;<A HREF="http://www.sun.com/share/text/SMICopyright.html"><FONT COLOR="#FFFFFF"></FONT></A><A HREF="mailto:ssh-feedback@whitecastle.us.oracle.com"><FONT COLOR="#FFFFFF">Feedback</FONT></A></FONT></td>
+</tr>
+<tr>
+<td bgcolor="#000000" colspan="4"><img src="../../images/dot.gif" width="614" height="1" border="0" alt=""></td>
+</tr>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

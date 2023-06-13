@@ -7,7 +7,7 @@ for f in */**/*\ *; do mv "$f" "${f// /-}" 2>/dev/null; done
 
 cd /d/blog/source/assets/html || exit
 cat /dev/null > $idx_html
-echo '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>HTML</title></head><body><h1>Oracle Patch README</h1><ul>' > $idx_html
+echo '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>HTML</title></head><body><h1>Oracle HTML</h1><ul>' > $idx_html
 for i in *.html; do
   [[ -e "$i" ]] || break
   if [ "$i" != 'index.html' ]; then

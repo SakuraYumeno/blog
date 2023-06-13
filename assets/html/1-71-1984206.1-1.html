@@ -1,0 +1,221 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>How to Replace an Exadata X5-2/X6-2 Memory DIMM</title>
+<link href="../../images/intstyle.css" rel="stylesheet" type="text/css">
+<link href="mailto:ssh-feedback@whitecastle.us.oracle.com" rev="made">
+</head>
+<body bgcolor="#666699" text="black" link="#666699" vlink="#666699" alink="#ff0000">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr valign="top">
+<td align="right" rowspan="2" width="1%"><a href="http://www.sun.com/"><img src="../../images/O_Sun_joint_logo.jpg" border="0" alt="Sun Microsystems, Inc."></a></td><td colspan="3" width="99%" bgcolor="#000000" valign="middle"><font face="Geneva, Arial, Helvetica, lucida sans, sans-serif" color="#ffffff" class="nonuw" size="3"><b>&nbsp;&nbsp;Oracle System Handbook</b> - ISO 8.3 May 2023 Internal/Partner Edition</font></td>
+</tr>
+<tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr align="center" valign="middle">
+<td valign="middle">&nbsp;&nbsp;
+<font color="#ff9900" face="Geneva, Arial, Helvetica" size="2"><a href="../../index.html"><font color="#ffffff" class="nonuw">Home</font></a> |
+<a href="../../Systems/index.html"><font color="#ffffff" class="nonuw">Current Systems</font></a> |
+<a href="../../STK/STK_index.html"><font color="#ffffff" class="nonuw">Former
+STK Products</font></a> |
+<a href="../../Systems/eolSystemList.html"><font color="#ffffff" class="nonuw">EOL Systems</font></a> |
+<a href="../../Devices/index.html"><font color="#ffffff" class="nonuw">Components</font></a> |
+<a href="../../General/index.html"><font color="#ffffff" class="nonuw">General Info</font></a> |
+
+<a href="/Search.html"><font color="#ffffff" class="nonuw">Search</font></a> |
+<a href="mailto:ssh-feedback@whitecastle.us.oracle.com"><font color="#ffffff" class="nonuw">Feedback</font></a></font></td>
+</tr>
+</tbody>
+</table>
+</td><td align="right" colspan="2">
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr bgcolor="#000000">
+<td><img src="../../images/dot.gif" width="620" height="2" border="0" alt=""></td>
+</tr>
+<tr valign="top" bgcolor="#ffffff">
+<td>
+<div>
+<STYLE TYPE="text/css" MEDIA="screen">
+<!--
+          pre {
+            white-space:-moz-pre-wrap;
+            white-space:pre-wrap;
+            word-wrap:break-word;
+            margin:0px }
+          pre.sunFormat{ font-family:Arial,Helvetica,FreeSans,"Luxi-sans","Nimbus Sans L",sans-serif;
+            font-size:13px;
+            color:#000;
+            white-space:-moz-pre-wrap;
+            white-space:pre-wrap;
+            word-wrap:break-word;
+            margin:0px}
+        -->
+</STYLE>
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+<tr>
+<td valign="top" width="3%" nowrap=""><b>Asset ID:</b></td><td align="left" valign="top">
+        1-71-1984206.1</td>
+</tr>
+<tr>
+<td valign="top" width="3%" nowrap=""><b>Update Date:</b></td><td align="left" valign="top">2022-07-23</td>
+</tr>
+<tr>
+<td valign="top" width="3%" nowrap=""><b>Keywords:</b></td><td align="left" valign="top"></td>
+</tr>
+</table>
+<hr>
+  <b><font color="#4682B4">Solution Type&nbsp;</font>
+    Technical Instruction Sure
+  <br>
+<br>
+<font color="#4682B4"> Solution&nbsp;
+1984206.1</font>
+: &nbsp;
+How to Replace an Exadata X5-2/X6-2 Memory DIMM
+&nbsp;</b>
+<br>
+<br>
+<div>
+<table border="1" width="100%">
+<tr bgcolor="#4682B4">
+<td><font color="white">Related Items</font></td>
+</tr>
+<tr>
+<td>
+<pre class="sunFormat">
+<ul>
+<li>Oracle SuperCluster T5-8 Full Rack</li>&nbsp;<li>Oracle SuperCluster M7 Hardware</li>&nbsp;<li>Zero Data Loss Recovery Appliance X6 Hardware</li>&nbsp;<li>Exadata SL6 Hardware</li>&nbsp;<li>Exadata X6-2 Hardware</li>&nbsp;<li>Exadata X6-8 Hardware</li>&nbsp;<li>Exadata X5-2 Eighth Rack</li>&nbsp;<li>Exadata X5-2 Hardware</li>&nbsp;<li>Exadata X5-2 Full Rack</li>&nbsp;<li>Oracle SuperCluster T5-8 Half Rack</li>&nbsp;<li>Exadata X5-2 Quarter Rack</li>&nbsp;<li>Exadata X4-8 Hardware</li>&nbsp;<li>Exadata X5-2 Half Rack</li>&nbsp;<li>Zero Data Loss Recovery Appliance X5 Hardware</li>&nbsp;<li>Oracle SuperCluster T5-8 Hardware</li>&nbsp;<li>Oracle SuperCluster M6-32 Hardware</li>&nbsp;</ul>
+</pre>
+</td>
+</tr>
+</table>
+<table border="1" width="100%">
+<tr bgcolor="#4682B4">
+<td><font color="white">Related Categories</font></td>
+</tr>
+<tr>
+<td>
+<pre class="sunFormat">
+<ul>
+<li>PLA-Support&gt;Sun Systems&gt;x86&gt;x86 Generic Prod&gt;SN-x64: CAP VCAP</li>&nbsp;<li>KB Review&gt;KB Review.Reviewed-OK</li>&nbsp;<li>CAP/VCAP&gt;CV-CAP</li>&nbsp;</ul>
+</pre>
+</td>
+</tr>
+</table>
+</div>
+<br>
+<b><font color="#4682B4"></font></b>
+<br>
+<pre class="sunFormat"></pre>
+<br><!-- class=km before in this document marker --><p><B>In this Document</B><br>
+<table><tr><td width='0'></td><td><A HREF="#GOAL">Goal</A></td></tr></table>
+<table><tr><td width='0'></td><td><A HREF="#FIX">Solution</A></td></tr></table>
+<table><tr><td width='0'></td><td><A HREF="#REF">References</A></td></tr></table><hr size=1><p>
+Oracle Confidential PARTNER - Available to partners (SUN).<br />
+Reason: FRU for engineered system     <br />
+<!-- class=km before applies to --><H2 class=km>Applies to:  </H2>
+Exadata X6-2 Hardware - Version All Versions and later<br />Exadata X6-8 Hardware - Version All Versions and later<br />Zero Data Loss Recovery Appliance X6 Hardware - Version All Versions and later<br />Oracle SuperCluster M7 Hardware - Version All Versions and later<br />Exadata SL6 Hardware - Version All Versions and later<br />Information in this document applies to any platform.<br />
+
+<H2 class=km><A NAME="GOAL"></A>Goal</H2>
+<p>&nbsp;How to Replace an Exadata X5-2/X6-2 Memory DIMM</p>
+<H2 class=km><A NAME="FIX"></A>Solution</H2>
+<p>&nbsp;CAP PROBLEM OVERVIEW:Memory DIMM Replacement</p>
+<p>DISPATCH INSTRUCTIONS</p>
+<p>WHAT SKILLS DOES THE ENGINEER NEED:<br />Exadata trained.</p>
+<p>TIME ESTIMATE: 30 minutes<br />TASK COMPLEXITY: 3</p>
+<p><br />FIELD ENGINEER INSTRUCTIONS</p>
+<p>WHAT STATE SHOULD THE SYSTEM BE IN TO BE READY TO PERFORM THE RESOLUTION ACTIVITY? :<br />If the system is still up and functioning, customer should perform an orderly and graceful shutdown of applications and OS. Then power<br />off the server and remove the AC power cords from the system.</p>
+<p>Refer to Doc: How to shutdown and startup Exadata X5 compute node and storage cells when performing hardware<br />maintenance (Doc ID <a href="&lt;&lt;INLINE_NOTE:1982342.1&gt;&gt;" alt="1982342.1" title="1982342.1">1982342.1</a>)</p>
+<p>For Extended information on this section, check MOS Note <a href="&lt;&lt;INLINE_NOTE:1093890.1&gt;&gt;" alt="1093890.1" title="1093890.1">1093890.1</a> Steps To Shutdown/Startup The Exadata &amp; RDBMS<br />Services and Cell/Compute Nodes On An Exadata Configuration. (https://support.oracle.com/epmos/faces/ui/km<br />/SearchDocDisplay.jspx?id=1093890.1&amp;type=DOCUMENT )</p>
+<p>For a documentation reference, in the Exadata Owner&rsquo;s Guide (E13874), use the section of chapter 7 titled &ldquo;Non-Emergency Power<br />Procedures&rdquo; section &ldquo;Powering Off Oracle Exadata Rack&rdquo; sub-section &ldquo;Powering off Database Servers&rdquo; available on the customer's<br />cell server image in the /opt/oracle/cell/doc.</p>
+<p><a href="http://amomv0117.us.oracle.com/archive/cd_ns/E13877_01/doc/doc.112/e13874/maintenance.htm#autoId18">http://amomv0117.us.oracle.com/archive/cd_ns/E13877_01/doc/doc.112/e13874/maintenance.htm#autoId18</a><br />A data backup is not a prerequisite but is a wise precaution.</p>
+<p>WHAT ACTION DOES THE ENGINEER NEED TO TAKE:</p>
+<p><br />A. Prepare the server for service.</p>
+<p>1. <strong>Power off the server and disconnect the power cords from the power supplies.</strong><br />2. Extend the server to the maintenance position in the rack.<br />3. Attach an anti-static wrist strap.<br />4. Remove the top cover.</p>
+<p>B. Identify and replace the DIMM, confirm population rules</p>
+<div class="kmnotebox">
+<p>for complete DIMM population rules reference the Service Manual</p>
+<p>X5-2 Service manual :&nbsp;<a href="http://docs.oracle.com/cd/E41059_01/html/E48312/napsm.z40003f01425075.html#scrolltoc"></a><a href="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc" alt="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc" title="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc"></a><a href="http://docs.oracle.com/cd/E41059_01/html/E48312/napsm.z40003f01425075.html#scrolltoc">http://docs.oracle.com/cd/E41059_01/html/E48312/napsm.z40003f01425075.html#scrolltoc</a></p>
+<p>X5-2L Service manual : <a href="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc" alt="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc" title="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc">http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc</a></p>
+</div>
+<p>1. Do not populate any DIMM sockets next to an empty processor socket. Each processor contains a separate memory controller.</p>
+<p>2. The server supports 32-GB quad-rank (QR) Load-Reduced DIMMs (LRDIMMs) and 8-GB single-rank (SR) and 16-GB dual-rank<br />(DR) Registered DIMMs (RDIMMs).</p>
+<p>3. Do not mix 32-GB LRDIMMs and 8-GB or 16-GB RDIMMs in the same server. If the server has 32-GB LRDIMMs installed, you<br />cannot install 8-GB or 16-GB RDIMMs and vice versa.</p>
+<p>4. Within a memory channel, DIMMs must be populated in the black sockets first, then in the black sockets with white tabs, and<br />then in the white sockets.</p>
+<p>Black Sockets D0/D11/D3/D8</p>
+<p>Black Sockets with white tab : D1/D10/D4/D7</p>
+<p>White Sockets : D2/D9/D5/D6</p>
+<p>5. If you are installing a mix of RDIMM sizes (for example, 8-GB and 16-GB), install the larger size RDIMMs first, then the smaller<br />RDIMMs, until all of the RDIMMs are installed.<br /><br />6. There are no restrictions on the minimum number of DIMM sockets that must be populated.</p>
+<p>7.To confirm and/or identify the location of the failed DIMM press the Fault Remind button on the motherboard. This will light the<br />amber fault LED for the failed DIMM.</p>
+<p>8. To remove the DIMM rotate both DIMM socket ejectors outward as far as they will go.</p>
+<p>9. Carefully lift the DIMM straight up to remove it from the socket and set it aside on an antistatic mat.</p>
+<p>10. Unpack the replacement DDR4 DIMM and place it on an antistatic mat.</p>
+<p>11. Ensure that the replacement DDR4 DIMM matches the size it is replacing.</p>
+<p>12. Install the DIMM into the motherboard by ensuring that the ejector tabs of the DIMM slots are in the open position.</p>
+<p>13. Then align the notch in the DIMM with the key in the connector.</p>
+<p>14. Push the DDR4 DIMM into the connector until the ejector tabs lock the DIMM in place.</p>
+<p>C. Return the Server to operation</p>
+<p>1. Replace the top cover</p>
+<p>2. Remove any anti-static measures that were used.</p>
+<p>3. Return the server to it's normal operating position within the rack.</p>
+<p>4. Re-install the AC power cords and any data cables that were removed.</p>
+<div class="kmnotebox">NOTE:Do not power on the host at this point ,complete the next step first.</div>
+<p>&nbsp;</p>
+<p>D. Check the ILOM to ensure that the fault has been cleared automatically and if not clear it manually.</p>
+<p>1. login to the ILOM CLI and launch a Fault Management Shell session<br />-&gt; start /SP/faultmgmt/shell<br />Are you sure you want to start /SP/faultmgmt/shell (y/n)? y<br />faultmgmtsp&gt;<br /><br />2. use the "fmadm faulty -a" command to list out all active faulty components</p>
+<p>3. faultmgmtsp&gt; fmadm faulty -a</p>
+<p>4. If the DIMM that was just replaced is still listed as a fault then indicate that the DIMM has been replaced by using the command<br />"fmadm replaced &lt;fru|cru|uuid&gt;" for example:</p>
+<p>faultmgmtsp&gt; fmadm replaced /SYS/MB/P0/D2<br /><br />5. confirm that the faults are cleared and then exit out of the fault management shell</p>
+<p>faultmgmtsp&gt; fmadm faulty -a<br />No faults found<br />faultmgmtsp&gt; exit<br />-&gt;</p>
+<p>6.Once all faults are clear Power on the host.</p>
+<p>Check all memory is detected by the ILOM</p>
+<p>-&gt; show /System/Memory/</p>
+<p>&nbsp;</p>
+<p><br />OBTAIN CUSTOMER ACCEPTANCE</p>
+<p>&nbsp;</p>
+<p>Once the host has completed booting login to the host and check the operating system has detected the memory.</p>
+<p>Issue the following command to ensure all memory is detected</p>
+<p># grep MemTotal /proc/meminfo</p>
+<p><br />WHAT ACTION DOES THE CUSTOMER NEED TO TAKE TO RETURN THE SYSTEM TO AN OPERATIONAL STATE:<br />Boot up system and verify full functionality</p>
+<p>Refer to doc How to shutdown and startup Exadata X5 compute node and storage cells when performing hardware<br />maintenance (Doc ID <a href="&lt;&lt;INLINE_NOTE:1982342.1&gt;&gt;" alt="1982342.1" title="1982342.1">1982342.1</a>)</p>
+<p>REFERENCE INFORMATION:</p>
+<p><br />How to shutdown and startup Exadata X5 compute node and storage cells when performing hardware<br />maintenance (Doc ID <a href="&lt;&lt;INLINE_NOTE:1982342.1&gt;&gt;" alt="1982342.1" title="1982342.1">1982342.1</a>)</p>
+<p>Oracle Server X5-2 service guide: <a href="http://docs.oracle.com/cd/E41059_01/html/E48312/napsm.gntoq.html#scrolltoc">http://docs.oracle.com/cd/E41059_01/html/E48312/napsm.gntoq.html#scrolltoc</a><br />Oracle server X5-2L service guide : <a href="http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc">http://docs.oracle.com/cd/E41033_01/html/E48325/cnpsm.ceicjagi.html#scrolltoc</a></p><b>
+<br>
+<font color="#4682B4">Attachments</font></b>
+<pre class="sunFormat">This solution has no attachment</pre>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="2" width="100%">
+<tr>
+<td bgcolor="#cc0033"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td><td bgcolor="#cc9900"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td><td bgcolor="#cccc33"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td><td bgcolor="#ff9900"><img src="../../images/dot.gif" width="151" height="1" border="0" alt=""></td>
+</tr>
+<tr>
+<td bgcolor="#000000" colspan="4"><FONT FACE="Geneva, Helvetica, Arial, SunSans-Regular" COLOR="#FFFFFF" SIZE="2">      &nbsp;
+
+<a href="/syshbk/Systems/common-docs/legal_notice.html">Copyright &copy; 2023 Oracle, Inc. &nbsp;All rights reserved.</a>
+<BR>&nbsp;<A HREF="http://www.sun.com/share/text/SMICopyright.html"><FONT COLOR="#FFFFFF"></FONT></A><A HREF="mailto:ssh-feedback@whitecastle.us.oracle.com"><FONT COLOR="#FFFFFF">Feedback</FONT></A></FONT></td>
+</tr>
+<tr>
+<td bgcolor="#000000" colspan="4"><img src="../../images/dot.gif" width="614" height="1" border="0" alt=""></td>
+</tr>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
