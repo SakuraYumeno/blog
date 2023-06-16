@@ -19,8 +19,8 @@ echo 'HTML索引文件生成完毕'
 
 cd /d/blog/source/assets/pdf || exit
 cat /dev/null > $idx_html
-echo '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>PDF</title></head><body><h1>Oracle MOS Documents</h1><ul>' > $idx_html
-for i in oracle/*.pdf; do
+echo '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>PDF</title></head><body><h1>Linux Documents</h1><ul>' > $idx_html
+for i in linux/*.pdf; do
   [[ -e "$i" ]] || break
   if [ "$i" != 'index.html' ]; then
     i2=$(basename $i)
@@ -29,8 +29,8 @@ for i in oracle/*.pdf; do
 done
 echo '</ul>' >> $idx_html
 echo "" >> $idx_html
-echo '<h1>Linux Documents</h1><ul>' >> $idx_html
-for i in linux/*.pdf; do
+echo '<h1>Oracle MOS Documents</h1><ul>' >> $idx_html
+for i in oracle/*.pdf; do
   [[ -e "$i" ]] || break
   if [ "$i" != 'index.html' ]; then
     i2=$(basename $i)

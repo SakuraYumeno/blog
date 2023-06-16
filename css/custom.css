@@ -110,6 +110,8 @@
   src: url('/blog/font/CascadiaMono.woff2') format('woff2');
 }
 
+
+
 .layout {max-width: 1500px;}
     
 .layout > div:first-child {width: 80%;}
