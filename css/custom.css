@@ -110,7 +110,11 @@
   src: url('/blog/font/CascadiaMono.woff2') format('woff2');
 }
 
-
+@font-face {
+  font-family: 'HYTangMeiRen55W';
+  font-display: swap;
+  src: url('/blog/font/HYTangMeiRen55W.ttf') format('truetype');
+}
 
 .layout {max-width: 1500px;}
     
