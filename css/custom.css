@@ -101,19 +101,19 @@
 @font-face {
   font-family: 'ZhuZiAWan';
   font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2');
+  src: url('https://cdn.jsdelivr.net/gh/SakuraYumeno/blog@gh-pages/font/ZhuZiAWan.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'CascadiaMono';
   font-display: swap;
-  src: url('/blog/font/CascadiaMono.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/SakuraYumeno/blog@gh-pages/font/CascadiaMono.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'HYTangMeiRen55W';
   font-display: swap;
-  src: url('/blog/font/HYTangMeiRen55W.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/gh/SakuraYumeno/blog@gh-pages/font/HYTangMeiRen55W.ttf') format('truetype');
 }
 
 .layout {max-width: 1500px;}
