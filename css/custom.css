@@ -110,12 +110,6 @@
   src: url('https://cdn.jsdelivr.net/gh/SakuraYumeno/assets/font/CascadiaMono.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'HYTangMeiRen55W';
-  font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/SakuraYumeno/assets/font/HYTangMeiRen55W.ttf') format('truetype');
-}
-
 .layout {max-width: 1500px;}
     
 .layout > div:first-child {width: 80%;}
